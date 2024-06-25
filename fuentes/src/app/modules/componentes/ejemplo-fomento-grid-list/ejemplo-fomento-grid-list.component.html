@@ -1,0 +1,21 @@
+<div class="item">
+  <h2 class="title">Ejemplos del componente Grid List</h2>
+</div>
+
+<h2 class="title">Ejemplo 1</h2>
+
+<lib-fomento-grid-list [columns]=3 [rowHeight]="'3:1'" [data]="miData2">
+</lib-fomento-grid-list>
+
+<h2 class="title">Ejemplo 2</h2>
+
+
+<lib-fomento-grid-list [columns]=3 [rowHeight]="'3:1'" [data]="miData">
+  <ng-template #gridListItemTemplate let-item>
+    <div>
+      {{ item.title }}
+      <br>
+      {{ item.content }}
+    </div>   
+  </ng-template>
+</lib-fomento-grid-list>

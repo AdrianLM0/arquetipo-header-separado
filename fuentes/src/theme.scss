@@ -1,0 +1,659 @@
+//Generado con https://materialtheme.arcsine.dev/
+@use '@angular/material' as mat;
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Fonts
+@import 'https://fonts.googleapis.com/css?family=Material+Icons';
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+$fontConfig: (
+	display-4: mat-typography-level(112px, 112px, 300, 'Noto Sans HK', -0.0134em),
+	display-3: mat-typography-level(56px, 56px, 400, 'Noto Sans HK', -0.0089em),
+	display-2: mat-typography-level(45px, 48px, 400, 'Noto Sans HK', 0em),
+	display-1: mat-typography-level(34px, 40px, 400, 'Noto Sans HK', 0.0074em),
+	headline: mat-typography-level(24px, 32px, 400, 'Noto Sans HK', 0em),
+	title: mat-typography-level(20px, 32px, 500, 'Noto Sans HK', 0.0075em),
+	subheading-2: mat-typography-level(16px, 28px, 400, 'Noto Sans HK', 0.0094em),
+	subheading-1: mat-typography-level(15px, 24px, 500, 'Noto Sans HK', 0.0067em),
+	body-2: mat-typography-level(14px, 24px, 500, 'Noto Sans HK', 0.0179em),
+	body-1: mat-typography-level(14px, 20px, 400, 'Noto Sans HK', 0.0179em),
+	button: mat-typography-level(14px, 14px, 500, 'Noto Sans HK', 0.0893em),
+	caption: mat-typography-level(12px, 20px, 400, 'Noto Sans HK', 0.0333em),
+	input: mat-typography-level(inherit, 1.125, 400, 'Noto Sans HK', 1.5px),
+);
+
+$my-app-typography: mat.define-typography-config($fontConfig);
+
+// Foreground Elements
+// Light Theme Text
+$dark-text: #000000;
+$dark-primary-text: rgba($dark-text, 0.87);
+$dark-accent-text: rgba($dark-primary-text, 0.54);
+$dark-disabled-text: rgba($dark-primary-text, 0.38);
+$dark-dividers: rgba($dark-primary-text, 0.12);
+$dark-focused: rgba($dark-primary-text, 0.12);
+$mat-light-theme-foreground: (
+	base: black,
+	divider: $dark-dividers,
+	dividers: $dark-dividers,
+	disabled: $dark-disabled-text,
+	disabled-button: rgba($dark-text, 0.26),
+	disabled-text: $dark-disabled-text,
+	elevation: black,
+	secondary-text: $dark-accent-text,
+	hint-text: $dark-disabled-text,
+	accent-text: $dark-accent-text,
+	icon: $dark-accent-text,
+	icons: $dark-accent-text,
+	text: $dark-primary-text,
+	slider-min: $dark-primary-text,
+	slider-off: rgba($dark-text, 0.26),
+	slider-off-active: $dark-disabled-text,
+);
+// Dark Theme text
+$light-text: #ffffff;
+$light-primary-text: $light-text;
+$light-accent-text: rgba($light-primary-text, 0.7);
+$light-disabled-text: rgba($light-primary-text, 0.5);
+$light-dividers: rgba($light-primary-text, 0.12);
+$light-focused: rgba($light-primary-text, 0.12);
+$mat-dark-theme-foreground: (
+	base: $light-text,
+	divider: $light-dividers,
+	dividers: $light-dividers,
+	disabled: $light-disabled-text,
+	disabled-button: rgba($light-text, 0.3),
+	disabled-text: $light-disabled-text,
+	elevation: black,
+	hint-text: $light-disabled-text,
+	secondary-text: $light-accent-text,
+	accent-text: $light-accent-text,
+	icon: $light-text,
+	icons: $light-text,
+	text: $light-text,
+	slider-min: $light-text,
+	slider-off: rgba($light-text, 0.3),
+	slider-off-active: rgba($light-text, 0.3),
+);
+// Background config
+// Light bg
+$light-background: #fafafa;
+$light-bg-darker-5: darken($light-background, 5%);
+$light-bg-darker-10: darken($light-background, 10%);
+$light-bg-darker-20: darken($light-background, 20%);
+$light-bg-darker-30: darken($light-background, 30%);
+$light-bg-lighter-5: lighten($light-background, 5%);
+$dark-bg-tooltip: lighten(#2c2c2c, 20%);
+$dark-bg-alpha-4: rgba(#2c2c2c, 0.04);
+$dark-bg-alpha-12: rgba(#2c2c2c, 0.12);
+$mat-light-theme-background: (
+	background: $light-background,
+	status-bar: $light-bg-darker-20,
+	app-bar: $light-bg-darker-5,
+	hover: $dark-bg-alpha-4,
+	card: $light-bg-lighter-5,
+	dialog: $light-bg-lighter-5,
+	tooltip: $dark-bg-tooltip,
+	disabled-button: $dark-bg-alpha-12,
+	raised-button: $light-bg-lighter-5,
+	focused-button: $dark-focused,
+	selected-button: $light-bg-darker-20,
+	selected-disabled-button: $light-bg-darker-30,
+	disabled-button-toggle: $light-bg-darker-10,
+	unselected-chip: $light-bg-darker-10,
+	disabled-list-option: $light-bg-darker-10,
+);
+// Dark bg
+$dark-background: #2c2c2c;
+$dark-bg-lighter-5: lighten($dark-background, 5%);
+$dark-bg-lighter-10: lighten($dark-background, 10%);
+$dark-bg-lighter-20: lighten($dark-background, 20%);
+$dark-bg-lighter-30: lighten($dark-background, 30%);
+$light-bg-alpha-4: rgba(#fafafa, 0.04);
+$light-bg-alpha-12: rgba(#fafafa, 0.12);
+// Background palette for dark themes.
+$mat-dark-theme-background: (
+	background: $dark-background,
+	status-bar: $dark-bg-lighter-20,
+	app-bar: $dark-bg-lighter-5,
+	hover: $light-bg-alpha-4,
+	card: $dark-bg-lighter-5,
+	dialog: $dark-bg-lighter-5,
+	tooltip: $dark-bg-lighter-20,
+	disabled-button: $light-bg-alpha-12,
+	raised-button: $dark-bg-lighter-5,
+	focused-button: $light-focused,
+	selected-button: $dark-bg-lighter-20,
+	selected-disabled-button: $dark-bg-lighter-30,
+	disabled-button-toggle: $dark-bg-lighter-10,
+	unselected-chip: $dark-bg-lighter-20,
+	disabled-list-option: $dark-bg-lighter-10,
+);
+// Compute font config
+@include mat.core();
+// Theme Config
+body {
+	--primary-color: #087021;
+	--primary-lighter-color: #c4ddca;
+	--primary-darker-color: #087021;
+	--text-primary-color: #{$light-primary-text};
+	--text-primary-lighter-color: #{$dark-primary-text};
+	--text-primary-darker-color: #{$light-primary-text};
+}
+
+$mat-primary: (
+	main: #087021,
+	lighter: #c4ddca,
+	darker: #087021,
+	200: #087021,
+	// For slide toggle,
+	contrast:
+		(
+			main: $light-primary-text,
+			lighter: $dark-primary-text,
+			darker: $light-primary-text,
+		),
+);
+$theme-primary: mat.define-palette($mat-primary, main, lighter, darker);
+
+$mat-accent: (
+	main: #087021,
+	lighter: #c4ddca,
+	darker: #087021,
+	200: #087021,
+	// For slide toggle,
+	contrast:
+		(
+			main: $light-primary-text,
+			lighter: $dark-primary-text,
+			darker: $light-primary-text,
+		),
+);
+$theme-accent: mat.define-palette($mat-accent, main, lighter, darker);
+
+$mat-warn: (
+	main: #d9534f,
+	lighter: #ffb3b3,
+	darker: #ff0000,
+	200: #d9534f,
+	// For slide toggle,
+	contrast:
+		(
+			main: $light-primary-text,
+			lighter: $dark-primary-text,
+			darker: $light-primary-text,
+		),
+);
+$theme-warn: mat.define-palette($mat-warn, main, lighter, darker);
+$theme: mat.define-light-theme($theme-primary, $theme-accent, $theme-warn);
+
+$altTheme: mat.define-dark-theme($theme-primary, $theme-accent, $theme-warn);
+// Theme Init
+
+@include mat.all-component-themes($theme);
+
+.theme-alternate {
+	@include mat.all-component-themes($altTheme);
+}
+
+// Specific component overrides, pieces that are not in line with the general theming
+// Handle buttons appropriately, with respect to line-height
+.mat-raised-button,
+.mat-stroked-button,
+.mat-flat-button {
+	padding: 0 1.15em;
+	margin: 0 0.65em;
+	min-width: 3em;
+	line-height: 36.4px;
+}
+
+.mat-standard-chip {
+	padding: 0.5em 0.85em;
+	min-height: 2.5em;
+}
+
+.material-icons {
+	font-size: 24px;
+	font-family: 'Material Icons', sans-serif;
+	.mat-badge-content {
+		font-family: 'Noto Sans HK', sans-serif;
+	}
+}
+
+//Specifics styles for components
+.mat-grid-tile .mat-figure {
+	justify-content: center !important;
+	align-items: center !important;
+	//margin-left: 10px !important;
+}
+
+/*FORMULARIOS EN DIALOGOS*/
+
+.mat-form-field-underline {
+	display: none;
+}
+
+// mat-label focused style
+.mat-form-field.mat-focused .mat-form-field-label {
+	color: #333333;
+}
+
+// mat-label error style
+.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+	color: red !important;
+}
+
+.mat-form-field-invalid .mat-input-element,
+.mat-warn .mat-input-element {
+	caret-color: red;
+}
+
+.mat-form-field mat-hint {
+	height: 17px !important;
+	width: 86px !important;
+	color: #555555 !important;
+	font-family: 'Noto Sans HK', sans-serif !important;
+	font-size: 12px !important;
+	letter-spacing: 0 !important;
+	line-height: 17px !important;
+}
+
+.mat-form-field .campo {
+	box-sizing: border-box !important;
+	height: 48px !important;
+	width: 240px !important;
+	border: 1px solid #999999 !important;
+	border-radius: 4px !important;
+}
+
+.mat-form-field input {
+	height: 24px !important;
+	max-width: 180px !important;
+	color: #333333 !important;
+	font-family: 'Noto Sans HK', sans-serif !important;
+	font-size: 14px !important;
+	letter-spacing: 0 !important;
+	line-height: 24px !important;
+	position: absolute !important;
+	top: 25% !important;
+	margin-left: 12px !important;
+}
+
+.mat-form-field .mat-date {
+	width: 85% !important;
+}
+
+.mat-form-field {
+	height: 89px !important;
+	width: 240px !important;
+	color: #333333 !important;
+}
+
+.mat-form-field label {
+	height: 17px !important;
+	width: 33px;
+	color: #555555 !important;
+	font-family: 'Noto Sans HK', sans-serif !important;
+	font-size: 16px !important;
+	font-weight: bold !important;
+	letter-spacing: 0 !important;
+	line-height: 17px !important;
+	padding-bottom: 5px !important;
+}
+
+.mat-form-field ~ .mat-form-field {
+	margin-left: 2%;
+	margin-bottom: 2%;
+	margin-top: 2%;
+	font-family: 'Noto Sans HK', sans-serif !important;
+}
+
+.mat-form-field mat-select {
+	height: 24px !important;
+	width: 90% !important;
+	color: #333333 !important;
+	font-family: 'Noto Sans HK', sans-serif !important;
+	font-size: 14px !important;
+	letter-spacing: 0 !important;
+	line-height: 24px !important;
+	position: absolute !important;
+	top: 25% !important;
+	margin-left: 12px !important;
+}
+
+h2.mat-dialog-title {
+	color: #333333;
+	font-family: 'Noto Sans HK', sans-serif !important;
+	font-size: 32px !important;
+	font-weight: 300 !important;
+	letter-spacing: 0 !important;
+	line-height: 46px !important;
+	padding-block: 1em !important;
+	padding-bottom: 2em !important;
+}
+
+.mat-dialog-actions {
+	align-items: end !important;
+	text-align: end !important;
+	justify-content: flex-end !important;
+	margin-top: 5% !important;
+}
+
+.list .mat-figure {
+	justify-content: flex-start !important;
+	align-items: flex-start !important;
+	margin-left: 10px !important;
+}
+
+.table-wrapper {
+	overflow: auto;
+	height: calc(100vh - 270px);
+	max-height: 450px;
+	/* padding: 10px 5px; */
+}
+
+/* Highlight on hover */
+
+.submitted-timesheet-day:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected),
+
+/* Highlight */
+
+.submitted-timesheet-day>div:not(.mat-calendar-body-selected) {
+	border-radius: 999px;
+	background-color: rgba(14, 152, 5, 0.25);
+}
+
+.no-records .mat-icon {
+	width: 130px;
+	height: 130px;
+	font-size: 130px;
+	color: #c7c7c7;
+}
+
+p .mat-icon {
+	vertical-align: middle;
+}
+
+.mat-slide-toggle.full-width {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.mat-tooltip {
+	font-size: 14px;
+}
+
+.mat-dialog-title {
+	margin: 0 !important;
+}
+
+.mat-column-actions {
+	flex: 0 0 60px;
+}
+
+.mat-table .mat-row:hover {
+	background-color: #e7f1eb;
+}
+
+.mat-table td.mat-cell a:hover {
+	text-decoration: underline;
+}
+
+.mat-table td.mat-cell:first-child,
+.mat-table td.mat-footer-cell:first-child,
+.mat-table th.mat-header-cell:first-child {
+	padding-left: 20px !important;
+}
+
+.mat-table td.mat-cell:last-child,
+.mat-table td.mat-footer-cell:last-child,
+.mat-table th.mat-header-cell:last-child {
+	padding-right: 10px !important;
+}
+
+.mat-table .mat-cell a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.mat-list-item,
+.mat-menu-item {
+	font-size: 14px !important;
+}
+
+//Checkboxes
+.mat-checkbox-ripple .mat-ripple-element {
+	background-color: #087021 !important;
+	color: #087021 !important;
+	border-color: #087021 !important;
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+	color: #c4ddca !important;
+	background-color: #c4ddca !important;
+	border-color: #c4ddca !important;
+}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+	background-color: #087021 !important;
+	color: #087021 !important;
+	border-color: #087021 !important;
+}
+
+.mat-checkbox-frame {
+	border-color: #087021;
+}
+
+//Botones
+.mat-secondButton {
+	border: 2px solid #007500 !important;
+	border-radius: 4px !important;
+	color: #007500 !important;
+	height: 38px !important;
+}
+
+.mat-raised-button {
+	font-family: 'Noto Sans HK', sans-serif !important;
+	font-size: 12px !important;
+	font-weight: bold !important;
+	text-align: center !important;
+	height: 38px !important;
+}
+
+//Listados
+.mat-card-table {
+	display: inline-block;
+}
+
+.mat-row:nth-child(even) {
+	background-color: #ffffff;
+}
+
+.mat-row:nth-child(odd) {
+	background-color: #f6f6f6;
+}
+
+.mat-row:hover {
+	background-color: #e7f1eb;
+}
+
+.mat-row {
+	font-family: 'Noto Sans HK', sans-serif !important;
+	height: 64px;
+	width: 906px;
+	color: #333333;
+	font-size: 13px !important;
+	letter-spacing: 0;
+	line-height: 19px;
+}
+
+.mat-header-cell {
+	color: #333333;
+	font-family: 'Noto Sans HK', sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	letter-spacing: 0;
+	line-height: 19px;
+	text-align: none !important;
+}
+
+table {
+	width: 100%;
+}
+
+th.mat-sort-header-sorted {
+	color: black;
+}
+
+.mat-datepicker-toggle-default-icon {
+	margin-left: 200px !important;
+}
+
+.mat-error {
+	padding-bottom: 5px !important;
+	color: red !important;
+}
+
+dual-list {
+	width: 90%;
+}
+
+.listbox button {
+	border-radius: 4px !important;
+	background-color: #087021;
+	color: white !important;
+	justify-content: center !important;
+	align-items: center !important;
+	text-align: center !important;
+}
+
+.button-bar {
+	text-align: center !important;
+}
+
+.ckeditor {
+	width: 100% !important;
+	margin-bottom: 15% !important;
+}
+
+.mat-form-field .asunto {
+	box-sizing: border-box !important;
+	height: 48px !important;
+	width: auto !important;
+	border: 1px solid #999999 !important;
+	border-radius: 4px !important;
+}
+
+.asunto {
+	width: 100% !important;
+	height: auto !important;
+}
+
+.flexStart {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.flexEnd {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.main {
+	margin-top: 3rem;
+}
+
+.elementoSuperior {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.contenedor {
+	margin-right: unset !important;
+	margin-left: unset !important;
+	margin-bottom: 80px;
+}
+
+.volver {
+	background: #f5f7ff;
+	border-radius: 42px;
+	color: #087021;
+	margin-right: 16px;
+}
+
+.cabecera {
+	display: flex;
+	align-items: center;
+}
+
+.tituloCabecera {
+	border: none;
+	width: 100%;
+
+	/* Headlines/Headline 2 */
+
+	font-family:
+		Source Sans Pro,
+		sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 26px;
+	line-height: 32px;
+	/* identical to box height, or 123% */
+
+	/* Negro */
+
+	color: #333333;
+}
+
+.tituloBloque {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 26px;
+	/* identical to box height, or 130% */
+
+	/* Negro */
+
+	color: #333333;
+}
+
+.card-generica-transparent {
+	/* Blanco */
+
+	background: #ffffff;
+	/* Gris apoyo */
+
+	box-shadow: none !important;
+
+	padding-left: 2.75rem !important;
+	padding-right: 2.75rem !important;
+
+	margin-left: 2.75rem !important;
+	margin-right: 2.75rem !important;
+
+	margin-top: 1.25rem !important;
+	margin-bottom: 1.25rem !important;
+
+	text-align: justify !important;
+	text-justify: inter-word !important;
+}
+
+.card-generica {
+	/* Blanco */
+
+	background: #ffffff;
+	/* Gris apoyo */
+
+	border: 1px solid #eeeeee;
+	border-radius: 4px !important;
+
+	padding-left: 2.75rem !important;
+	padding-right: 2.75rem !important;
+
+	margin-left: 2.75rem !important;
+	margin-right: 2.75rem !important;
+
+	margin-top: 1.25rem !important;
+	margin-bottom: 1.25rem !important;
+}

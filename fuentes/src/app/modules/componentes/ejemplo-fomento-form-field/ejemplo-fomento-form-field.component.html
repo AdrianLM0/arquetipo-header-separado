@@ -1,0 +1,39 @@
+<div class="flex-container">
+
+    <div class="item">
+        <h2 class="title">Ejemplo del componente 'Form field'</h2>
+    </div>
+
+    <div class="flex-container">
+
+        <div class="grid">
+            <div class="form-field">
+                <lib-fomento-form-field  [appearance]="appearance" [color]="color" [floatLabel]="floatLabel"
+                [hideRequiredMarker]="hideRequiredMarker" [hintLabel]="'Max 10 characters'"
+                [subscriptSizing]="subscriptSizing" [type]="'inputFomento'" [labelInput]="labelInput"
+                [msgHelp]="msgHelp" [typeMaterial]="typeMaterial">
+                </lib-fomento-form-field>
+            </div>
+            <div class="form-field">
+                <lib-fomento-form-field  [appearance]="appearance" [color]="color" [floatLabel]="floatLabel" 
+                    [hideRequiredMarker]="hideRequiredMarker" [hintLabel]="hintLabel" [subscriptSizing]="subscriptSizing"
+                    [type]="'selectFomento'" [labelSelect]="labelSelect" [data]="data">
+                </lib-fomento-form-field>
+            </div>
+            <div class="form-field">
+                <lib-fomento-form-field  [appearance]="appearance" [color]="color" [floatLabel]="floatLabel" [typeMaterialPassword]="typeMaterialPassword"
+                [hideRequiredMarker]="hideRequiredMarker" [hintLabel]="hintLabel" [subscriptSizing]="subscriptSizing"
+                [type]="'password'" [labelInputPassword]="labelInputPassword" [hide]="hide" [typeMatInput]="'password'" >
+                </lib-fomento-form-field>
+            </div>
+            <div class="form-field">
+                <lib-fomento-form-field  [appearance]="appearance" [color]="color" [floatLabel]="floatLabel" [typeMaterialNumber]="typeMaterialNumber"
+                [hideRequiredMarker]="hideRequiredMarker" [hintLabel]="hintLabel" [subscriptSizing]="subscriptSizing"
+                [type]="'number'" [labelInputNumber]="labelInputNumber"
+                >
+                </lib-fomento-form-field>
+            </div>
+        </div>
+    </div>
+
+</div>

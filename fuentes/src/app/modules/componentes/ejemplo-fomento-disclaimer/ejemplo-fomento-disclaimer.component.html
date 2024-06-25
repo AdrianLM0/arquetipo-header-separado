@@ -1,0 +1,20 @@
+<div>
+
+    <div class="item">
+      <h2 class="title">Ejemplos del componente Disclaimer</h2>
+    </div>
+  
+  
+    <div>
+        <mat-dialog-content *ngIf="isVisible">
+            <lib-fomento-disclaimer 
+                [titulo]="titulo"
+                [parrafo]="parrafo"
+                [labelAceptar]="labelAceptar"   
+                [labelCerrar]="labelCerrar"           
+                (aceptarClick)="buttonAceptar()"
+                (closeSesion)="buttonCloseSesion()">
+            </lib-fomento-disclaimer>
+        </mat-dialog-content>
+      
+    </div>

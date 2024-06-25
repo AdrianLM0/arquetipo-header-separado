@@ -1,0 +1,43 @@
+
+<notifier-container></notifier-container>
+
+<ng-template class="notificacion" #customNotificationError let-notificationData="notification">
+    <my-custom-alert type="notificationData.type">
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+            <em class="ri-close-circle-fill ri-xl"></em> 
+            <h3 style="margin: 0 16px;">Ha ocurrido un error</h3>
+        </div>
+        <div style="margin-left: 40px;">{{ notificationData.message }}</div>
+    </my-custom-alert>
+</ng-template>
+
+<ng-template class="notificacion" #customNotificationSuccess let-notificationData="notification">
+    <my-custom-alert type="notificationData.type">
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+            <em class="ri-checkbox-circle-fill ri-xl"></em> 
+            <h3 style="margin: 0 16px;">Ha ido correctamente</h3>
+        </div>
+        <div style="margin-left: 40px;">{{ notificationData.message }}</div>
+    </my-custom-alert>
+</ng-template>
+
+<ng-template class="notificacion" #customNotificationWarning let-notificationData="notification">
+    <my-custom-alert type="notificationData.type">
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+            <em class="ri-alert-fill ri-xl"></em> 
+            <h3 style="margin: 0 16px;">Aviso</h3>
+        </div>
+        <div style="margin-left: 40px;">{{ notificationData.message }}</div>
+    </my-custom-alert>
+</ng-template>
+
+<ng-template class="notificacion" #customNotificationAdvise let-notificationData="notification">
+    <my-custom-alert type="notificationData.type">
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+            <em class="ri-information-fill ri-xl"></em> 
+            <h3 style="margin: 0 16px;">Mensaje informativo</h3>
+        </div>
+        <div style="margin-left: 40px;">{{ notificationData.message }}</div>
+    </my-custom-alert>
+</ng-template>
+        

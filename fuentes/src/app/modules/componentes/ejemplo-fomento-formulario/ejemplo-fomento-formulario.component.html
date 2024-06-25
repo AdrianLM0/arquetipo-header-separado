@@ -1,0 +1,20 @@
+<div class="flex-container">
+
+    <div class="item">
+      <h2 class="title">Ejemplos del componente Formulario</h2>
+    </div>
+  
+  
+    <div class="flex-container">
+      <lib-fomento-formulario 
+        [form_config]="form_config"
+        [reset_button]="reset_button"
+        [submit_button]="submit_button"
+        [showSubmit]="showSubmit"
+        [showReset]="showReset"
+        (submitAction)="prueba($event)"
+        [alt]="true"
+        alt_label="HOLA"
+      ></lib-fomento-formulario>
+      
+    </div>

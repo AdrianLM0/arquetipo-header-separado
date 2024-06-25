@@ -1,0 +1,32 @@
+<div class="flex-container" *ngIf="!autorizado">
+
+  <div class="row">
+      <h2 class="title">Lo sentimos pero no tiene autorización</h2>
+  </div>
+
+</div>
+
+<div class="flex-container" *ngIf="autorizado">
+
+    <div class="row">
+        <h2 class="title">Ejemplo de Prueba de API</h2>
+    </div>
+
+
+    <div class="row">
+        <lib-fomento-button typeStyle="material" (click)="getDatos()" label="Probar Llamada GET"/> 
+      
+    </div> 
+    <div class="row">
+        <div *ngIf="isLoading">Cargando...</div>
+        
+        <div *ngIf="results">
+          <pre>{{ results | json }}</pre> 
+        </div>
+        
+        <div *ngIf="error">
+          <p>Ocurrió un error: {{ error.message }}</p>
+        </div>
+    </div>
+
+</div>

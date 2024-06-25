@@ -1,0 +1,49 @@
+header {
+	border-bottom: solid 1px #eee;
+	background-color: #fff;
+	-webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+
+	position: fixed;
+	/* Encabezado fijo en la parte superior de la pantalla */
+	width: 100%;
+	top: 0;
+	z-index: 1000;
+	/* Asegura que esté por encima del resto del contenido */
+
+	max-height: 7.5rem;
+}
+
+.wrapper {
+	margin: 0;
+	display: flex;
+	/* Hace que el cuerpo sea un contenedor flexible */
+	flex-direction: column;
+	/* Los hijos se apilan verticalmente */
+	min-height: 98vh;
+	/* Asegura que el cuerpo ocupe al menos la altura de la ventana gráfica */
+	height: 100%;
+	-ms-flex-direction: column;
+}
+
+main {
+	padding: 1.5rem;
+	box-sizing: border-box;
+
+	flex: 1; /* El contenedor principal (Main) ocupará el espacio restante disponible */
+	margin-top: 8rem; /* Ajusta el margen superior para evitar que el contenido se solape con el encabezado fijo */
+	background-color: #fefefe;
+	min-height: 50%;
+	height: 100%;
+}
+
+.container {
+	padding: 0.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+	body {
+		flex-direction: column;
+		/* Cambia la dirección de apilamiento a vertical en pantallas pequeñas */
+	}
+}

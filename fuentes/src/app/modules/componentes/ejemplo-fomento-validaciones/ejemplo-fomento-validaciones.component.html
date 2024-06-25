@@ -1,0 +1,45 @@
+<div class="flex-container">
+
+    <div class="row">
+        <h2 class="title">Ejemplo del Validaciones de la librería de Lógica</h2>
+    </div>
+
+
+    <div class="row">
+
+        <form [formGroup]="formulario" class="action-form">
+
+            <div class="column">
+
+                <lib-fomento-input [typeStyle]="typeStyle" [errorStateMatcher]="errorStateMatcher" [readonly]="readonly"
+                    [typeMaterial]="typeMaterial" [errorState]="errorState" [label]="label"
+                    [msgHelp]="msgHelp"></lib-fomento-input>
+
+            </div>
+            <div class="column">
+                <div class="item">
+                    <lib-fomento-input [typeStyle]="typeStyle" [errorStateMatcher]="errorStateMatcher" [readonly]="readonly"
+                    [typeMaterial]="typeMaterial" [errorState]="errorState" [label]="labelPass"
+                    [msgHelp]="msgHelp" [typeMatInput]="typeMatInputPass" [formControlName]="formControlNamePass"></lib-fomento-input>
+                </div>
+
+            </div>
+            <div class="column">
+
+                <div class="item">
+                    <lib-fomento-input [typeStyle]="typeStyle" [errorStateMatcher]="errorStateMatcher" [readonly]="readonly"
+                    [typeMaterial]="typeMaterial" [errorState]="errorState" [label]="labelNif"
+                    [msgHelp]="msgHelp" [typeMatInput]="typeMatInputNif" [formControlName]="formControlNameNif"></lib-fomento-input>
+                </div>
+            </div>
+            <div class="column">
+
+                <div class="item">
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>

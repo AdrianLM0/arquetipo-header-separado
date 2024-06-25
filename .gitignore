@@ -1,0 +1,81 @@
+*target*
+*.jar
+*.war
+*.ear
+*.class
+*.xmd
+
+# eclipse specific git ignore
+*.pydevproject
+/fuentes/.project
+/fuentes/.metadata
+/fuentes/bin/**
+/fuentes/tmp/**
+/fuentes/tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+/fuentes/local.properties
+/fuentes/.classpath
+/fuentes/.settings/
+/fuentes/.loadpath
+
+# External tool builders
+/fuentes/.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+/fuentes/*.launch
+
+# Compiled output
+/fuentes/dist
+/fuentes/tmp
+/fuentes/out-tsc
+/fuentes/bazel-out
+
+# Node
+/fuentes/node_modules
+/fuentes/npm-debug.log
+/fuentes/yarn-error.log
+/fuentes/package-lock.json
+/fuentes/node
+/fuentes/.npmrc
+/fuentes/.prettierrc
+/fuentes/.editorconfig
+
+# IDEs and editors
+/fuentes/.idea/
+/fuentes/.project
+/fuentes/.classpath
+/fuentes/.c9/
+/fuentes/*.launch
+/fuentes/.settings/
+/fuentes/*.sublime-workspace
+/fuentes/.factorypath
+
+# Visual Studio Code
+/fuentes/.vscode/*
+/fuentes/!.vscode/settings.json
+/fuentes/!.vscode/tasks.json
+/fuentes/!.vscode/launch.json
+/fuentes/!.vscode/extensions.json
+/fuentes/.history/*
+
+# Miscellaneous
+/fuentes/.angular/cache
+/fuentes/.sass-cache/
+/fuentes/connect.lock
+/fuentes/coverage
+/fuentes/libpeerconnection.log
+/fuentes/testem.log
+/fuentes/typings
+/fuentes/.mvn/
+/fuentes/mvnw
+/fuentes/mvnw.cmd
+/fuentes/HELP.md
+
+# System files
+.DS_Store
+Thumbs.db
+/fuentes/logs/*
+*.log

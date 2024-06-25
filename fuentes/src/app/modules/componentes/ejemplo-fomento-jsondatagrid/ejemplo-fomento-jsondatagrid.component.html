@@ -1,0 +1,30 @@
+<div class="flex-container">
+
+    <div class="item">
+        <h2 class="title">Ejemplo del componente 'DataGrid' - Versión Manual</h2>
+    </div>
+
+
+    <div class="flex-container">
+
+        <lib-fomento-jsondatagrid
+        [table_headers]="table_headers"
+        [table_data]="table_data"
+        [actions]="actions"
+        [expansion_form]="true"
+        [listadoAccionesAux]="listadoAcciones"
+        [form]="form"
+        [rowsPerPageOptions]="rowsPerPageOptions"
+        [filter]="'advance'"
+        [apiContent]="''"
+        [name]="name"
+        (deleteAction)="borrar($event)"
+        (detailsAction)="detalles($event)"
+        (downloadAction)="descargar($event)"
+        (editAction)="editar($event)"
+        (helpIconAction)="iconoAyuda()"
+        (checkAction)="check($event)"
+    ></lib-fomento-jsondatagrid>
+    </div>
+
+</div>

@@ -1,0 +1,295 @@
+/* You can add global styles to this file, and also import other style files */
+@use '@angular/material/prebuilt-themes/indigo-pink.css';
+//@import 'theme.scss';
+@import '@fontsource/noto-sans-hk';
+@import '../node_modules/@fomento/i-rf-web-component-node-lib/assets/theme-JdA.scss';
+@import '../node_modules/angular-notifier/styles.css';
+
+body {
+	margin: 0;
+	font-family: Roboto, 'Helvetica Neue', sans-serif;
+	font-size: 14px;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.container {
+	margin-top: 0.2em;
+	margin-bottom: 0.5em;
+}
+
+.spinner {
+	left: 49%;
+	position: fixed !important;
+	top: 15%;
+	z-index: 9999;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.primary-snackbar {
+	background: #087021;
+	color: white;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.login-container {
+	height: 80vh;
+}
+
+.login-actions {
+	margin-left: unset !important;
+}
+
+.command-wrapper button {
+	margin-left: 10px;
+	margin-bottom: 5px;
+}
+
+.no-records {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.refresh-button {
+	margin-top: 8px !important;
+}
+
+.fixed-fab {
+	position: fixed !important;
+	right: 2%;
+	bottom: 3%;
+}
+
+.animate {
+	animation-name: show;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes show {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.secondaryButton {
+	border: 2px solid #007500 !important;
+	border-radius: 4px !important;
+	color: #007500 !important;
+	min-width: 175px !important;
+	height: 40px !important;
+}
+
+.principalButton {
+	border-radius: 4px !important;
+	background-color: #087021;
+	min-width: 175px !important;
+	height: 40px !important;
+	color: white !important;
+}
+
+.info {
+	font-size: 12px;
+}
+
+.titulo-componente {
+	height: 44px;
+	width: 777px;
+	color: #333333;
+	font-family: 'Noto Sans HK', sans-serif;
+	font-size: 30px;
+	font-weight: 300;
+	letter-spacing: 0;
+	line-height: 44px;
+}
+
+.busqueda {
+	height: 44px !important;
+	margin-left: 80% !important;
+	width: 50%;
+	margin-bottom: 5% !important;
+}
+
+.buscar {
+	border-bottom: 1px solid black !important;
+}
+
+.mat-paginator-container {
+	justify-content: space-around !important;
+	align-items: center !important;
+	text-align: center !important;
+}
+
+.mat-form-field-wrapper {
+	margin-top: 7% !important;
+}
+
+.mat-paginator-page-size {
+	align-items: center !important;
+}
+
+.mat-form-field ~ .mat-form-field {
+	margin-left: 20px;
+}
+
+.titledialog {
+	height: 1px !important;
+	font-family: 'Noto Sans HK', sans-serif !important;
+	font-weight: bold;
+	text-align: start !important;
+	justify-content: start !important;
+	padding: 3% !important;
+}
+
+.formregister {
+	text-align: start !important;
+	font-family: 'Noto Sans HK', sans-serif !important;
+	justify-content: start !important;
+	padding-left: 6% !important;
+	font-weight: lighter;
+}
+
+.formedit {
+	text-align: start !important;
+	font-family: 'Noto Sans HK', sans-serif !important;
+	justify-content: start !important;
+	padding-left: 6% !important;
+}
+
+.centrado {
+	margin-left: 14% !important;
+	margin-top: 2%;
+}
+
+.buttons {
+	margin-top: 3%;
+}
+
+.mat-content-div {
+	width: auto !important;
+	height: 100% !important;
+}
+
+// Styles para BreadCrumbs
+.xng-breadcrumb-root {
+	padding: 8px 16px;
+	display: inline-block;
+	border-radius: 4px;
+	background-color: white;
+}
+
+.myapp-breadcrumb .xng-breadcrumb-trail {
+	color: #2d2926;
+	font-size: 14px;
+}
+
+.myapp-breadcrumb .xng-breadcrumb-list {
+	color: #2d2926;
+	font-size: 14px;
+}
+
+.myapp-breadcrumb .xng-breadcrumb-link {
+	color: #087021;
+	font-size: 14px;
+}
+
+.mat-list-item,
+.mat-menu-item {
+	font-size: 14px !important;
+}
+
+.welcome.title {
+	color: var(--Negro, #333);
+	/* Headlines/Headline 2 */
+	font-family:
+		Source Sans Pro,
+		sans-serif;
+	font-size: 1.5rem;
+	font-style: normal;
+	font-weight: 900;
+	line-height: 2rem;
+	/* 123.077% */
+
+	padding: 0px 6%;
+}
+
+.flex-container {
+	margin: auto;
+	max-width: 90%;
+}
+
+.item-alert {
+	flex-grow: 4;
+}
+
+.item-snackbar {
+	flex-grow: 4;
+}
+.item {
+	flex-grow: 4; /* default 0 */
+	min-width: 100%;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 100%;
+}
+
+.mat-mdc-list-base {
+	--mdc-list-list-item-hover-state-layer-color: #c4ddca !important;
+	--mdc-list-list-item-hover-state-layer-opacity: 0.2 !important;
+	--mdc-list-list-item-focus-state-layer-color: #c4ddca !important;
+	--mdc-list-list-item-focus-state-layer-opacity: 0.12 !important;
+	--mdc-list-list-item-label-text-font: Roboto, sans-serif;
+	--mdc-list-list-item-supporting-text-font: Roboto, sans-serif;
+	--mdc-list-list-item-trailing-supporting-text-font: Roboto, sans-serif;
+}
+
+.mat-mdc-slide-toggle {
+	--mdc-switch-selected-pressed-state-layer-color: #087021;
+	--mdc-switch-selected-pressed-handle-color: #087021;
+	--mdc-switch-selected-pressed-track-color: #087021;
+	--mdc-switch-selected-focus-track-color: #087021;
+	--mdc-switch-selected-focus-handle-color: #087021;
+	--mdc-switch-selected-focus-state-layer-color: #087021;
+	--mdc-switch-selected-hover-state-layer-color: #087021;
+	--mdc-switch-selected-hover-track-color: #087021;
+	--mdc-switch-selected-hover-handle-color: #087021;
+	--mdc-switch-selected-track-color: #087021;
+	--mdc-switch-selected-handle-color: #087021;
+
+	--mdc-switch-unselected-pressed-handle-color: #087021;
+	--mdc-switch-unselected-pressed-state-layer-color: #087021;
+	--mdc-switch-unselected-pressed-track-color: #c4ddca;
+	--mdc-switch-unselected-focus-handle-color: #087021;
+	--mdc-switch-unselected-focus-track-color: #c4ddca;
+	--mdc-switch-unselected-focus-state-layer-color: #087021;
+	--mdc-switch-unselected-hover-track-color: #c4ddca;
+	--mdc-switch-unselected-hover-state-layer-color: #0b4c1a;
+	--mdc-switch-unselected-hover-handle-color: #0b4c1a;
+	--mdc-switch-unselected-handle-color: #087021;
+	--mdc-switch-unselected-track-color: #c4ddca;
+}
