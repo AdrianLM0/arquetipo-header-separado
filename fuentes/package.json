@@ -23,10 +23,11 @@
 		"@angular/platform-browser": "^16.2.0",
 		"@angular/platform-browser-dynamic": "^16.2.0",
 		"@angular/router": "^16.2.0",
-		"@fomento/i-rf-logic-component-node-lib": "1.4.0",
-		"@fomento/i-rf-web-component-node-lib": "1.3.0",
-		"@fomento/i-rf-security-component-node-lib": "1.3.0",
+		"@fomento/i-rf-logic-component-node-lib": "file:../../logic-Component-lib/fuentes/dist/i-rf-logic-component-node-lib/fomento-i-rf-logic-component-node-lib-1.5.0.tgz",
+		"@fomento/i-rf-security-component-node-lib": "file:../../security-component-lib/fuentes/dist/i-rf-security-component-node-lib/fomento-i-rf-security-component-node-lib-1.4.0.tgz",
+		"@fomento/i-rf-web-component-node-lib": "file:../../web-component-lib/fuentes/dist/i-rf-web-component-node-lib/fomento-i-rf-web-component-node-lib-1.4.0.tgz",
 		"@fontsource/noto-sans-hk": "^5.0.17",
+		"@stomp/stompjs": "^7.0.0",
 		"angular-notifier": "^14.0.0",
 		"jest": "^29.7.0",
 		"keycloak-angular": "^14.2.0",
@@ -34,8 +35,7 @@
 		"ngx-mat-select-search": "^7.0.5",
 		"rxjs": "~7.8.0",
 		"tslib": "^2.3.0",
-		"zone.js": "~0.13.0",
-		"@stomp/stompjs": "^7.0.0"
+		"zone.js": "~0.13.0"
 	},
 	"devDependencies": {
 		"@angular-devkit/build-angular": "^16.2.8",
