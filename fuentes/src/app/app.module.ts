@@ -17,12 +17,14 @@ import { FormsModule } from '@angular/forms';
 // Configuración específica de Keycloak para este proyecto
 const keycloakConfig: SecurityModuleConfig = {
 	config: {
-		url: 'https://keycloak-factoria.emergyalabs.com/realms/Reutilizacion-Proxya/protocol/openid-connect/auth', // Actualizado con el nuevo 'auth-server-url'
+		url: 'https://keycloak-factoria.emergyalabs.com', // Actualizado con el nuevo 'auth-server-url'
 		realm: 'Reutilizacion-Proxya', // Actualizado con el nuevo 'realm'
 		clientId: 'herramienta_centralizada_reutilizacion', // Actualizado con el nuevo 'resource'
 	},
 	initOptions: {
-		onLoad: 'login-required',
+		//onLoad: 'login-required',
+		checkLoginIframe: true,
+ 		checkLoginIframeInterval: 25
 	},
 };
 
