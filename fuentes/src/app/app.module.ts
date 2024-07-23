@@ -22,9 +22,7 @@ const keycloakConfig: SecurityModuleConfig = {
 		clientId: 'herramienta_centralizada_reutilizacion', // Actualizado con el nuevo 'resource'
 	},
 	initOptions: {
-		//onLoad: 'login-required',
-		checkLoginIframe: true,
- 		checkLoginIframeInterval: 25
+		onLoad: 'login-required',
 	},
 };
 
