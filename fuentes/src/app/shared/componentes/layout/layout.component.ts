@@ -453,7 +453,7 @@ export class LayoutComponent implements OnInit {
 		private gestionTokenService: GestionTokenService,
 	) {
 		localStorage.setItem('privilegio_actual', 'USU_EIT');
-		this.gestionTokenService
+/* 		this.gestionTokenService
 			.getPrivilegiosUsuarioLogueado(
 				'http://192.168.0.81:8081',
 				'francisco.rodriguez.mu.ext',
@@ -462,24 +462,26 @@ export class LayoutComponent implements OnInit {
 			)
 			.subscribe((data) => {
 				this.lista = data;
-			});
+			}); */
 	}
 	async ngOnInit() {
-		await this.getTokenInfo();
-	}
+		// await this.getTokenInfo();
+	} 
 	loggedIn;
 	token;
 	decodedPayload;
 	userProfile;
 	username;
 
-	async getTokenInfo() {
+ 	async getTokenInfo() {
 		try {
 			this.nombre_usuario = (
 				await this.gestionTokenService.getUserProfile()
 			).firstName;
-		} catch (error) {
+      
+		} 
+    catch (error) {
 			console.error('Error al mostrar la información del token:', error);
 		}
-	}
+	} 
 }
