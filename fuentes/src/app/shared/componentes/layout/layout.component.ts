@@ -25,7 +25,7 @@ export class LayoutComponent implements OnInit {
 	version = '';
 	mostrarfecha = true;
 	mostrarhora = true;
-	nombre_usuario = 'default';
+	nombre_usuario = 'Usuario';
 	mostrarmenu_usuario = true;
 	urlAyuda = '';
 	lista = [];
@@ -34,14 +34,7 @@ export class LayoutComponent implements OnInit {
 
 	data_matter = '';
 	data_mat = `{
-    "secciones": [{
-            "name": "La Junta",
-            "url": "",
-            "id": "iconos_Junta",
-            "icon": "jda",
-            "familyIcon": "fac",
-            "subSecciones": [{"url":"", "titulo": "La Junta"}]
-        }, {
+    "secciones": [ {
             "name": "Servicios",
             "url": "",
             "id": "iconos_Servicios",
@@ -452,8 +445,8 @@ export class LayoutComponent implements OnInit {
 		public router: Router,
 		private gestionTokenService: GestionTokenService,
 	) {
-		localStorage.setItem('privilegio_actual', 'USU_EIT');
-/* 		this.gestionTokenService
+	/* 	localStorage.setItem('privilegio_actual', 'USU_EIT');
+		this.gestionTokenService
 			.getPrivilegiosUsuarioLogueado(
 				'http://192.168.0.81:8081',
 				'francisco.rodriguez.mu.ext',
@@ -465,7 +458,7 @@ export class LayoutComponent implements OnInit {
 			}); */
 	}
 	async ngOnInit() {
-		// await this.getTokenInfo();
+		 await this.getTokenInfo();
 	} 
 	loggedIn;
 	token;
@@ -473,12 +466,11 @@ export class LayoutComponent implements OnInit {
 	userProfile;
 	username;
 
- 	async getTokenInfo() {
+ 	 async getTokenInfo() {
 		try {
-			this.nombre_usuario = (
-				await this.gestionTokenService.getUserProfile()
-			).firstName;
-      
+			this.nombre_usuario = (await (
+        this.gestionTokenService.getUserProfile()
+      )).firstName;
 		} 
     catch (error) {
 			console.error('Error al mostrar la información del token:', error);
