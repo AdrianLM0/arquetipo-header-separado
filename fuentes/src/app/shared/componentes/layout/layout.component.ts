@@ -3,39 +3,40 @@ import { Router } from '@angular/router';
 import { GestionTokenService } from '@fomento/i-rf-security-component-node-lib';
 
 @Component({
-	selector: 'app-layout',
-	templateUrl: './layout.component.html',
-	styleUrls: ['./layout.component.scss'],
+  selector: 'app-layout',
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
-	//Atributo tipo de desplegable en boton usuario
-	typeTemplate = 'advance';
+  // Atributo tipo de desplegable en botón usuario
+  typeTemplate = 'advance';
 
-	//Atributo de estilo
-	brandStyle = 'material';
+  // Atributo de estilo
+  brandStyle = 'material';
 
-	// Atributos matter-brand
+  // Atributos matter-brand
   logo = true;
   href_logo = '';
-  src = 'https://emergya.myteam2go.com/images/custom/login/emergya_logo1.svg';
+  src = '';
   brandName = 'Proxya';
   brandCaption = 'Arquetipo de componentes reutilizables';
-  brandSrc = '../../../assets/images/logo-Proxya-Photoroom.png';
+  brandSrc = '../../../assets/images/logo-Proxya-solo.png';
   fontSize = '22px';
   version = '';
   mostrarfecha = true;
   mostrarhora = true;
   nombre_usuario = 'Usuario';
   mostrarmenu_usuario = true;
+  mostrar_menu = false;
   urlAyuda = '';
   lista = [];
- 
-  
+  alt_text = 'Test';
 
-	navTypeStyle = 'material';
 
-	data_matter = '';
-	data_mat = `{
+  navTypeStyle = 'material';
+
+  data_matter = '';
+  data_mat = `{
     "secciones": [ {
             "name": "Componentes",
             "url": "",
@@ -97,45 +98,76 @@ export class LayoutComponent implements OnInit {
     ],
     "perfil": [
       {
-
         "iconLogOut": "fas fa-sign-out-alt",
         "labelBotonLogOut": "CERRAR SESIÓN"
       }
     ]}`;
 
-	footerStyle = 'material';
-	data_footer = `{
+  footerStyle = 'material';
+  data_footer = `{
     "columns": [
       {
         "columna": [
+        {
+        "title": " ",
+
+
+         "array": [
+              {
+                "title": "@Copyright all rights reserved",
+                "href": "",
+                "image": ""
+              },
+                            {
+                "title": "",
+                "href": "",
+                "image": ""
+              },
+                            {
+                "title": "",
+                "href": "",
+                "image": ""
+              },
+                            {
+                "title": "@Copyright all rights reserved",
+                "href": "/carpetades/#/informacion/citas/proximasCitas/#",
+                "image": ""
+              },
+                            {
+                "title": "",
+                "href": "",
+                "image": ""
+              }
+
+]
+        
+        }
             ]
-      }
-    ],
-    "links": [
-      {
-        "title": "Accesibilidad",
-        "href": "#"
+      },
+            {
+        "columna": [
+        {
+        "title": ""}
+            ]
       },
       {
-        "title": "Aviso legal",
-        "href": "#"
+        "columna": [
+        {
+        "title": ""}
+            ]
       },
-      {
-        "title": "Protección de datos",
-        "href": "#"
-      }
-    ],
-    "social": [
-      {
+            {
+        "columna": [
+        {
         "title": "Síguenos en: ",
-        "array": [
-          {
-            "title": "twitter",
+       "array": [
+       {
+       "title": "twitter",
             "href": "https://www.ejemplo1.com/",
             "image": "",
             "icon": "twitter"
-          },
-          {
+       },
+{
             "title": "Instagram",
             "href": "https://www.ejemplo2.com/",
             "image": "",
@@ -153,52 +185,70 @@ export class LayoutComponent implements OnInit {
             "image": "",
             "icon": "youtube"
           }
+
+       ]
+        }
         ]
       }
     ],
+    "links": [
+      {
+        "title": "Accesibilidad",
+        "href": "#"
+      },
+      {
+        "title": "Aviso legal",
+        "href": "#"
+      },
+      {
+        "title": "Protección de datos",
+        "href": "#"
+      }
+    ],
+    
     "logos": [
       {
-        "image": "../../../assets/images/logo-Proxya-50.png",
+        "image": "../../../assets/images/logo-Proxya-Photoroom-100.png",
         "href": ""
       }
     ]
   }`;
-	ocultarSecciones = false;
-	ocultarSeccionSocial = false;
+  ocultarSecciones = false;
+  ocultarSeccionSocial = false;
 
-	constructor(
-		public router: Router,
-		private gestionTokenService: GestionTokenService,
-	) {
-	/* 	localStorage.setItem('privilegio_actual', 'USU_EIT');
-		this.gestionTokenService
-			.getPrivilegiosUsuarioLogueado(
-				'http://192.168.0.81:8081',
-				'francisco.rodriguez.mu.ext',
-				'10190668',
-				'/plda/api/v1/privilegios-usuarios/ldap/',
-			)
-			.subscribe((data) => {
-				this.lista = data;
-			}); */
-	}
-	async ngOnInit() {
-		 await this.getTokenInfo();
-	} 
-	loggedIn;
-	token;
-	decodedPayload;
-	userProfile;
-	username;
+  constructor(
+    public router: Router,
+    private gestionTokenService: GestionTokenService,
+  ) {
+  /*  localStorage.setItem('privilegio_actual', 'USU_EIT');
+    this.gestionTokenService
+      .getPrivilegiosUsuarioLogueado(
+        'http://192.168.0.81:8081',
+        'francisco.rodriguez.mu.ext',
+        '10190668',
+        '/plda/api/v1/privilegios-usuarios/ldap/',
+      )
+      .subscribe((data) => {
+        this.lista = data;
+      }); */
+  }
+  async ngOnInit() {
+     await this.getTokenInfo();
+  } 
+  loggedIn;
+  token;
+  decodedPayload;
+  userProfile;
+  username;
 
- 	 async getTokenInfo() {
-		try {
-			this.nombre_usuario = (await (
+   async getTokenInfo() {
+    try {
+      this.nombre_usuario = (await (
         this.gestionTokenService.getUserProfile()
       )).firstName;
-		} 
+    } 
     catch (error) {
-			console.error('Error al mostrar la información del token:', error);
-		}
-	} 
+      console.error('Error al mostrar la información del token:', error);
+    }
+  } 
 }
