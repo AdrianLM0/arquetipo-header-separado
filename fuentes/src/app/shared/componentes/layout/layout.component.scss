@@ -59,10 +59,6 @@ main {
 	.header-menu .h-100 .perfil_container {
 		background-color: #85FFB6 !important;
 	}
-	.header-menu .h-100 .button-container .mat-mdc-outlined-button:not(:disabled) {
-		color: red !important;
-		border-color: red;
-	}
 }
 
 ::ng-deep .footer-container-top {
