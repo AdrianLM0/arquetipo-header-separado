@@ -106,113 +106,69 @@ export class LayoutComponent implements OnInit {
   footerStyle = 'material';
   data_footer = `{
     "columns": [
-      {
+    {
         "columna": [
-        {
-        "title": " ",
-
-
-         "array": [
+          {
+            "title": "Información:",
+            "array": [
               {
-                "title": "@Copyright all rights reserved",
-                "href": "",
-                "image": ""
+                "image": "../../../assets/images/logo-Proxya-Photoroom-100.png"
               },
-                            {
-                "title": "",
-                "href": "",
-                "image": ""
-              },
-                            {
-                "title": "",
-                "href": "",
-                "image": ""
-              },
-                            {
-                "title": "@Copyright all rights reserved",
-                "href": "/carpetades/#/informacion/citas/proximasCitas/#",
-                "image": ""
-              },
-                            {
-                "title": "",
-                "href": "",
-                "image": ""
-              }
 
-]
-        
-        }
+              {
+                "title": "Protección de datos",
+                "href": "#",
+                "image": "https://i.postimg.cc/Bv48wTjj/JdA.png"
+              }
             ]
+          }
+        ]
       },
-            {
-        "columna": [
-        {
-        "title": ""}
-            ]
-      },
+   { 
+    "logos": [
+     {
+        "image": "https://i.postimg.cc/Bv48wTjj/JdA.png",
+        "href": "https://sede.administracion.gob.es/carpeta/clave.html"
+      }
+
+      ]},
       {
         "columna": [
-        {
-        "title": ""}
+          {
+            "title": "Síguenos en: ",
+            "array": [
+              {
+                "title": "twitter",
+                "href": "https://www.ejemplo1.com/",
+                "icon": "twitter"
+              },
+              {
+                "title": "Instagram",
+                "href": "https://www.ejemplo2.com/",
+                "icon": "instagram"
+              },
+              {
+                "title": "Facebook",
+                "href": "https://www.ejemplo3.com/",
+                "icon": "facebook-f"
+              },
+              {
+                "title": "youtube",
+                "href": "https://www.ejemplo4.com/",
+                "icon": "youtube"
+              }
             ]
-      },
-            {
-        "columna": [
-        {
-        "title": "Síguenos en: ",
-       "array": [
-       {
-       "title": "twitter",
-            "href": "https://www.ejemplo1.com/",
-            "image": "",
-            "icon": "twitter"
-       },
-{
-            "title": "Instagram",
-            "href": "https://www.ejemplo2.com/",
-            "image": "",
-            "icon": "instagram"
-          },
-          {
-            "title": "Facebook",
-            "href": "https://www.ejemplo3.com/",
-            "image": "",
-            "icon": "facebook-f"
-          },
-          {
-            "title": "youtube",
-            "href": "https://www.ejemplo4.com/",
-            "image": "",
-            "icon": "youtube"
           }
-
-       ]
-        }
         ]
       }
     ],
-    "links": [
-      {
-        "title": "Accesibilidad",
-        "href": "#"
-      },
-      {
-        "title": "Aviso legal",
-        "href": "#"
-      },
-      {
-        "title": "Protección de datos",
-        "href": "#"
-      }
-    ],
-    
-    "logos": [
-      {
-        "image": "../../../assets/images/logo-Proxya-Photoroom-100.png",
-        "href": ""
-      }
-    ]
+    "links": [],
+    "logos": []
   }`;
+  
+  
+  
+  
   ocultarSecciones = false;
   ocultarSeccionSocial = false;
 
