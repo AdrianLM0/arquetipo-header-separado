@@ -37,6 +37,38 @@ main {
 	height: 100%;
 }
 
+::ng-deep .custom-nav {
+	.mat-container{
+		background-color: #494F5D !important;
+	}
+	.header-menu i, .header-menu a, .header-menu span {
+    	color: #85FFB6; 
+	}
+	.header-menu .perfil_container i, .header-menu .perfil_container span {
+    	color: #008048; 
+	}
+	.header-menu .el_header_container:hover {
+		border-bottom: 4px solid #85FFB6 !important; 
+	  }
+	.logo .title {
+		color: #85FFB6;
+	}
+	.logo .subtitle {
+		color: #fff !important;
+	}
+	.header-menu .h-100 .perfil_container {
+		background-color: #85FFB6 !important;
+	}
+	.header-menu .h-100 .button-container .mat-mdc-outlined-button:not(:disabled) {
+		color: red !important;
+		border-color: red;
+	}
+}
+
+::ng-deep .footer-container-top {
+	background-color: #494F5D !important;
+}
+
 .container {
 	padding: 0.5rem;
 }
