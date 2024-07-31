@@ -36,6 +36,9 @@ export class LayoutComponent implements OnInit {
   navTypeStyle = 'material';
 
   data_matter = '';
+  
+  //para el componente de auth guard si se quiere implementar. Se ha eliminado porque da error.
+  //{ "url": "/components/ejemplo-auth-guard", "titulo": "Auth Guard"}, 
   data_mat = `{
     "secciones": [ {
             "name": "Componentes",
@@ -90,7 +93,6 @@ export class LayoutComponent implements OnInit {
               { "url": "/components/plantilla-listado", "titulo": "Plantilla listado" },
               { "url": "/components/plantilla-consulta", "titulo": "Plantilla consulta"},
               { "url": "/components/plantilla-accesoDenegado", "titulo": "Plantilla acceso denegado"},               
-              { "url": "/components/ejemplo-auth-guard", "titulo": "Auth Guard"}, 
               { "url": "/components/notifications", "titulo": "Notificaciones" },
               { "url": "/components/changeprivileges", "titulo": "Propagar Seguridad" }
             ]            
