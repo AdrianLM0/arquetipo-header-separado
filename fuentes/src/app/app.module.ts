@@ -17,9 +17,9 @@ import { FormsModule } from '@angular/forms';
 // Configuración específica de Keycloak para este proyecto
 const keycloakConfig: SecurityModuleConfig = {
 	config: {
-		url: 'http://192.168.0.137:8089/', // Actualizado con el nuevo 'auth-server-url'
-		realm: 'fomento', // Actualizado con el nuevo 'realm'
-		clientId: 'fomento-frontend', // Actualizado con el nuevo 'resource'
+		url: 'https://keycloak-factoria.emergyalabs.com', // Actualizado con el nuevo 'auth-server-url'
+		realm: 'Reutilizacion-Proxya', // Actualizado con el nuevo 'realm'
+		clientId: 'herramienta_centralizada_reutilizacion', // Actualizado con el nuevo 'resource'
 	},
 	initOptions: {
 		onLoad: 'login-required',
