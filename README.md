@@ -25,10 +25,10 @@ Estos son los prerrequisitos y pasos a seguir para poder lanzar el proyecto
 Estos prerrequisitos no serán necesarios si estás usando el Starter de Devaid, ya que vendrán ya definidos en el entorno.
 * node > v18.16 
 * angular CLI > v14.x
-* Tener clonados las librerías de logic-component
+* Tener clonadas las librerías de logic-component, security-component y web-component organizados y con los siguientes nombres
 
 ```md
-arquetipo-reutilización
+arquetipo-reutilizacion
 ├── logic-Component-lib
 ├── security-component-lib
 ├── test-component-ms
@@ -36,39 +36,15 @@ arquetipo-reutilización
 ```
 
 ### Instalación
+1. Revisar los package json de los 4 componentes y eliminar todas las librerías procedentes de @fomento (@fomento/security-component-node-lib, @fomento/logic-component-node-lib y @fomento/web-component-node-lib (todo de fomento))
+2. Desde la carpeta raíz de test-componet-ms lanzar.
 
 ```sh
 chmod +x build-local.sh
 ```
+3. A continuación, lanzar el siguiente script para realizar todas las instalaciones y levantar el proyecto.
+
 ```sh
 ./build-local.sh
 ```
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-<p align="right">(<a href="#readme-top">Volver arriba</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
 <p align="right">(<a href="#readme-top">Volver arriba</a>)</p>
