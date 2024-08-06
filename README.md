@@ -25,9 +25,24 @@ Estos son los prerrequisitos y pasos a seguir para poder lanzar el proyecto
 Estos prerrequisitos no serán necesarios si estás usando el Starter de Devaid, ya que vendrán ya definidos en el entorno.
 * node > v18.16 
 * angular CLI > v14.x
+* Tener clonados las librerías de logic-component
 
+```md
+arquetipo-reutilización
+├── logic-Component-lib
+├── security-component-lib
+├── test-component-ms
+└──web-component-lib
+```
 
-### Installation
+### Instalación
+
+```sh
+chmod +x build-local.sh
+```
+```sh
+./build-local.sh
+```
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
