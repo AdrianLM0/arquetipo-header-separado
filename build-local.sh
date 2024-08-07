@@ -7,13 +7,13 @@ get_absolute_path() {
 
 # Build de la librería de seguridad
 echo "---Iniciando build de security-component---"
-cd ../security-component-lib/fuentes/ || { echo "No se ha encontrado directorio, revisa que el directorio existe y que el nombre coincido con el descrito en README.md"; exit 1; }
+cd ../security-component-lib/fuentes/ || { echo "No se ha encontrado directorio, revisa que el directorio existe y que el nombre coincide con el descrito en README.md"; exit 1; }
 
 # Run npm ci
-echo "Lanzando npm ci..."
-npm ci
+echo "Lanzando npm i..."
+npm i
 if [ $? -ne 0 ]; then
-    echo "npm ci falló"
+    echo "npm i falló"
     exit 1
 fi
 
@@ -46,13 +46,13 @@ echo "Tarball path: $SECURITY_TARBALL_PATH"
 
 # Build de la librería de lógica
 echo "---Iniciando build de logic-component---"
-cd ../../../../logic-Component-lib/fuentes || { echo "No se ha encontrado directorio, revisa que el directorio existe y que el nombre coincido con el descrito en README.md"; exit 1; }
+cd ../../../../logic-Component-lib/fuentes || { echo "No se ha encontrado directorio, revisa que el directorio existe y que el nombre coincide con el descrito en README.md"; exit 1; }
 
 # Run npm i
 echo "Lanzando npm i..."
 npm i
 if [ $? -ne 0 ]; then
-    echo "npm ci falló"
+    echo "npm i falló"
     exit 1
 fi
 
@@ -88,7 +88,7 @@ LOGIC_TARBALL_PATH=$(get_absolute_path "$TARBALL_RELATIVE_PATH")
 
 # Build de la librería de componentes
 echo "---Iniciando build de web-component---"
-cd ../../../../web-component-lib/fuentes || { echo "No se ha encontrado directorio, revisa que el directorio existe y que el nombre coincido con el descrito en README.md"; exit 1; }
+cd ../../../../web-component-lib/fuentes || { echo "No se ha encontrado directorio, revisa que el directorio existe y que el nombre coincide con el descrito en README.md"; exit 1; }
 
 # Run npm i
 echo "Lanzando npm i..."
@@ -135,7 +135,7 @@ WEB_TARBALL_PATH=$(get_absolute_path "$TARBALL_RELATIVE_PATH")
 
 # Build de la librería de componentes
 echo "---Iniciando build del arquetipo---"
-cd ../../../../test-component-ms/fuentes || { echo "No se ha encontrado directorio, revisa que el directorio existe y que el nombre coincido con el descrito en README.md"; exit 1; }
+cd ../../../../test-component-ms/fuentes || { echo "No se ha encontrado directorio, revisa que el directorio existe y que el nombre coincide con el descrito en README.md"; exit 1; }
 
 # Run npm i
 echo "Lanzando npm i..."

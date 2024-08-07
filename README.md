@@ -32,7 +32,7 @@ arquetipo-reutilizacion
 ├── logic-Component-lib
 ├── security-component-lib
 ├── test-component-ms
-└──web-component-lib
+└── web-component-lib
 ```
 
 ### Instalación
