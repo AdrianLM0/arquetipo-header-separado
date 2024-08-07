@@ -39,7 +39,7 @@ fi
 
 # Store the absolute path of the tarball (use relative path from the current directory)
 SECURITY_TARBALL_RELATIVE_PATH="fomento-i-rf-security-component-node-lib-1.4.0.tgz"
-SECURITY_TARBALL_PATH=$(get_absolute_path "$TARBALL_RELATIVE_PATH")
+SECURITY_TARBALL_PATH=$(get_absolute_path "$SECURITY_TARBALL_RELATIVE_PATH")
 
 # Echo the absolute path of the tarball
 echo "Tarball path: $SECURITY_TARBALL_PATH"
@@ -84,7 +84,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 LOGIC_TARBALL_RELATIVE_PATH="fomento-i-rf-logic-component-node-lib-1.5.0.tgz"
-LOGIC_TARBALL_PATH=$(get_absolute_path "$TARBALL_RELATIVE_PATH")
+LOGIC_TARBALL_PATH=$(get_absolute_path "$LOGIC_TARBALL_RELATIVE_PATH")
 
 # Build de la librería de componentes
 echo "---Iniciando build de web-component---"
@@ -105,6 +105,7 @@ if [ $? -ne 0 ]; then
     echo "npm i security falló"
     exit 1
 fi
+echo "$LOGIC_TARBALL_PATH"
 npm i "$LOGIC_TARBALL_PATH"
 if [ $? -ne 0 ]; then
     echo "npm i logic falló"
@@ -130,8 +131,8 @@ if [ $? -ne 0 ]; then
     echo "Error lanzando npm pack en web-component"
     exit 1
 fi
-WEB_TARBALL_RELATIVE_PATH="fomento-i-rf-logic-component-node-lib-1.5.0.tgz"
-WEB_TARBALL_PATH=$(get_absolute_path "$TARBALL_RELATIVE_PATH")
+WEB_TARBALL_RELATIVE_PATH="fomento-i-rf-web-component-node-lib-1.4.0.tgz"
+WEB_TARBALL_PATH=$(get_absolute_path "$WEB_TARBALL_RELATIVE_PATH")
 
 # Build de la librería de componentes
 echo "---Iniciando build del arquetipo---"
@@ -146,7 +147,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Installing previously packed build in logic-component
-echo "Instalando components en web-component..."
+echo "Instalando components en test-component..."
 npm i "$SECURITY_TARBALL_PATH"
 if [ $? -ne 0 ]; then
     echo "npm i security component falló"
