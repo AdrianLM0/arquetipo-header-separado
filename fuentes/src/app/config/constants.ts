@@ -169,7 +169,7 @@ export class Constants {
 		{ header: 'Primer apellido', field: 'apellido1', visible: true },
 		{ header: 'Segundo Apellido', field: 'apellido2', visible: true },
 		{ header: 'Usuarios Ldap', field: 'usuarioLDAP', visible: true },
-		{ header: '¿Activo?', field: 'usuarioBaja', visible: true },
+		{ header: 'Carlos Dormido', field: 'usuarioBaja', visible: true },
 	];
 
 	static EJEMPLO_LISTADO_ACCIONES_AUX = [

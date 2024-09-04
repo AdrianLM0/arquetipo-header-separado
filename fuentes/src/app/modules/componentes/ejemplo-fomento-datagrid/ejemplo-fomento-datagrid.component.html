@@ -1,39 +1,25 @@
 <div class="flex-container">
-
     <div class="item">
         <h2 class="title">Ejemplo del componente 'DataGrid'</h2>
     </div>
 
-
     <div class="flex-container">
-
         <lib-fomento-datagrid
-        [table_headers]="table_headers"
-        [name]="api_name"
-        [actions]="actions"
-        [expansion_form]="true"
-        [form]="form"
-        [rowsPerPageOptions]="rowsPerPageOptions"
-        [idTable]="idTable"
-        
-        [endpoint]="endpoint"
-        [hostApi]="hostApi"
-        [hostApiFilter]="hostapiFilter"
-        [endpointFilter]="endpointFilter"
-        [hostApiFilterUser]="hostapiFiltroUsuarioApi"
-        [endpointFilterUser]="endpointFiltroUsuarioApi"
-        [hostApiPaginator]="hostapiPaginator"
-        [endpointPaginator]="endpointPaginator"
-        [hostApiSaveFilter]="hostapiSaveFilter"
-        [endpointSaveFilter]="endpointSaveFilter"
-        [listadoAccionesAux]="listadoAccionesAux"
-        [idSubsistema]="idSubsistema"
+            [table_headers]="table_headers"
+            [name]="api_name"
+            [actions]="actions"
+            [expansion_form]="true"
+            [form]="form"
+            [rowsPerPageOptions]="rowsPerPageOptions"
+            [idTable]="idTable"
+            [endpoint]="endpoint"
+            [hostapi]="hostApi"
+            [filter]="'advance'"
+            (downloadAction)="descargar($event)"
+            (helpIconAction)="iconoAyuda()"
+            (checkAction)="check($event)"
+            [useGetMethod] = "true"
 
-        [filter]="'advance'"
-        (downloadAction)="descargar($event)"
-        (helpIconAction)="iconoAyuda()"
-        (checkAction)="check($event)"
-    ></lib-fomento-datagrid>
+        ></lib-fomento-datagrid>
     </div>
-
 </div>

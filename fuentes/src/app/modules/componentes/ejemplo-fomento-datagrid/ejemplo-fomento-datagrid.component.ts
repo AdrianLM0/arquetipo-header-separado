@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Constants } from '../../../config/constants';
+import { HttpClient } from '@angular/common/http';
+import { Constants } from 'src/app/config/constants';
 
 @Component({
 	selector: 'app-ejemplo-fomento-datagrid',
@@ -8,40 +9,30 @@ import { Constants } from '../../../config/constants';
 	styleUrls: ['./ejemplo-fomento-datagrid.component.scss'],
 })
 export class EjemploFomentoDatagridComponent implements OnDestroy {
-	api_name = 'Listado de Usuarios del API de EIT Viv';
-	table_headers = Constants.EJEMPLO_TABLE_HEADER
 
+
+	api_name = 'Listado de Formularios';
+	table_headers = [
+		{ header: 'Código', field: 'codigo', visible: true },
+		{ header: 'Nombre', field: 'nombre', visible: true },
+		{ header: 'Descripción', field: 'descripcion', visible: true },
+		{ header: 'Fecha Creación', field: 'audAlta', visible: true },
+		{ header: 'Usuario Modificación', field: 'usuModifica', visible: true },
+	];
+	idTable = 1;
+	form = Constants.EJEMPLO_FORMULARIO_TABLA
 	actions = true;
 	rowsPerPageOptions = [5, 10, 15];
+	hostApi = 'http://localhost:8080';
+	
+	endpoint = 'api/v1/formularios/listbyquerydsl';
 
-	hostapiPaginator = 'http://192.168.0.81:8081/eit-viv';
-	endpointPaginator = 'api/v1/users/filter';
+	private subscription: Subscription = new Subscription();
 
-	hostapiFilter = 'http://192.168.0.81:8081/eit-viv';
-	endpointFilter = 'api/v1/users/filter';
-
-	hostapiSaveFilter = 'http://192.168.0.81:8081/customsearch';
-	endpointSaveFilter = 'api/v1/custom-search';
-
-	hostapiFiltroUsuarioApi = 'http://192.168.0.81:8081/customsearch';
-	endpointFiltroUsuarioApi = `api/v1/custom-search/usuario/1/listado/1/subsistema/20`;
-
-	idSubsistema = "20"
-	idTable = 1
-
-	listadoAccionesAux = Constants.EJEMPLO_LISTADO_ACCIONES_AUX
-
-
-	form = Constants.EJEMPLO_FORMULARIO_TABLA
-
-	hostApi = 'http://192.168.0.81:8081';
-	endpoint2 = 'plda/api/v1/roles';
-	endpoint = 'eit-viv/api/v1/users';
-
-	private subscription: Subscription = new Subscription(); // Propiedad para la subscripción
+	constructor(private http: HttpClient) {}
 
 	ngOnDestroy() {
-		this.subscription.unsubscribe(); // Finaliza la suscripción al salir del componente
+		this.subscription.unsubscribe();
 	}
 
 	descargar(datosTabla) {
@@ -55,4 +46,5 @@ export class EjemploFomentoDatagridComponent implements OnDestroy {
 	check(datosSeleccionados) {
 		console.log('LAS LÍNEAS SELECCIONADAS SON: ', datosSeleccionados);
 	}
+
 }
