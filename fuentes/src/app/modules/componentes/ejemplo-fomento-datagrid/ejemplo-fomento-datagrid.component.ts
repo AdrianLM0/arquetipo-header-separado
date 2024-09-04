@@ -10,7 +10,7 @@ import { Constants } from 'src/app/config/constants';
 })
 export class EjemploFomentoDatagridComponent implements OnDestroy {
 	// Nombre de la API que se mostrará en el componente DataGrid
-	api_name = 'Listado de Formularios';
+	api_name = 'Listado de ejemplo de formularios';
 
 	// Definición de las columnas que se mostrarán en la tabla, cada objeto contiene:
 	// - header: El nombre de la columna visible en la tabla.
@@ -69,9 +69,6 @@ export class EjemploFomentoDatagridComponent implements OnDestroy {
 	// Parámetro de número de página, utilizado en la API
 	nPageParam = 'page';
 
-	// Nombre del contenido de la respuesta de la API
-	apiContent = 'result';
-
 	// Indica si el formulario de expansión está habilitado
 	expansion_form = true;
 
@@ -88,7 +85,7 @@ export class EjemploFomentoDatagridComponent implements OnDestroy {
 	id_table = 1;
 
 	// ID del subsistema al que pertenece la tabla
-	id_subsistema = '209QMHJ1F';
+	id_subsistema = '';
 
 	// URL base del API para la tabla
 	hostApi = 'http://localhost:8080';
@@ -119,16 +116,16 @@ export class EjemploFomentoDatagridComponent implements OnDestroy {
 	submit_button_form = 'CONFIRMAR';
 
 	// Indica si el botón de submit del formulario debe ser mostrado
-	showSubmitForm = true;
+	showSubmitForm = false;
 
 	// Indica si el botón de reset del formulario debe ser mostrado
-	showResetForm = true;
+	showResetForm = false;
 
 	// Indica si el formulario debe ser validado antes de ser enviado
-	validate_form = true;
+	validate_form = false;
 
 	// Habilita un formulario alternativo en la tabla
-	alt_form = true;
+	alt_form = false;
 
 	// Etiqueta para el formulario alternativo
 	alt_label_form = 'ETIQUETA';
