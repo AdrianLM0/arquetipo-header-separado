@@ -1,4 +1,10 @@
 <a id="readme-top"></a>
+# Índice
+ <p><a href="#sobre-el-proyecto">Sobre el proyecto</a></p>
+ <p><a href="#iniciar-proyecto">Iniciar proyecto</a></p>
+
+
+<a id="sobre-el-proyecto"></a>
 <!-- ABOUT THE PROJECT -->
 ## Sobre el proyecto
 
@@ -15,7 +21,7 @@ Principales características:
 
 <p align="right">(<a href="#readme-top">Volver arriba</a>)</p>
 
-
+<a id="sobre-el-proyecto"></a>
 <!-- GETTING STARTED -->
 ## Iniciar proyecto
 
@@ -48,3 +54,21 @@ chmod +x build-local.sh
 ./build-local.sh
 ```
 <p align="right">(<a href="#readme-top">Volver arriba</a>)</p>
+
+
+### Lanzar Proyecto
+
+* Starter
+
+Lanzar este comando desde fuentes:
+
+```sh
+npm start
+```
+* Local
+
+Lanzar este comando desde fuentes:
+
+```sh
+ng serve
+```
