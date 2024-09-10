@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Constants } from 'src/app/config/constants';
 
 @Component({
@@ -26,6 +26,12 @@ export class EjemploFomentoDatagridComponent implements OnDestroy {
 
 	// ID de la tabla para ser utilizada en el componente DataGrid
 	idTable = 1;
+
+	// Indica el tipo de churrera quieres usar, si churrera 1 u 2
+	tipoChurrera = 'c1'
+
+	// Propiedad para determinar el tipo de tratamiento
+	tipoTratamiento: string;
 
 	// Indica si se deben mostrar acciones (botones) en la tabla
 	actions = true;
@@ -91,7 +97,7 @@ export class EjemploFomentoDatagridComponent implements OnDestroy {
 	hostApi = 'http://localhost:8080';
 
 	// Endpoint para obtener los datos de la tabla
-	endpoint = 'api/v1/formularios/listbyquerydsl';
+	endpoint = 'api/' + this.tipoChurrera + '/v1/formularios/listbyquerydsl';
 
 	// API y endpoint para la paginación (aún no configurado)
 	hostapiPaginator = '';
@@ -132,8 +138,12 @@ export class EjemploFomentoDatagridComponent implements OnDestroy {
 
 	// Variable para almacenar suscripciones y manejarlas de manera centralizada para limpiar al destruir el componente
 	private subscription: Subscription = new Subscription();
+	results: any;
+	paginator_length: any;
+	dataSource: any;
 
-	constructor(private http: HttpClient) {}
+
+	constructor(private http: HttpClient) { }
 
 	// Método que se ejecuta al destruir el componente
 	// Se asegura de cancelar todas las suscripciones activas para evitar fugas de memoria
@@ -160,4 +170,31 @@ export class EjemploFomentoDatagridComponent implements OnDestroy {
 		console.log('LAS LÍNEAS SELECCIONADAS SON: ', datosSeleccionados);
 		// Lógica para procesar las filas seleccionadas, como acciones masivas
 	}
+
+	procesarDatos(datos: any, headers?: HttpHeaders) {
+		// Verifica el valor de `tipoTratamiento` para determinar el tratamiento de datos
+		if (this.tipoTratamiento === 'c1') {
+		  this.tratamientoC1(datos);
+		} else if (this.tipoTratamiento === 'c2') {
+		  this.tratamientoC2(datos, headers);
+		} else {
+		  console.warn('Tipo de tratamiento no reconocido');
+		}
+	  }
+
+	tratamientoC1(datos: any) {
+		// Implementa el tratamiento específico para "c1"
+		this.results = datos.content;
+		this.paginator_length = datos.totalElements;
+		this.dataSource.data = this.results;
+		console.log('Tratamiento C1:', this.results);
+	  }
+	
+	  tratamientoC2(datos: any, headers: HttpHeaders) {
+		// Implementa el tratamiento específico para "c2"
+		this.results = datos;
+		this.paginator_length = +headers.get('total-elementos'); // Asume que headers contiene 'total-elementos'
+		this.dataSource.data = this.results;
+		console.log('Tratamiento C2:', this.results);
+	  }
 }
