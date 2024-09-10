@@ -28,7 +28,7 @@ export class EjemploFomentoPlantillaConsultaComponent {
 	rowsPerPageOptions = [5, 10, 15];
 	hostApi = 'http://localhost:8080';
 
-	endpoint = 'api/v1/formularios/listbyquerydsl';
+	endpoint = 'api/c1/v1/formularios/listbyquerydsl';
 
 	private subscription: Subscription = new Subscription();
 

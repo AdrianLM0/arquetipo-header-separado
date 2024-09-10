@@ -91,7 +91,7 @@ export class EjemploFomentoDatagridComponent implements OnDestroy {
 	hostApi = 'http://localhost:8080';
 
 	// Endpoint para obtener los datos de la tabla
-	endpoint = 'api/v1/formularios/listbyquerydsl';
+	endpoint = 'api/c1/v1/formularios/listbyquerydsl';
 
 	// API y endpoint para la paginación (aún no configurado)
 	hostapiPaginator = '';
