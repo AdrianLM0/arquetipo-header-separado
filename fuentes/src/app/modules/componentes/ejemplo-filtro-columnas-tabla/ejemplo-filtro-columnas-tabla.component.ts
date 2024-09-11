@@ -2,53 +2,61 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TableColumn } from '@fomento/i-rf-web-component-node-lib';
 
+// Declaración del componente
 @Component({
-	selector: 'app-ejemplo-filtro-columnas-tabla',
-	templateUrl: './ejemplo-filtro-columnas-tabla.component.html',
-	styleUrls: ['./ejemplo-filtro-columnas-tabla.component.scss'],
+  selector: 'app-ejemplo-filtro-columnas-tabla', // Selector del componente para usarlo en el HTML
+  templateUrl: './ejemplo-filtro-columnas-tabla.component.html', // Ruta del template HTML asociado
+  styleUrls: ['./ejemplo-filtro-columnas-tabla.component.scss'], // Ruta del archivo de estilos asociado
 })
 export class EjemploFiltroColumnasTablaComponent implements OnInit {
-	// Actualizamos las columnas para que coincidan con las del datagrid
-	columns: TableColumn[] = [
-		{ header: 'Código', field: 'codigo', visible: true },
-		{ header: 'Nombre', field: 'nombre', visible: true },
-		{ header: 'Descripción', field: 'descripcion', visible: true },
-		{ header: 'Fecha Creación', field: 'audAlta', visible: true },
-		{ header: 'Usuario Modificación', field: 'usuModifica', visible: true },
-	];
 
-	dataSource = [];
+  // Definición de las columnas de la tabla, incluyendo si son visibles
+  columns: TableColumn[] = [
+    { header: 'Código', field: 'codigo', visible: true },
+    { header: 'Nombre', field: 'nombre', visible: true },
+    { header: 'Descripción', field: 'descripcion', visible: true },
+    { header: 'Fecha Creación', field: 'audAlta', visible: true },
+    { header: 'Usuario Modificación', field: 'usuModifica', visible: true },
+  ];
 
-	private apiUrl = 'http://localhost:8080/api/c1/v1/formularios/listbyquerydsl'; // Endpoint del backend
+  // Variable para almacenar los datos que se mostrarán en la tabla
+  dataSource = [];
 
-	constructor(private http: HttpClient) {}
+  // URL de la API desde la que se obtienen los datos
+  private apiUrl = 'http://localhost:8080/api/c1/v1/formularios/listbyquerydsl';
 
-	ngOnInit(): void {
-		this.fetchData();
-	}
+  // Inyección de HttpClient para realizar peticiones HTTP
+  constructor(private http: HttpClient) {}
 
-	// Método para obtener datos desde el backend
-	fetchData(): void {
-		this.http.get<any>(this.apiUrl).subscribe(
-			(data) => {
-				// Asigna los datos traídos del backend, asegurándonos de usar 'content'
-				this.dataSource = data.content || data;
-			},
-			(error) => {
-				console.error('Error fetching data from API', error);
-			}
-		);
-	}
+  // Método que se ejecuta al iniciar el componente
+  ngOnInit(): void {
+    this.fetchData(); // Llama al método para obtener los datos de la API
+  }
 
-	get displayedColumns(): string[] {
-		// Solo mostramos las columnas que están marcadas como visibles
-		return this.columns
-			.filter((column) => column.visible)
-			.map((column) => column.field);
-	}
+  // Método para obtener los datos de la API
+  fetchData(): void {
+    this.http.get<any>(this.apiUrl).subscribe(
+      (data) => {
+        // Asigna los datos obtenidos a dataSource
+        this.dataSource = data.content || data;
+      },
+      (error) => {
+        // Muestra un error en consola si la petición falla
+        console.error('Error fetching data from API', error);
+      }
+    );
+  }
 
-	onColumnsChange(updatedColumns: TableColumn[]): void {
-		// Actualizamos las columnas con la visibilidad nueva
-		this.columns = updatedColumns;
-	}
+  // Método que retorna las columnas visibles en el orden adecuado
+  get displayedColumns(): string[] {
+    // Filtra las columnas que son visibles y retorna su campo (field)
+    return this.columns
+      .filter((column) => column.visible)
+      .map((column) => column.field);
+  }
+
+  // Método para manejar los cambios en las columnas visibles
+  onColumnsChange(updatedColumns: TableColumn[]): void {
+    this.columns = updatedColumns; // Actualiza el array de columnas
+  }
 }
