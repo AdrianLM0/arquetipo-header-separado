@@ -1,95 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; 
+import { HttpClient } from '@angular/common/http';
 
+// Declaración del componente
 @Component({
-	selector: 'app-ejemplo-fomento-table',
-	templateUrl: './ejemplo-fomento-table.component.html',
-	styleUrls: ['./ejemplo-fomento-table.component.scss'],
+  selector: 'app-ejemplo-fomento-table', // Nombre del selector para usar este componente en otros templates
+  templateUrl: './ejemplo-fomento-table.component.html', // Ruta del archivo HTML asociado
+  styleUrls: ['./ejemplo-fomento-table.component.scss'], // Ruta del archivo de estilos CSS/SCSS asociado
 })
-export class EjemploFomentoTableComponent {
-	constructor() {
-		const nombres: string[] = [
-			'Andrés',
-			'María',
-			'Juan',
-			'Ana',
-			'Pedro',
-			'Laura',
-			'Diego',
-			'Sofía',
-			'Carlos',
-			'Elena',
-		];
-		const apellidos: string[] = [
-			'Fernández',
-			'García',
-			'Martínez',
-			'López',
-			'Pérez',
-			'González',
-			'Rodríguez',
-			'Sánchez',
-			'Romero',
-			'Díaz',
-		];
+export class EjemploFomentoTableComponent implements OnInit {
+  
+  // Propiedad para almacenar los datos que serán mostrados en la tabla
+  element_data = [];
 
-		// Generar un array de nombres aleatorios
-		const cantidadNombres = 50; // Puedes ajustar esta cantidad según tus necesidades
-		const arrayNombres: { nombre: string; apellido: string }[] = [];
-		for (let i = 0; i < cantidadNombres; i++) {
-			arrayNombres.push(this.generarNombreCompleto(nombres, apellidos));
-		}
-		this.element_data = arrayNombres;
-	}
+  // Definición de las columnas que se mostrarán en la tabla
+  init_columns = [
+    { id: 'codigo', name: 'Código' }, 
+    { id: 'nombre', name: 'Nombre' }, 
+    { id: 'descripcion', name: 'Descripción' },
+    { id: 'audAlta', name: 'Fecha Creación' },
+    { id: 'usuModifica', name: 'Usuario Modificación' }
+  ];
 
-	// Función para generar un nombre aleatorio
-	generarNombreCompleto(
-		nombres,
-		apellidos,
-	): { nombre: string; apellido: string } {
-		const nombre: string = nombres[this.getSecureData(nombres.length)];
-		const apellido: string = apellidos[this.getSecureData(apellidos.length)];
-		return { nombre: nombre, apellido: apellido };
-	}
+  // URL del endpoint de la API desde la cual se obtendrán los datos
+  private apiUrl = 'http://localhost:8080/api/c1/v1/formularios/listbyquerydsl';
+  
+  // Inyección del servicio HttpClient para hacer peticiones HTTP
+  constructor(private http: HttpClient) {}
 
-	element_data = [
-		/*
-    { "nombre": "Andrés", "apellido": "Fernández" },
-    { "nombre": "Iker", "apellido": "Muñoz" },
-    { "nombre": "Francisco", "apellido": "Gutiérrez" },
-    { "nombre": "Amapola", "apellido": "Gil" },
-    { "nombre": "Rosa", "apellido": "Gómez" },
-    { "nombre": "Andrés", "apellido": "Fernández" },
-    { "nombre": "Iker", "apellido": "Muñoz" },
-    { "nombre": "Francisco", "apellido": "Gutiérrez" },
-    { "nombre": "Amapola", "apellido": "Gil" },
-    { "nombre": "Rosa", "apellido": "Gómez" },
-    { "nombre": "Andrés", "apellido": "Fernández" },
-    { "nombre": "Iker", "apellido": "Muñoz" },
-    { "nombre": "Francisco", "apellido": "Gutiérrez" },
-    { "nombre": "Amapola", "apellido": "Gil" },
-    { "nombre": "Rosa", "apellido": "Gómez" },
-    { "nombre": "Andrés", "apellido": "Fernández" },
-    { "nombre": "Iker", "apellido": "Muñoz" },
-    { "nombre": "Francisco", "apellido": "Gutiérrez" },
-    { "nombre": "Amapola", "apellido": "Gil" },
-    { "nombre": "Rosa", "apellido": "Gómez" },
-    { "nombre": "Andrés", "apellido": "Fernández" },
-    { "nombre": "Iker", "apellido": "Muñoz" },
-    { "nombre": "Francisco", "apellido": "Gutiérrez" },
-    { "nombre": "Amapola", "apellido": "Gil" },
-{ "nombre": "Rosa", "apellido": "Gómez" }*/
-	];
+  // Método que se ejecuta cuando el componente es inicializado
+  ngOnInit(): void {
+    this.fetchData(); // Llama a la función que obtiene los datos
+  }
 
-	init_columns = [
-		{ id: 'nombre', name: 'Nombre' },
-		{ id: 'apellido', name: 'Apellidos' },
-	];
-
-	getSecureData(longitud) {
-		const array = new Uint8Array(1);
-		crypto.getRandomValues(array);
-		const randomValue = array[0];
-		const randomNumber = randomValue / 255;
-		return Math.floor(randomNumber * longitud);
-	}
+  // Función para obtener los datos de la API
+  fetchData(): void {
+    this.http.get<any>(this.apiUrl).subscribe(
+      (data) => {
+        // Si la respuesta tiene un objeto 'content', lo asigna a element_data; si no, asigna el objeto completo
+        this.element_data = data.content || data;
+      },
+      (error) => {
+        console.error('Error fetching data from API', error);
+      }
+    );
+  }
 }
