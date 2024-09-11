@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { TableColumn } from '@fomento/i-rf-web-component-node-lib';
 
 @Component({
@@ -6,61 +7,48 @@ import { TableColumn } from '@fomento/i-rf-web-component-node-lib';
 	templateUrl: './ejemplo-filtro-columnas-tabla.component.html',
 	styleUrls: ['./ejemplo-filtro-columnas-tabla.component.scss'],
 })
-export class EjemploFiltroColumnasTablaComponent {
+export class EjemploFiltroColumnasTablaComponent implements OnInit {
+	// Actualizamos las columnas para que coincidan con las del datagrid
 	columns: TableColumn[] = [
-		{ header: 'ID', field: 'id', visible: true },
-		{ header: 'Nombre', field: 'name', visible: true },
-		{ header: 'Edad', field: 'age', visible: true },
-		{ header: 'Ciudad', field: 'city', visible: true },
-		{ header: 'Profesión', field: 'profession', visible: true },
+		{ header: 'Código', field: 'codigo', visible: true },
+		{ header: 'Nombre', field: 'nombre', visible: true },
+		{ header: 'Descripción', field: 'descripcion', visible: true },
+		{ header: 'Fecha Creación', field: 'audAlta', visible: true },
+		{ header: 'Usuario Modificación', field: 'usuModifica', visible: true },
 	];
 
-	dataSource = [
-		{
-			id: 1,
-			name: 'Juan Pérez',
-			age: 30,
-			city: 'Madrid',
-			profession: 'Ingeniero',
-		},
-		{
-			id: 2,
-			name: 'Laura Martínez',
-			age: 25,
-			city: 'Barcelona',
-			profession: 'Diseñadora',
-		},
-		{
-			id: 3,
-			name: 'Carlos Gómez',
-			age: 40,
-			city: 'Sevilla',
-			profession: 'Arquitecto',
-		},
-		{
-			id: 4,
-			name: 'Ana López',
-			age: 35,
-			city: 'Valencia',
-			profession: 'Doctora',
-		},
-		{
-			id: 5,
-			name: 'Pedro González',
-			age: 28,
-			city: 'Bilbao',
-			profession: 'Abogado',
-		},
-	];
+	dataSource = [];
+
+	private apiUrl = 'http://localhost:8080/api/c1/v1/formularios/listbyquerydsl'; // Endpoint del backend
+
+	constructor(private http: HttpClient) {}
+
+	ngOnInit(): void {
+		this.fetchData();
+	}
+
+	// Método para obtener datos desde el backend
+	fetchData(): void {
+		this.http.get<any>(this.apiUrl).subscribe(
+			(data) => {
+				// Asigna los datos traídos del backend, asegurándonos de usar 'content'
+				this.dataSource = data.content || data;
+			},
+			(error) => {
+				console.error('Error fetching data from API', error);
+			}
+		);
+	}
 
 	get displayedColumns(): string[] {
+		// Solo mostramos las columnas que están marcadas como visibles
 		return this.columns
 			.filter((column) => column.visible)
 			.map((column) => column.field);
 	}
 
-	onColumnsChange(updatedColumns: unknown): void {
-		// Simplemente actualiza el array de columnas con la nueva visibilidad
-		this.columns = updatedColumns as TableColumn[];
+	onColumnsChange(updatedColumns: TableColumn[]): void {
+		// Actualizamos las columnas con la visibilidad nueva
+		this.columns = updatedColumns;
 	}
 }
