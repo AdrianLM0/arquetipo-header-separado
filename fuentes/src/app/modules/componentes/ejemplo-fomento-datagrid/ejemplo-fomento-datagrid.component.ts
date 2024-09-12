@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Constants } from 'src/app/config/constants';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -29,7 +29,7 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   multi_check_index = -1;
   multi_check_label_col = 'Botón multiselección';
   universal_filter = true;
-  filter = 'advance';
+  filter: 'column' | 'advance' | 'none' = 'advance';
   form = Constants.EJEMPLO_FORMULARIO_TABLA;
   sizePageParam = 'size';
   nPageParam = 'page';
@@ -57,90 +57,83 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   alt_label_form = 'ETIQUETA';
   private subscription: Subscription = new Subscription();
   dataSource = new MatTableDataSource<any>();
-  results: any;
-  paginator_length: any;
+  results: any[] = [];
+  paginator_length: number;
   displayedColumns: string[] = this.table_headers.map(header => header.field);
   tipoChurrera = 'c1';
   hostApi = 'http://localhost:8080';
-
-  ngOnInit(): void {
-    this.endpoint = 'api/' + this.tipoChurrera + '/v1/formularios/listbyquerydsl';
-    this.loadData();
-  }
+  isLoading = false;
+  useGetMethod = true;
 
   constructor(private http: HttpClient) {}
 
-  loadData() {
-    this.http.get<any>(`${this.hostApi}/${this.endpoint}`).subscribe(
-      (data: any) => {
-        console.log('Datos recibidos:', data); // Agrega un log para verificar la respuesta
-        this.procesarDatos(data); // Procesa los datos
+  ngOnInit(): void {
+    this.endpoint = `api/${this.tipoChurrera}/v1/formularios/list`;
+    this.displayedColumns = this.table_headers.map(header => header.field);
+    this.consumeApi();
+  }
+
+  consumeApi() {
+    this.isLoading = true;
+    const page_endpoint = `${this.hostApi}/${this.endpoint}?${this.sizePageParam}=10&${this.nPageParam}=0`;
+
+    const apiCall = this.useGetMethod
+      ? this.http.get(page_endpoint)
+      : this.http.post(page_endpoint, {});
+
+    const subscription = apiCall.subscribe({
+      next: (data: any) => {
+        console.log('Datos recibidos:', data);
+        this.processApiResponse(data);
+        this.isLoading = false;
       },
-      error => {
-        console.error('Error al cargar los datos:', error);
+      error: (err) => {
+        console.error('Error en consumeApi:', err);
+        this.dataSource.data = [];
+        this.isLoading = false;
       }
-    );
+    });
+
+    this.subscription.add(subscription);
   }
 
-  procesarDatos(datos: any, headers?: HttpHeaders) {
-    console.log('Procesando datos:', datos); // Log para verificar qué datos estamos procesando
-
-    if (Array.isArray(datos)) {
-      // Si `datos` es un array
-      this.tratamientoSimple(datos);
-    } else if (datos.content) {
-      // Si `datos` es un objeto con `content`
-      this.tratamientoComplejo(datos);
-    } else if (this.tipoChurrera === 'c2' && headers) {
-      // Si `tipoChurrera` es 'c2' y hay headers
-      this.tratamientoC2(datos, headers);
+  private processApiResponse(data: any) {
+    if (Array.isArray(data)) {
+      this.dataSource.data = data;
+      this.paginator_length = data.length;
+    } else if (data && typeof data === 'object') {
+      if (data.content && Array.isArray(data.content)) {
+        this.dataSource.data = data.content;
+        this.paginator_length = data.totalElements || data.content.length;
+      } else if (this.apiContent && data[this.apiContent]) {
+        this.dataSource.data = data[this.apiContent];
+        this.paginator_length = data.totalElements || data[this.apiContent].length;
+      } else {
+        this.dataSource.data = [data];
+        this.paginator_length = 1;
+      }
     } else {
-      console.warn('Formato de datos no reconocido o tipoChurrera no configurado correctamente');
+      this.dataSource.data = [];
+      this.paginator_length = 0;
     }
-  }
 
-  tratamientoSimple(datos: any[]) {
-    console.log('Tratamiento Simple:', datos); // Log para verificar datos simples
-    this.results = datos;
-    this.paginator_length = datos.length; 
-    this.dataSource.data = this.results;
-  }
-
-  tratamientoComplejo(datos: any) {
-    console.log('Tratamiento Complejo:', datos); // Log para verificar datos complejos
-    this.results = datos.content || [];
-    this.paginator_length = datos.totalElements || this.results.length;
-    this.dataSource.data = this.results;
-  }
-
-  tratamientoC2(datos: any, headers: HttpHeaders) {
-    console.log('Tratamiento C2:', datos, headers); // Log para verificar datos y headers
-    this.results = datos;
-    this.paginator_length = +headers.get('total-elementos') || this.results.length;
-    this.dataSource.data = this.results;
+    console.log('Datos procesados:', this.dataSource.data);
+    console.log('Longitud del paginador:', this.paginator_length);
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-  
-  // Método para manejar la acción de descargar datos desde el componente DataGrid.
-  // `datosTabla` contiene la información de la tabla que será descargada.
+
   descargar(datosTabla: any) {
     console.log('DESCARGAR TABLA: ', datosTabla);
-    // Lógica para descargar la tabla en un archivo o formato específico puede ser añadida aquí.
   }
 
-  // Método para manejar el evento del ícono de ayuda desde el componente DataGrid.
   iconoAyuda() {
     console.log('BOTÓN DE AYUDA FUNCIONA CORRECTAMENTE');
-    // Lógica para mostrar la ayuda o abrir un modal con información puede ser añadida aquí.
   }
 
-  // Método para manejar la selección de filas (multicheck) desde el componente DataGrid.
-  // `datosSeleccionados` contiene las filas seleccionadas por el usuario.
   check(datosSeleccionados: any) {
     console.log('LAS LÍNEAS SELECCIONADAS SON: ', datosSeleccionados);
-    // Lógica para procesar las filas seleccionadas, como acciones masivas, puede ser añadida aquí.
   }
 }
