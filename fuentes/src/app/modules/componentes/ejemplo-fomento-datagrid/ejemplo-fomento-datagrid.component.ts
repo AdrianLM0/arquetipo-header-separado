@@ -10,7 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./ejemplo-fomento-datagrid.component.scss'],
 })
 export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
-  @Input() apiContent: string = 'content'; 
+  @Input() apiContent: string = ''; 
   @Input() tipoTratamiento: string; 
   @Input() table_data: any[] = [];
 
@@ -71,7 +71,7 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.endpoint = `api/${this.tipoChurrera}/v1/formularios/listbyquerydsl`;
+    this.endpoint = `api/${this.tipoChurrera}/v1/formularios/list`;
     this.consumeApi();
     this.displayedColumns = this.table_headers.map(header => header.field);
   }
@@ -86,7 +86,6 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
 
     const subscription = apiCall.subscribe({
       next: (data: any) => {
-        console.log('Datos recibidos:', data);
         this.processApiResponse(data);
         this.isLoading = false;
       },
@@ -104,7 +103,6 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   }
 
   private processApiResponse(data: any) {
-    console.log('Datos crudos recibidos:', data); // Verifica los datos recibidos
 
     if (Array.isArray(data)) {
       this.dataSource.data = data; // Asigna los datos al dataSource
@@ -125,49 +123,6 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
       this.table_data = []; // También asigna los datos a table_data
     }
 
-    console.log('Datos procesados para el DataGrid:', this.dataSource.data); // Verifica la asignación
-    console.log('Datos procesados para table_data:', this.table_data); // Verifica la asignación
-    console.log('Propiedades del DataGrid:', {
-      name: this.api_name,
-      table_headers: this.table_headers,
-      table_data: this.table_data, // Asegúrate de que esto esté actualizado
-      rowsPerPageOptions: this.rowsPerPageOptions,
-      actions: this.actions,
-      actions_index: this.actions_index,
-      listadoAccionesAux: this.listadoAccionesAux,
-      show_download: this.show_download,
-      multicheck: this.multicheck,
-      multi_check_label: this.multi_check_label,
-      multi_check_index: this.multi_check_index,
-      multi_check_label_col: this.multi_check_label_col,
-      universal_filter: this.universal_filter,
-      filter: this.filter,
-      form: this.form,
-      expansion_form: this.expansion_form,
-      sizePageParam: this.sizePageParam,
-      nPageParam: this.nPageParam,
-      show_ayuda: this.show_ayuda,
-      show_clean: this.show_clean,
-      show_fcolumnas: this.show_fcolumnas,
-      idTable: this.idTable,
-      id_subsistema: this.id_subsistema,
-      hostapi: this.hostApi,
-      endpoint: this.endpoint,
-      hostApiPaginator: this.hostapiPaginator,
-      endpointPaginator: this.endpointPaginator,
-      hostApiFilter: this.hostapiFilter,
-      endpointFilter: this.endpointFilter,
-      hostApiSaveFilter: this.hostapiSaveFilter,
-      endpointSaveFilter: this.endpointSaveFilter,
-      hostApiFilterUser: this.hostapiFiltroUsuarioApi,
-      endpointFilterUser: this.endpointFiltroUsuarioApi,
-      reset_button_form: this.reset_button_form,
-      submit_button_form: this.submit_button_form,
-      showSubmitForm: this.showSubmitForm,
-      showResetForm: this.showResetForm,
-      validate_form: this.validate_form,
-      useGetMethod: this.useGetMethod
-    });
   }
 
   ngOnDestroy() {
