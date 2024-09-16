@@ -6,6 +6,7 @@
     <div class="flex-container" *ngIf="!isLoading">
       <lib-fomento-datagrid
       [name]="api_name"
+      [apiContent]="apiContent"
       [table_headers]="table_headers"
       [table_data]="dataSource.data"
       [rowsPerPageOptions]="rowsPerPageOptions"

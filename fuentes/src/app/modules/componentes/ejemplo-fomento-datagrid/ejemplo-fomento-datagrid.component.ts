@@ -71,7 +71,7 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.endpoint = `api/${this.tipoChurrera}/v1/formularios/list`;
+    this.endpoint = `api/${this.tipoChurrera}/v1/formularios/listbyquerydsl`;
     this.consumeApi();
     this.displayedColumns = this.table_headers.map(header => header.field);
   }
