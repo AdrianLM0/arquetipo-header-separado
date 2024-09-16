@@ -21,8 +21,13 @@ export class EjemploFomentoTableComponent implements OnInit {
     { id: 'usuModifica', name: 'Usuario Modificación' }
   ];
 
-  // URL del endpoint de la API desde la cual se obtendrán los datos
-  private apiUrl = 'http://localhost:8080/api/c1/v1/formularios/listbyquerydsl';
+
+  hostApi = 'http://localhost:8080';
+
+  tipoChurrera = 'c1';
+  
+  // URL de la API desde la que se obtienen los datos
+  private apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/listbyquerydsl';
   
   // Inyección del servicio HttpClient para hacer peticiones HTTP
   constructor(private http: HttpClient) {}

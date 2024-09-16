@@ -13,35 +13,35 @@ export class EjemploFomentoPlantillaConsultaComponent implements AfterViewInit, 
 	@ViewChild(FomentoPlantillaConsultaComponent)
 	componentePlantilla!: FomentoPlantillaConsultaComponent;
 
+	table_headers = [
+    { header: 'ID', field: 'id', visible: true },
+    { header: 'Código', field: 'codigo', visible: true },
+    { header: 'Nombre', field: 'nombre', visible: true },
+  ];
+	
 	api_name = 'Listado de Usuarios del API de EIT Viv';
+
+	tipoChurrera = 'c1';
+
 	hostApi = 'http://localhost:8080';  // Cambiamos al mismo host que el datagrid
-	endpoint = 'api/c1/v1/formularios/listbyquerydsl'; // Mismo endpoint que el datagrid
+
+	endpoint = 'api/' + this.tipoChurrera + '/v1/formularios/listbyquerydsl'; // Mismo endpoint que el datagrid
 
 	element_data = [];
-	table_headers = Constants.EJEMPLO_TABLE_HEADER;
 	actions = true;
 	rowsPerPageOptions = [5, 10, 15];
 
-	hostapiPaginator = 'http://localhost:8080';
-	endpointPaginator = 'api/c1/v1/formularios/listbyquerydsl'; // Endpoint para la paginación
-
-	hostapiFilter = 'http://localhost:8080';
-	endpointFilter = 'api/c1/v1/formularios/filter'; // Endpoint para los filtros
-
-	hostapiSaveFilter = 'http://localhost:8080/customsearch';
-	endpointSaveFilter = 'api/v1/custom-search';
-
-	hostapiFiltroUsuarioApi = 'http://localhost:8080/customsearch';
-	endpointFiltroUsuarioApi = `api/v1/custom-search/usuario/1/listado/1/subsistema/20`;
-
 	idSubsistema = '20';
 	idTable = 1;
+	useGetMethod = true;
 
 	listadoAccionesAux = Constants.EJEMPLO_LISTADO_ACCIONES_AUX;
 	form = Constants.EJEMPLO_FORMULARIO_TABLA;
 
 	constructor(private router: Router, private http: HttpClient) {}
 
+
+	
 	ngOnInit(): void {
 		this.fetchData();
 	}

@@ -22,8 +22,12 @@ export class EjemploFiltroColumnasTablaComponent implements OnInit {
   // Variable para almacenar los datos que se mostrarán en la tabla
   dataSource = [];
 
+  hostApi = 'http://localhost:8080';
+
+  tipoChurrera = 'c1';
+  
   // URL de la API desde la que se obtienen los datos
-  private apiUrl = 'http://localhost:8080/api/c1/v1/formularios/listbyquerydsl';
+  private apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/listbyquerydsl';
 
   // Inyección de HttpClient para realizar peticiones HTTP
   constructor(private http: HttpClient) {}
