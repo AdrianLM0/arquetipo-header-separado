@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Constants } from 'src/app/config/constants';
 import { MatTableDataSource } from '@angular/material/table';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-ejemplo-fomento-datagrid',
@@ -10,8 +11,8 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./ejemplo-fomento-datagrid.component.scss'],
 })
 export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
-  @Input() apiContent: string = ''; 
-  @Input() tipoTratamiento: string; 
+  @Input() apiContent: string = 'content';
+  @Input() tipoTratamiento: string;
   @Input() table_data: any[] = [];
 
   api_name = 'Listado de ejemplo de formularios';
@@ -20,7 +21,7 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
     { header: 'Código', field: 'codigo', visible: true },
     { header: 'Nombre', field: 'nombre', visible: true },
   ];
-  
+
   idTable = 1;
   actions = true;
   actions_index = -1;
@@ -46,7 +47,7 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   hostapiPaginator = '';
   endpointPaginator = '';
   hostapiFilter = '';
-  endpointFilter = '';  
+  endpointFilter = '';
   hostapiSaveFilter = '';
   endpointSaveFilter = '';
   hostapiFiltroUsuarioApi = '';
@@ -61,33 +62,42 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   private subscription: Subscription = new Subscription();
   dataSource = new MatTableDataSource<any>();
   results: any[] = [];
-  paginator_length: number;
+  paginator_length: number = 0;
+  pageSize: number = 10;
+  pageIndex: number = 0;
   displayedColumns: string[] = this.table_headers.map(header => header.field);
   tipoChurrera = 'c1';
   hostApi = 'http://localhost:8080';
   isLoading = false;
   useGetMethod = true;
 
-  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.endpoint = `api/${this.tipoChurrera}/v1/formularios/list`;
+    this.endpoint = `api/${this.tipoChurrera}/v1/formularios/listbyquerydsl`;
     this.consumeApi();
-    this.displayedColumns = this.table_headers.map(header => header.field);
   }
 
   consumeApi() {
     this.isLoading = true;
-    const page_endpoint = `${this.hostApi}/${this.endpoint}?${this.sizePageParam}=10&${this.nPageParam}=0`;
+    const page_endpoint = `${this.hostApi}/${this.endpoint}?${this.sizePageParam}=${this.pageSize}&${this.nPageParam}=${this.pageIndex}`;
 
     const apiCall = this.useGetMethod
-      ? this.http.get(page_endpoint)
-      : this.http.post(page_endpoint, {});
+      ? this.http.get<any>(page_endpoint, { observe: 'response' })
+      : this.http.post<any>(page_endpoint, {}, { observe: 'response' });
 
     const subscription = apiCall.subscribe({
-      next: (data: any) => {
-        this.processApiResponse(data);
+      next: (response: HttpResponse<any>) => {
+        const data = response.body;
+        const headers = response.headers;
         this.isLoading = false;
+
+        // Asignar los datos
+        this.dataSource.data = Array.isArray(data) ? data : [data];
+        this.table_data = this.dataSource.data;
+
+        // Obtener la paginación
+        this.paginator_length = Number(headers.get('X-Total-Count')) || this.dataSource.data.length;
       },
       error: (err) => {
         console.error('Error en consumeApi:', err);
@@ -98,31 +108,12 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
     });
 
     this.subscription.add(subscription);
-
-   
   }
 
-  private processApiResponse(data: any) {
-
-    if (Array.isArray(data)) {
-      this.dataSource.data = data; // Asigna los datos al dataSource
-      this.table_data = data; // También asigna los datos a table_data
-    } else if (data && typeof data === 'object') {
-      if (data.content && Array.isArray(data.content)) {
-        this.dataSource.data = data.content;
-        this.table_data = data.content; // También asigna los datos a table_data
-      } else if (this.apiContent && data[this.apiContent]) {
-        this.dataSource.data = data[this.apiContent];
-        this.table_data = data[this.apiContent]; // También asigna los datos a table_data
-      } else {
-        this.dataSource.data = [data];
-        this.table_data = [data]; // También asigna los datos a table_data
-      }
-    } else {
-      this.dataSource.data = [];
-      this.table_data = []; // También asigna los datos a table_data
-    }
-
+  changePage(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex;
+    this.consumeApi();
   }
 
   ngOnDestroy() {

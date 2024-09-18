@@ -25,7 +25,7 @@ export class EjemploFomentoPlantillaConsultaComponent implements AfterViewInit, 
 
 	hostApi = 'http://localhost:8080';  // Cambiamos al mismo host que el datagrid
 
-	endpoint = 'api/' + this.tipoChurrera + '/v1/formularios/listbyquerydsl'; // Mismo endpoint que el datagrid
+	endpoint = 'api/' + this.tipoChurrera + '/v1/formularios/list'; // Mismo endpoint que el datagrid
 
 	element_data = [];
 	actions = true;

@@ -27,7 +27,7 @@ export class EjemploFiltroColumnasTablaComponent implements OnInit {
   tipoChurrera = 'c1';
   
   // URL de la API desde la que se obtienen los datos
-  private apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/listbyquerydsl';
+  private apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/list';
 
   // Inyección de HttpClient para realizar peticiones HTTP
   constructor(private http: HttpClient) {}
