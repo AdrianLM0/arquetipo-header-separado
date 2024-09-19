@@ -6,7 +6,10 @@ import { Component } from '@angular/core';
 	styleUrls: ['./ejemplo-fomento-select.component.scss'],
 })
 export class EjemploFomentoSelectComponent {
-	data = ['Opcion1', 'Opcion2'];
+	data = [
+		{ value: 'opcion1', description: 'Opción 1' },
+		{ value: 'opcion2', description: 'Opción 2' }
+	];
 	label = 'Selector';
 	disabled = false;
 }

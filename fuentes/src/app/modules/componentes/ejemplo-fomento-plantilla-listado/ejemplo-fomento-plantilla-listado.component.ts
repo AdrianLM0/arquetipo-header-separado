@@ -1,12 +1,7 @@
-import {
-	AfterViewInit,
-	ChangeDetectionStrategy,
-	Component,
-	OnInit,
-	ViewChild,
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FomentoPlantillaListadoComponent } from '@fomento/i-rf-web-component-node-lib';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
 	selector: 'app-ejemplo-fomento-plantilla-listado',
@@ -14,9 +9,7 @@ import { FomentoPlantillaListadoComponent } from '@fomento/i-rf-web-component-no
 	styleUrls: ['./ejemplo-fomento-plantilla-listado.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EjemploFomentoPlantillaListadoComponent
-	implements AfterViewInit, OnInit
-{
+export class EjemploFomentoPlantillaListadoComponent implements AfterViewInit, OnInit {
 	@ViewChild(FomentoPlantillaListadoComponent)
 	componentePlantillaListado!: FomentoPlantillaListadoComponent;
 
@@ -28,12 +21,13 @@ export class EjemploFomentoPlantillaListadoComponent
 		{ iconTitle: 'home', title: 'Viviendas' },
 	];
 
-	config_Card;
+	config_Card = [];
 
-	constructor(private router: Router) {}
+	constructor(private router: Router, private http: HttpClient) {}
 
 	ngOnInit() {
-		this.config_Card = this.generarCard();
+		// Hacer la petición al backend para obtener los datos del select sin romper la interfaz
+		this.fetchSelectOptions();
 	}
 
 	ngAfterViewInit() {
@@ -48,7 +42,33 @@ export class EjemploFomentoPlantillaListadoComponent
 		console.log(event);
 	}
 
-	generarCard() {
+	// Método para obtener las opciones del select desde el backend
+	fetchSelectOptions() {
+		const endpoint = 'http://localhost:8080/api/c1/v1/formularios/list';  // Cambiar al endpoint correcto
+
+		// Inicialmente llenamos los selects con datos vacíos para no romper la interfaz
+		const defaultOptions = [{ value: 'opcion1', description: 'Opción 1' }, { value: 'opcion2', description: 'Opción 2' }];
+		this.config_Card = this.generarCard(defaultOptions);
+
+		this.http.get<any>(endpoint).subscribe(
+			(data) => {
+				if (data && data.content) {
+					const options = data.content.map((item) => ({
+						value: item.id,  // id para manejar los datos
+						description: item.nombre,  // nombre para mostrar en el select
+					}));
+
+					// Volvemos a generar las tarjetas con las opciones reales del backend
+					this.config_Card = this.generarCard(options);
+				}
+			},
+			(error) => {
+				console.error('Error al obtener los datos del select:', error);
+			}
+		);
+	}
+
+	generarCard(options: { value: string, description: string }[]) {
 		const res = [];
 		this.valores_demo.forEach((i) => {
 			res.push({
@@ -56,7 +76,7 @@ export class EjemploFomentoPlantillaListadoComponent
 				typeStyle: 'material',
 				iconTitle: `fas fa-${i.iconTitle}`,
 				title: i.title,
-				data: ['Consultar listado por defecto'],
+				data: options,  // Asignamos las opciones obtenidas del backend
 				iconEye: 'fas fa-eye',
 				iconFileCsv: 'fas fa-file-csv',
 				labelButtonCsv: 'LISTADOS EXPORTADOS',
