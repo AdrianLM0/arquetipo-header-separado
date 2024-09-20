@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FomentoPlantillaListadoComponent } from '@fomento/i-rf-web-component-node-lib';
 import { HttpClient } from '@angular/common/http';
@@ -23,10 +23,10 @@ export class EjemploFomentoPlantillaListadoComponent implements AfterViewInit, O
 
 	config_Card = [];
 
-	constructor(private router: Router, private http: HttpClient) {}
+	constructor(private router: Router, private http: HttpClient, private cdRef: ChangeDetectorRef) {}
 
 	ngOnInit() {
-		// Hacer la petición al backend para obtener los datos del select sin romper la interfaz
+		// Hacer la petición al backend para obtener los datos del select
 		this.fetchSelectOptions();
 	}
 
@@ -45,21 +45,34 @@ export class EjemploFomentoPlantillaListadoComponent implements AfterViewInit, O
 	// Método para obtener las opciones del select desde el backend
 	fetchSelectOptions() {
 		const endpoint = 'http://localhost:8080/api/c1/v1/formularios/list';  // Cambiar al endpoint correcto
-
-		// Inicialmente llenamos los selects con datos vacíos para no romper la interfaz
-		const defaultOptions = [{ value: 'opcion1', description: 'Opción 1' }, { value: 'opcion2', description: 'Opción 2' }];
-		this.config_Card = this.generarCard(defaultOptions);
-
+	
+		// Mostrar las opciones predeterminadas inicialmente para mantener la interfaz
+		this.config_Card = this.generarCard([{ value: 'opcion1', description: 'Opción 1' }, { value: 'opcion2', description: 'Opción 2' }]);
+	
+		// Llamada HTTP al backend
 		this.http.get<any>(endpoint).subscribe(
 			(data) => {
-				if (data && data.content) {
-					const options = data.content.map((item) => ({
-						value: item.id,  // id para manejar los datos
-						description: item.nombre,  // nombre para mostrar en el select
+				console.log('Datos del backend:', data); // <-- Verifica los datos recibidos
+	
+				// Verifica si es un array y mapea directamente
+				if (Array.isArray(data)) {
+					const options = data.map((item) => ({
+						value: item.id,        // Solo obtenemos el ID
+						description: item.nombre  // Solo obtenemos el nombre
 					}));
-
-					// Volvemos a generar las tarjetas con las opciones reales del backend
+	
+					// Actualizar los selects con los datos del backend
 					this.config_Card = this.generarCard(options);
+	
+					// Asignar la configuración al componente
+					this.componentePlantillaListado.config_Card = this.config_Card;
+	
+					// Forzar la detección de cambios
+					this.cdRef.detectChanges();
+	
+					console.log('Opciones cargadas desde el backend:', options); // <-- Verifica las opciones mapeadas
+				} else {
+					console.error('Error: formato de datos incorrecto o vacío.');
 				}
 			},
 			(error) => {
@@ -67,6 +80,7 @@ export class EjemploFomentoPlantillaListadoComponent implements AfterViewInit, O
 			}
 		);
 	}
+	
 
 	generarCard(options: { value: string, description: string }[]) {
 		const res = [];
