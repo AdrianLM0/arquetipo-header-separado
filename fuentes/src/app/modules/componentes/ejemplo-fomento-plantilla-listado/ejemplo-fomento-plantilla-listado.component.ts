@@ -26,7 +26,6 @@ export class EjemploFomentoPlantillaListadoComponent implements AfterViewInit, O
 	constructor(private router: Router, private http: HttpClient, private cdRef: ChangeDetectorRef) {}
 
 	ngOnInit() {
-		// Hacer la petición al backend para obtener los datos del select
 		this.fetchSelectOptions();
 	}
 
@@ -42,60 +41,103 @@ export class EjemploFomentoPlantillaListadoComponent implements AfterViewInit, O
 		console.log(event);
 	}
 
-	// Método para obtener las opciones del select desde el backend
-	fetchSelectOptions() {
-		const endpoint = 'http://localhost:8080/api/c1/v1/formularios/list';  // Cambiar al endpoint correcto
-	
-		// Mostrar las opciones predeterminadas inicialmente para mantener la interfaz
-		this.config_Card = this.generarCard([{ value: 'opcion1', description: 'Opción 1' }, { value: 'opcion2', description: 'Opción 2' }]);
-	
-		// Llamada HTTP al backend
-		this.http.get<any>(endpoint).subscribe(
-			(data) => {
-				console.log('Datos del backend:', data); // <-- Verifica los datos recibidos
-	
-				// Verifica si es un array y mapea directamente
-				if (Array.isArray(data)) {
-					const options = data.map((item) => ({
-						value: item.id,        // Solo obtenemos el ID
-						description: item.nombre  // Solo obtenemos el nombre
-					}));
-	
-					// Actualizar los selects con los datos del backend
-					this.config_Card = this.generarCard(options);
-	
-					// Asignar la configuración al componente
-					this.componentePlantillaListado.config_Card = this.config_Card;
-	
-					// Forzar la detección de cambios
-					this.cdRef.detectChanges();
-	
-					console.log('Opciones cargadas desde el backend:', options); // <-- Verifica las opciones mapeadas
-				} else {
-					console.error('Error: formato de datos incorrecto o vacío.');
-				}
-			},
-			(error) => {
-				console.error('Error al obtener los datos del select:', error);
-			}
-		);
-	}
-	
+fetchSelectOptions() {
+    const endpoint = 'http://localhost:8080/api/c1/v1/formularios/list'; 
 
-	generarCard(options: { value: string, description: string }[]) {
-		const res = [];
-		this.valores_demo.forEach((i) => {
-			res.push({
-				label: '',
-				typeStyle: 'material',
-				iconTitle: `fas fa-${i.iconTitle}`,
-				title: i.title,
-				data: options,  // Asignamos las opciones obtenidas del backend
-				iconEye: 'fas fa-eye',
-				iconFileCsv: 'fas fa-file-csv',
-				labelButtonCsv: 'LISTADOS EXPORTADOS',
-			});
-		});
-		return res;
-	}
+    this.config_Card = this.generarCard(
+        [{ value: 'opcion1', description: 'Opción 1' }],
+        [{ value: 'opcion2', description: 'Opción 2' }],
+        [{ value: 'opcion3', description: 'Opción 3' }],
+        [{ value: 'opcion4', description: 'Opción 4' }]
+    );
+
+    this.http.get<any>(endpoint).subscribe(
+        (data) => {
+            console.log('Datos del backend:', data); 
+
+            if (Array.isArray(data)) {
+                const options = data.map((item) => ({
+                    value: item.id,        
+                    description: item.nombre 
+                }));
+
+                
+                const optionsPromociones = options.slice(0, 2);  
+                const optionsInteresados = options.slice(2, 4);  
+                const optionsOrganizacion = options.slice(4, 7); 
+                const optionsViviendas = options.slice(7, 10);  
+
+                this.config_Card = this.generarCard(
+                    optionsPromociones,
+                    optionsInteresados,
+                    optionsOrganizacion,
+                    optionsViviendas
+                );
+
+                this.componentePlantillaListado.config_Card = this.config_Card;
+
+                this.cdRef.detectChanges();
+
+                console.log('Opciones cargadas desde el backend:', options); 
+            } else {
+                console.error('Error: formato de datos incorrecto o vacío.');
+            }
+        },
+        (error) => {
+            console.error('Error al obtener los datos del select:', error);
+        }
+    );
+}
+
+generarCard(
+    optionsPromociones: { value: string, description: string }[],
+    optionsInteresados: { value: string, description: string }[],
+    optionsOrganizacion: { value: string, description: string }[],
+    optionsViviendas: { value: string, description: string }[]
+) {
+    return [
+        {
+            label: '',
+            typeStyle: 'material',
+            iconTitle: 'fas fa-building',
+            title: 'Promociones',
+            data: optionsPromociones, 
+            iconEye: 'fas fa-eye',
+            iconFileCsv: 'fas fa-file-csv',
+            labelButtonCsv: 'LISTADOS EXPORTADOS',
+        },
+        {
+            label: '',
+            typeStyle: 'material',
+            iconTitle: 'fas fa-user-friends',
+            title: 'Interesados',
+            data: optionsInteresados, 
+            iconEye: 'fas fa-eye',
+            iconFileCsv: 'fas fa-file-csv',
+            labelButtonCsv: 'LISTADOS EXPORTADOS',
+        },
+        {
+            label: '',
+            typeStyle: 'material',
+            iconTitle: 'fas fa-sitemap',
+            title: 'Organización',
+            data: optionsOrganizacion,  
+            iconEye: 'fas fa-eye',
+            iconFileCsv: 'fas fa-file-csv',
+            labelButtonCsv: 'LISTADOS EXPORTADOS',
+        },
+        {
+            label: '',
+            typeStyle: 'material',
+            iconTitle: 'fas fa-home',
+            title: 'Viviendas',
+            data: optionsViviendas, 
+            iconEye: 'fas fa-eye',
+            iconFileCsv: 'fas fa-file-csv',
+            labelButtonCsv: 'LISTADOS EXPORTADOS',
+        }
+    ];
+}
+
+
 }
