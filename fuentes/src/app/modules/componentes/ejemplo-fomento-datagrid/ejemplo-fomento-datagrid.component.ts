@@ -53,6 +53,7 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   endpointFiltroUsuarioApi = '';
   reset_button_form = 'CANCELAR';
   submit_button_form = 'CONFIRMAR';
+  sizePageParam = 'size';
   showSubmitForm = false;
   showResetForm = false;
   validate_form = false;
@@ -64,7 +65,6 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   paginator_length: number = 0;
   pageSize: number = 5;
   pageIndex: number = 0;
-  sizePageParam = 'size';
   nPageParam = 'page';
   displayedColumns: string[] = this.table_headers.map(header => header.field);
   tipoChurrera = 'c1';
@@ -77,11 +77,21 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
     private requestApi: RequestApiService,
   ) {}
 
+  changeSize(){
+    if (this.tipoChurrera === "c1"){
+      this.sizePageParam = 'size'
+    }
+    else{
+      this.sizePageParam = 'pageSize'
+    }
+  }
   ngOnInit(): void {
-    this.endpoint = `api/${this.tipoChurrera}/v1/formularios/listbyquerydsl`;
-    //this.consumeApi();
+
+  //  this.consumeApi();
     this.pageSize = 5;
     this.pageIndex = 0;
+    this.changeSize();
+    this.endpoint = 'api/' + this.tipoChurrera + '/v1/formularios/list';
   }
 
   consumeApi() {
@@ -112,7 +122,9 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   
         // Verificamos si la respuesta contiene el campo 'content'
         if (Array.isArray(data.content)) {
+          this.sizePageParam = "size";
           this.dataSource.data = data.content;
+          console.log('OPCION DE C1')
           console.log('Datos cargados en el dataSource:', this.dataSource.data);
         } else {
           this.dataSource.data = Array.isArray(data) ? data : [data];
@@ -120,8 +132,8 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
         }
   
         // Manejamos la longitud total de elementos para la paginación
-        if (headers.has('X-Total-Count')) {
-          this.paginator_length = Number(headers.get('X-Total-Count'));
+        if (headers.has('total-elementos')) {
+          this.paginator_length = Number(headers.get('total-elementos'));
           console.log("Total Count from headers:", this.paginator_length);
         } else if (data.totalElements !== undefined) {
           this.paginator_length = data.totalElements;
