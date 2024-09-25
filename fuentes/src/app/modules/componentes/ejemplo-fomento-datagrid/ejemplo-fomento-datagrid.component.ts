@@ -67,13 +67,13 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
 
   pageSize: number = 4;
   pageIndex: number = 0;
-  tipoChurrera = 'c2';
+  tipoChurrera = 'c1';
   hostApi = 'http://localhost:8080';
 
 
   ngOnInit(): void {
     this.changeSize();
-    this.endpoint = 'api/' + this.tipoChurrera + '/v1/versiones';
+    this.endpoint = 'api/' + this.tipoChurrera + '/v1/formularios/listbyquerydsl';
   }
 
   changeSize() {
