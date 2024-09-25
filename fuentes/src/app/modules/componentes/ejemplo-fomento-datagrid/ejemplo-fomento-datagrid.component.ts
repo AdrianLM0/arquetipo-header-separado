@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Constants } from 'src/app/config/constants';
 import { MatTableDataSource } from '@angular/material/table';
 import { PageEvent } from '@angular/material/paginator';
@@ -27,6 +26,7 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   actions_index = -1;
   rowsPerPageOptions = [5, 10, 15];
   listadoAccionesAux = Constants.EJEMPLO_LISTADO_ACCIONES_AUX;
+  nPageParam = 'page';
   show_download = true;
   multicheck = true;
   multi_check_label = 'Multiseleccion';
@@ -35,8 +35,6 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   universal_filter = true;
   filter: 'column' | 'advance' | 'none' = 'advance';
   form = Constants.EJEMPLO_FORMULARIO_TABLA;
-  sizePageParam = 'size';
-  nPageParam = 'page';
   expansion_form = true;
   show_ayuda = true;
   show_clean = true;
@@ -54,6 +52,7 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   endpointFiltroUsuarioApi = '';
   reset_button_form = 'CANCELAR';
   submit_button_form = 'CONFIRMAR';
+  sizePageParam = 'size';
   showSubmitForm = false;
   showResetForm = false;
   validate_form = false;
@@ -61,74 +60,46 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   alt_label_form = 'ETIQUETA';
   private subscription: Subscription = new Subscription();
   dataSource = new MatTableDataSource<any>();
-  results: any[] = [];
   paginator_length: number = 0;
-  pageSize: number = 10;
-  pageIndex: number = 0;
-  displayedColumns: string[] = this.table_headers.map(header => header.field);
-  tipoChurrera = 'c1';
-  hostApi = 'http://localhost:8080';
   isLoading = false;
   useGetMethod = true;
+  headersTotalElements = 'total-elementos'
 
-  constructor(private http: HttpClient) {}
+  pageSize: number = 4;
+  pageIndex: number = 0;
+  tipoChurrera = 'c1';
+  hostApi = 'http://localhost:8080';
+
 
   ngOnInit(): void {
-    this.endpoint = `api/${this.tipoChurrera}/v1/formularios/listbyquerydsl`;
-    this.consumeApi();
+    this.changeSize();
+    this.endpoint = 'api/' + this.tipoChurrera + '/v1/formularios/listbyquerydsl';
   }
 
-  consumeApi() {
-    this.isLoading = true;
-    const page_endpoint = `${this.hostApi}/${this.endpoint}?${this.sizePageParam}=${this.pageSize}&${this.nPageParam}=${this.pageIndex}`;
+  changeSize() {
+    this.sizePageParam = this.tipoChurrera === 'c1' ? 'size' : 'pageSize';
+  }
 
-    const apiCall = this.useGetMethod
-      ? this.http.get<any>(page_endpoint, { observe: 'response' })
-      : this.http.post<any>(page_endpoint, {}, { observe: 'response' });
+  descargar(datosTabla: any) {
+    console.log('Descargar datos:', datosTabla);
 
-    const subscription = apiCall.subscribe({
-      next: (response: HttpResponse<any>) => {
-        const data = response.body;
-        const headers = response.headers;
-        this.isLoading = false;
+  }
 
-        // Asignar los datos
-        this.dataSource.data = Array.isArray(data) ? data : [data];
-        this.table_data = this.dataSource.data;
+  iconoAyuda() {
+    console.log('Icono de ayuda clicado');
+  }
 
-        // Obtener la paginación
-        this.paginator_length = Number(headers.get('X-Total-Count')) || this.dataSource.data.length;
-      },
-      error: (err) => {
-        console.error('Error en consumeApi:', err);
-        this.dataSource.data = [];
-        this.table_data = [];
-        this.isLoading = false;
-      }
-    });
-
-    this.subscription.add(subscription);
+  check(datosSeleccionados: any) {
+    console.log('Datos seleccionados:', datosSeleccionados);
   }
 
   changePage(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;
-    this.consumeApi();
+    
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-  }
-
-  descargar(datosTabla: any) {
-    console.log('DESCARGAR TABLA: ', datosTabla);
-  }
-
-  iconoAyuda() {
-    console.log('BOTÓN DE AYUDA FUNCIONA CORRECTAMENTE');
-  }
-
-  check(datosSeleccionados: any) {
-    console.log('LAS LÍNEAS SELECCIONADAS SON: ', datosSeleccionados);
   }
 }

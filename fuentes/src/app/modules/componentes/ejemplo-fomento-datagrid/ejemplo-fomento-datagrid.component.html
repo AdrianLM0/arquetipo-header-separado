@@ -49,6 +49,12 @@
       (helpIconAction)="iconoAyuda()"
       (checkAction)="check($event)"
       [apiContent]="apiContent"
+      [length]="paginator_length"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      [tipoChurrera]="tipoChurrera"
+      (page)="changePage($event)"
+      [headersTotalElements] = "headersTotalElements"
     ></lib-fomento-datagrid>
     
     </div>
