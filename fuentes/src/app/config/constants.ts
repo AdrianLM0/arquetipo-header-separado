@@ -204,6 +204,25 @@ export class Constants {
 		},
 	];
 
+	static EJEMPLO_LISTADO_ACCIONES_AUX_2 = [
+		{
+			nombre: 'Funcion 1',
+			funcion: () => {
+				console.log('FUNCIÓN 1');
+			},
+			tooltip: 'Esto es un tooltip de visualizar',
+			icono: 'fas fa-eye',
+		},
+		{
+			nombre: 'Funcion 2',
+			funcion: () => {
+				console.log('FUNCIÓN 2');
+			},
+			tooltip: 'Esto es un tooltip de guardar',
+			icono: 'fas fa-save',
+		},
+	];
+
 	static EJEMPLO_FORMULARIO_TABLA = {
 		sections: [
 			{
@@ -215,12 +234,12 @@ export class Constants {
 							{
 								filters: [
 									{
-										header: 'Nombre',
+										header: 'Código',
 										formControlName: 'nombre',
 										type: 'input',
 									},
 									{
-										header: 'Primer Apellido',
+										header: 'Nombre',
 										formControlName: 'apellido1',
 										type: 'input',
 									},
