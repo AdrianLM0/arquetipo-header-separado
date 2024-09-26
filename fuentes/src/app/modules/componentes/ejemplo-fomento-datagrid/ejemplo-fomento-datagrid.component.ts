@@ -4,6 +4,7 @@ import { Constants } from 'src/app/config/constants';
 import { MatTableDataSource } from '@angular/material/table';
 import { PageEvent } from '@angular/material/paginator';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ApiEndpointsService, RequestApiService } from '@fomento/i-rf-logic-component-node-lib';
 
 @Component({
   selector: 'app-ejemplo-fomento-datagrid',
@@ -81,7 +82,12 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
 
   formu: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private requestApi: RequestApiService,
+    private apiEndpoints: ApiEndpointsService
+  ) {}
+  
 
   ngOnInit(): void {
     this.changeSize();
@@ -102,6 +108,43 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
       });
     });
   }
+
+  guardarValores(data: any) {
+    // Asumiendo que 'data' contiene los valores del formulario
+    this.codigoValue = data['codigo'] || '';
+    this.nombreValue = data['nombre'] || '';
+  
+    console.log('Valores guardados:', {
+      codigo: this.codigoValue,
+      nombre: this.nombreValue,
+    });
+  
+    // Llamar al método para enviar los datos al backend
+    this.guardarFormulario();
+  }
+  
+  // Método para enviar los datos al backend
+  guardarFormulario() {
+    const body = {
+      codigo: this.codigoValue,
+      nombre: this.nombreValue,
+    };
+  
+    // Crear la URL usando el servicio ApiEndpointsService
+    const endpointUrl = this.apiEndpoints.createUrl('http://localhost:8080', 'api/c1/v1/formularios/create');
+  
+    // Hacer la petición POST usando RequestApiService
+    this.requestApi.post(endpointUrl, body).subscribe({
+      next: (response) => {
+        console.log('Formulario guardado con éxito:', response);
+        // Aquí puedes agregar lógica adicional si es necesario, como mostrar un mensaje de éxito
+      },
+      error: (error) => {
+        console.error('Error al guardar el formulario:', error);
+      }
+    });
+  }
+  
 
   changeSize() {
     this.sizePageParam = this.tipoChurrera === 'c1' ? 'size' : 'pageSize';
@@ -128,14 +171,4 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
     this.subscription.unsubscribe();
   }
 
-  // Método para guardar los valores de los inputs en las variables
-  guardarValores(data) {
-    console.log(data)
-    this.codigoValue = this.formu.get('nombre')?.value || '';
-    this.nombreValue = this.formu.get('apellido1')?.value || '';
-    console.log('Valores guardados:', {
-      codigo: this.codigoValue,
-      nombre: this.nombreValue,
-    });
-  }
 }
