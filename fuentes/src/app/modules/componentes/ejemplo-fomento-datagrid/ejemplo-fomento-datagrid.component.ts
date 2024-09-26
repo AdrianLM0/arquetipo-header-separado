@@ -122,7 +122,6 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   changePage(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;
-    this.guardarValores();
   }
 
   ngOnDestroy() {
@@ -130,8 +129,8 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   }
 
   // Método para guardar los valores de los inputs en las variables
-  guardarValores() {
-  
+  guardarValores(data) {
+    console.log(data)
     this.codigoValue = this.formu.get('nombre')?.value || '';
     this.nombreValue = this.formu.get('apellido1')?.value || '';
     console.log('Valores guardados:', {
