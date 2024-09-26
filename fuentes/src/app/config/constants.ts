@@ -229,7 +229,7 @@ export class Constants {
 				label: 'Filtro avanzado',
 				groups: [
 					{
-						label: 'Filtrar usuarios',
+						label: 'Guardar formulario',
 						rows: [
 							{
 								filters: [

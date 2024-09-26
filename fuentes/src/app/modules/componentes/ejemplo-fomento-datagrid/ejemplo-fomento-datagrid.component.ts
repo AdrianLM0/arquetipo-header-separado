@@ -24,24 +24,23 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
 
   idTable = 1;
   actions = true;
+  show_download = true;
+  show_ayuda = true;
+  show_clean = true;
   actions_index = -1;
   rowsPerPageOptions = [5, 10, 15];
   listadoAccionesAux = Constants.EJEMPLO_LISTADO_ACCIONES_AUX_2;
   nPageParam = 'page';
-  show_download = false;
   multicheck = false;
   multi_check_index = -1;
   multi_check_label = 'Multiseleccion';
   multi_check_label_col = 'Botón multiselección';
   multi_check_type = 'text';
-  showAuxForm = false; // Botón de filtrar
-  universal_filter = false;
+  universal_filter = true;
   filter: 'column' | 'advance' | 'none' = 'advance';
   form = Constants.EJEMPLO_FORMULARIO_TABLA;
   formConfig = Constants.EJEMPLO_FORMULARIO_TABLA;
   expansion_form = true;
-  show_ayuda = false;
-  show_clean = false;
   show_fcolumnas = true;
   id_table = 1;
   id_subsistema = '';
@@ -57,11 +56,12 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   reset_button_form = 'CANCELAR';
   submit_button_form = 'GUARDAR';
   sizePageParam = 'size';
+  showAuxForm = false; // Botón de filtrar
   showSubmitForm = true;
   showResetForm = false;
   validate_form = false;
-  showSelect = false;
-  alt_form = false;
+  showSelect = true;
+  alt_form = true;
   alt_label_form = 'ETIQUETA';
   private subscription: Subscription = new Subscription();
   dataSource = new MatTableDataSource<any>();
@@ -122,6 +122,7 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   changePage(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;
+    this.guardarValores();
   }
 
   ngOnDestroy() {
