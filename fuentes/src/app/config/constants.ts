@@ -225,30 +225,30 @@ export class Constants {
 
 	static EJEMPLO_FORMULARIO_TABLA = {
 		sections: [
-			{
-				label: 'Filtro avanzado',
-				groups: [
-					{
-						label: 'Guardar formulario',
-						rows: [
-							{
-								filters: [
-									{
-										header: 'Código',
-										formControlName: 'nombre',
-										type: 'input',
-									},
-									{
-										header: 'Nombre',
-										formControlName: 'apellido1',
-										type: 'input',
-									},
-								],
-							},
-						],
-					},
+		  {
+			label: 'Filtro avanzado',
+			groups: [
+			  {
+				label: 'Guardar formulario',
+				rows: [
+				  {
+					filters: [
+					  {
+						header: 'Código',
+						formControlName: 'codigo', // Cambiado de 'nombre' a 'codigo'
+						type: 'input',
+					  },
+					  {
+						header: 'Nombre',
+						formControlName: 'nombre', // Cambiado de 'apellido1' a 'nombre'
+						type: 'input',
+					  },
+					],
+				  },
 				],
-			},
+			  },
+			],
+		  },
 		],
-	};
+	  };
 }
