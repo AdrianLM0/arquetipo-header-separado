@@ -81,6 +81,7 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   nombreValue: string = '';
 
   formu: FormGroup;
+  endpointUrl: string;
 
   constructor(
     private fb: FormBuilder,
@@ -93,6 +94,7 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
     this.changeSize();
     this.endpoint = 'api/' + this.tipoChurrera + '/v1/formularios/listbyquerydsl';
     this.initializeForm();
+    this.endpointUrl = this.apiEndpoints.createUrl('http://localhost:8080', 'api/c1/v1/formularios/create');
   }
 
   initializeForm() {
