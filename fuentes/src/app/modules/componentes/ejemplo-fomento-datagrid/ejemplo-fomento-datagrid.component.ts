@@ -1,10 +1,11 @@
-import { Component, OnDestroy, OnInit, Input } from '@angular/core';
+import { Component, OnDestroy, OnInit, Input, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Constants } from 'src/app/config/constants';
 import { MatTableDataSource } from '@angular/material/table';
 import { PageEvent } from '@angular/material/paginator';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiEndpointsService, RequestApiService } from '@fomento/i-rf-logic-component-node-lib';
+import { FomentoDatagridComponent, FomentoFormularioComponent } from '@fomento/i-rf-web-component-node-lib';
 
 @Component({
   selector: 'app-ejemplo-fomento-datagrid',
@@ -95,6 +96,13 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
     this.endpoint = 'api/' + this.tipoChurrera + '/v1/formularios/listbyquerydsl';
     this.initializeForm();
     this.endpointUrl = this.apiEndpoints.createUrl('http://localhost:8080', 'api/c1/v1/formularios/create');
+    if (this.fomentoFormulario) {
+      this.fomentoFormulario.formSaved.subscribe(() => {
+        if (this.fomentoDatagrid) {
+          this.fomentoDatagrid.consumeApi(); // Llamar directamente a `consumeApi()` en FomentoDatagridComponent
+        }
+      });
+    }
   }
 
   initializeForm() {
@@ -110,20 +118,6 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
       });
     });
   }
-
-  guardarValores(data: any) {
-    // Asumiendo que 'data' contiene los valores del formulario
-    this.codigoValue = data['codigo'] || '';
-    this.nombreValue = data['nombre'] || '';
-  
-    console.log('Valores guardados:', {
-      codigo: this.codigoValue,
-      nombre: this.nombreValue,
-    });
-  
-    // Llamar al método para enviar los datos al backend
-    this.guardarFormulario();
-  }
   
   // Método para enviar los datos al backend
   guardarFormulario() {
@@ -133,7 +127,7 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
     };
   
     // Crear la URL usando el servicio ApiEndpointsService
-    const endpointUrl = this.apiEndpoints.createUrl('http://localhost:8080', 'api/c1/v1/formularios/create');
+    const endpointUrl =  this.endpointUrl;
   
     // Hacer la petición POST usando RequestApiService
     this.requestApi.post(endpointUrl, body).subscribe({
@@ -147,6 +141,19 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
     });
   }
   
+ @ViewChild(FomentoFormularioComponent) fomentoFormulario: FomentoFormularioComponent; // Referencia al componente hijo
+ @ViewChild(FomentoFormularioComponent) fomentoDatagrid: FomentoDatagridComponent; 
+ guardarValores(data: any) {
+  if (this.fomentoFormulario) {
+    this.fomentoFormulario.guardarValores(data); // Llama al método del componente hijo
+  }
+}
+
+
+onFormSaved() {
+  console.log('Formulario guardado correctamente, recargando datos...');
+  this.fomentoDatagrid.consumeApi();
+}
 
   changeSize() {
     this.sizePageParam = this.tipoChurrera === 'c1' ? 'size' : 'pageSize';
