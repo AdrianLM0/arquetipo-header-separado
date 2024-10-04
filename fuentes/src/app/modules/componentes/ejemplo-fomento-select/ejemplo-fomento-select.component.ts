@@ -9,12 +9,13 @@ import { HttpClient } from '@angular/common/http';
 export class EjemploFomentoSelectComponent implements OnInit {
 	data = []; 
 	label = 'Selector'; 
-	disabled = false; 
-	isRequired = true;
+	disabled = false;
+	isRequired = true; 
 	defaultOptionText = '- Elija una opción -'; 
-	additionalDescription = 'Seleccione una opción para continuar'; 
+	additionalDescription = 'Seleccione una opción para continuar';
 	hasError = false; 
 	errorMessage = ''; 
+	hasSelectedOption = false; 
 
 	constructor(private http: HttpClient) {}
 
@@ -22,6 +23,7 @@ export class EjemploFomentoSelectComponent implements OnInit {
 		this.fetchSelectOptions();
 	}
 
+	// Cargar las opciones del select desde el backend
 	fetchSelectOptions() {
 		const endpoint = 'http://localhost:8080/api/c1/v1/formularios/list'; 
 
@@ -42,12 +44,21 @@ export class EjemploFomentoSelectComponent implements OnInit {
 		);
 	}
 
+	// Manejador de errores
 	handleError(message: string) {
 		this.hasError = true;
 		this.errorMessage = message;
 	}
 
+	// Manejador de cambio de opción
 	onOptionChange(selectedOption: string) {
+		if (selectedOption !== 'option1') {
+			this.hasSelectedOption = true;
+			this.additionalDescription = ''; 
+		} else {
+			this.hasSelectedOption = false;
+			this.additionalDescription = 'Seleccione una opción para continuar'; 
+		}
 		console.log('Opción seleccionada:', selectedOption);
 	}
 }
