@@ -4,7 +4,6 @@
     </div>
 
     <div class="flex-container">
-        <!-- Uso del componente de la librería con los parámetros de accesibilidad -->
         <lib-fomento-select
             [label]="label"                 
             [disabled]="disabled"           
@@ -15,7 +14,6 @@
             (changeOptionAction)="onOptionChange($event)"> 
         </lib-fomento-select>
 
-        <!-- Mensaje de error accesible si existe algún problema -->
         <p *ngIf="hasError" class="error-message" aria-live="assertive">
             {{ errorMessage }}
         </p>
