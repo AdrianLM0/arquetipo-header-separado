@@ -1,36 +1,27 @@
-<div class="flex-container">
+<div class="test-container">
+  <h2>Formulario de Ejemplo</h2>
 
-    <div class="row">
-        <h2 class="title">Ejemplo del componente de Input</h2>
-    </div>
+  <form [formGroup]="ejemploForm" (ngSubmit)="onSubmit()">
+    <lib-fomento-input 
+      [typeStyle]="typeStyle" 
+      [label]="label"
+      [id]="id" 
+      [name]="name"
+      [type]="typeMaterial" 
+      [formControlName]="'correo'"
+      [msgHelp]="msgHelp"
+      [msgError]="msgError"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      [required]="required"
+      [placeholder]="placeholder"
+      (ngModelChange)="onInputChange($event)"
+    ></lib-fomento-input>
 
+    <!-- Botón para limpiar el input -->
+    <button type="button" (click)="clearInput()">Limpiar</button>
 
-    <div class="row">
-        <div class="column">
-
-            <lib-fomento-input [typeStyle]="typeStyle" [errorStateMatcher]="errorStateMatcher"
-                [typeMaterial]="typeMaterial" [errorState]="errorState" [label]="label"
-                [msgHelp]="msgHelp"></lib-fomento-input>
-
-        </div>
-        <div class="column">
-            <div class="item">
-
-            </div>
-
-        </div>
-        <div class="column">
-
-            <div class="item">
-
-            </div>
-        </div>
-        <div class="column">
-
-            <div class="item">
-
-            </div>
-        </div>
-    </div>
-
+    <!-- Botón para enviar el formulario -->
+    <button type="submit" [disabled]="!ejemploForm.valid">Enviar</button>
+  </form>
 </div>
