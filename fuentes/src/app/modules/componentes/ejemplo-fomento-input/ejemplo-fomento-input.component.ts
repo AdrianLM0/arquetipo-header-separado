@@ -55,20 +55,4 @@ export class EjemploFomentoInputComponent {
     }
   }
 
-  // Método para limpiar el valor del input y restablecer errores
-  clearInput(): void {
-    this.valueMatter = '';
-    this.ejemploForm.get('correo')?.reset();
-    this.msgError = '';
-  }
-
-  // Método para manejar el envío del formulario
-  onSubmit(): void {
-    if (this.ejemploForm.valid) {
-      console.log('Formulario válido, datos:', this.ejemploForm.value);
-    } else {
-      console.log('Formulario inválido.');
-      this.setValidationMessages();
-    }
-  }
 }
