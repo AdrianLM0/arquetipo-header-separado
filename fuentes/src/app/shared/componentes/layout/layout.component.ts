@@ -73,8 +73,6 @@ export class LayoutComponent implements OnInit {
               { "url": "/components/nav", "titulo": "Navigator"},
               { "url": "/components/notifications", "titulo": "Notificaciones"},
               { "url": "/components/progress", "titulo": "Progress"},
-              { "url": "/components/propagar-privilegios", "titulo": "Propagar privilegios"},
-              { "url": "/components/propagar-seguridad", "titulo": "Propagar Seguridad"},
               { "url": "/components/ripple", "titulo": "Ripple"},
               { "url": "/components/select", "titulo": "Select"},
               { "url": "/components/sidenav", "titulo": "Sidenav"},
