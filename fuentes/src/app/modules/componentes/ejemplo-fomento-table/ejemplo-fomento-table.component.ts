@@ -27,8 +27,8 @@ export class EjemploFomentoTableComponent implements OnInit {
   tipoChurrera = 'c1';
   
   // URL de la API desde la que se obtienen los datos
-  public apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/list';
+  apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/list';
 
-  ngOnInit(): void { // Llama a la función que obtiene los datos
+  ngOnInit(): void { 
   }
 }
