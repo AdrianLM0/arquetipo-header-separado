@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
 	selector: 'app-ejemplo-fomento-select',
@@ -14,33 +13,13 @@ export class EjemploFomentoSelectComponent implements OnInit {
 	label = 'Selector';
 	disabled = false;
 
-	constructor(private http: HttpClient) {}
+	hostApi = 'http://localhost:8080';
+
+	tipoChurrera = 'c1';
+	
+	// URL de la API desde la que se obtienen los datos
+	public apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/list';
 
 	ngOnInit() {
-		this.fetchSelectOptions();
-	}
-
-	fetchSelectOptions() {
-		const endpoint = 'http://localhost:8080/api/c1/v1/formularios/list'; 
-
-		this.http.get<any>(endpoint).subscribe(
-			(data) => {
-				console.log('Datos del backend:', data); 
-
-				if (Array.isArray(data)) {
-					this.data = data.map((item) => ({
-						value: item.id,      
-						description: item.nombre  
-					}));
-
-					console.log('Opciones cargadas desde el backend:', this.data); 
-				} else {
-					console.error('Error: formato de datos incorrecto o vacío.');
-				}
-			},
-			(error) => {
-				console.error('Error al obtener los datos del select:', error);
-			}
-		);
 	}
 }
