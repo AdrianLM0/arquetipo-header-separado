@@ -12,13 +12,14 @@ export class EjemploFomentoSelectComponent implements OnInit {
 	];
 	label = 'Selector';
 	disabled = false;
+	placeholder = 'Elije una opción'
 
 	hostApi = 'http://localhost:8080';
 
 	tipoChurrera = 'c1';
 	
 	// URL de la API desde la que se obtienen los datos
-	public apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/list';
+	apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/list'; // Si se deja vacío se usaran los datos de "data".
 
 	ngOnInit() {
 	}
