@@ -20,6 +20,9 @@ export class EjemploFomentoNavComponent {
 	mostrarperfil = true;
 	mostrarfecha = true;
 	mostrarhora = true;
+  mostrarHeader = true;
+  mostrarAyuda = true;
+  
 	data_mat = `{
     "secciones": [{
       "name": "La Junta",
