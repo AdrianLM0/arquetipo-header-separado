@@ -23,10 +23,16 @@ export class EjemploFomentoPlantillaListadoComponent implements AfterViewInit, O
 
 	config_Card = [];
 
-	constructor(private router: Router, private http: HttpClient, private cdRef: ChangeDetectorRef) {}
+	constructor(private router: Router,) {}
+
+    hostApi = 'http://localhost:8080';
+
+	tipoChurrera = 'c1';
+	
+	// URL de la API desde la que se obtienen los datos
+	public apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/list';
 
 	ngOnInit() {
-		this.fetchSelectOptions();
 	}
 
 	ngAfterViewInit() {
@@ -40,54 +46,6 @@ export class EjemploFomentoPlantillaListadoComponent implements AfterViewInit, O
 	buttonCsv(event) {
 		console.log(event);
 	}
-
-fetchSelectOptions() {
-    const endpoint = 'http://localhost:8080/api/c1/v1/formularios/list'; 
-
-    this.config_Card = this.generarCard(
-        [{ value: 'opcion1', description: 'Opción 1' }],
-        [{ value: 'opcion2', description: 'Opción 2' }],
-        [{ value: 'opcion3', description: 'Opción 3' }],
-        [{ value: 'opcion4', description: 'Opción 4' }]
-    );
-
-    this.http.get<any>(endpoint).subscribe(
-        (data) => {
-            console.log('Datos del backend:', data); 
-
-            if (Array.isArray(data)) {
-                const options = data.map((item) => ({
-                    value: item.id,        
-                    description: item.nombre 
-                }));
-
-                
-                const optionsPromociones = options.slice(0, 2);  
-                const optionsInteresados = options.slice(2, 4);  
-                const optionsOrganizacion = options.slice(4, 7); 
-                const optionsViviendas = options.slice(7, 10);  
-
-                this.config_Card = this.generarCard(
-                    optionsPromociones,
-                    optionsInteresados,
-                    optionsOrganizacion,
-                    optionsViviendas
-                );
-
-                this.componentePlantillaListado.config_Card = this.config_Card;
-
-                this.cdRef.detectChanges();
-
-                console.log('Opciones cargadas desde el backend:', options); 
-            } else {
-                console.error('Error: formato de datos incorrecto o vacío.');
-            }
-        },
-        (error) => {
-            console.error('Error al obtener los datos del select:', error);
-        }
-    );
-}
 
 generarCard(
     optionsPromociones: { value: string, description: string }[],

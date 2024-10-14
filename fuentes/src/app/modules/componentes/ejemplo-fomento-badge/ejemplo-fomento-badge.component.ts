@@ -8,16 +8,7 @@ import { ThemePalette } from '@angular/material/core';
 	styleUrls: ['./ejemplo-fomento-badge.component.scss'],
 })
 export class EjemploFomentoBadgeComponent {
-	typeStyle = 'material';
-	label = 'Botón';
-	theme = 'secondary';
-	icon = '';
-	href = 'https://www.juntadeandalucia.es/';
-	target = '_self';
-	disabled = false;
-	aria_label = 'texto alt';
-	disableRipple = true;
-
+	
 	//Atributos del badge
 	badgeColor: ThemePalette;
 	badge: string | number | undefined = 5;
