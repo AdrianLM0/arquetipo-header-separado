@@ -15,4 +15,11 @@ export class EjemploFomentoButtonComponent {
 	disabled = false;
 	aria_label = 'texto alt';
 	disableRipple = true;
+	badge='';
+
+	onButtonClick(event: any): void {
+		window.open(this.href, this.target);
+	  }
+
+	  
 }
