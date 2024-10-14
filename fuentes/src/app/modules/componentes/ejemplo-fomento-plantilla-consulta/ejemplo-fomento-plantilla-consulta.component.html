@@ -8,32 +8,20 @@
     <div class="flex-container">       
 
         <lib-fomento-plantilla-consulta
-        [table_header]="table_headers"
+        [table_headers]="table_headers"
         [name]="api_name"
         [actions]="actions"
         [expansion_form]="true"
         [form]="form"
-        [rowsPerPageOptions]="rowsPerPageOptions"
         [idTable]="idTable"
-        [listadoAccionesAux]="listadoAccionesAux"
-        
         [endpoint]="endpoint"
-        [hostApi]="hostApi"
-        [hostApiFilter]="hostapiFilter"
-        [endpointFilter]="endpointFilter"
-        [hostApiFilterUser]="hostapiFiltroUsuarioApi"
-        [endpointFilterUser]="endpointFiltroUsuarioApi"
-        [hostApiPaginator]="hostapiPaginator"
-        [endpointPaginator]="endpointPaginator"
-        [hostApiSaveFilter]="hostapiSaveFilter"
-        [endpointSaveFilter]="endpointSaveFilter"
-        [listadoAccionesAux]="listadoAccionesAux"
-        [idSubsistema]="idSubsistema"
-
+        [hostapi]="hostApi"
         [filter]="'advance'"
         (downloadAction)="descargar($event)"
         (helpIconAction)="iconoAyuda()"
-        (checkAction)="check($event)">
+        (checkAction)="check($event)"
+        [useGetMethod] = "true"
+        >
         </lib-fomento-plantilla-consulta>
 
     </div>

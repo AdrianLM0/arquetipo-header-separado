@@ -1,39 +1,66 @@
 <div class="flex-container">
-
     <div class="item">
-        <h2 class="title">Ejemplo del componente 'DataGrid'</h2>
+      <h2 class="title">Ejemplo del componente 'DataGrid'</h2>
     </div>
-
-
-    <div class="flex-container">
-
-        <lib-fomento-datagrid
-        [table_headers]="table_headers"
-        [name]="api_name"
-        [actions]="actions"
-        [expansion_form]="true"
-        [form]="form"
-        [rowsPerPageOptions]="rowsPerPageOptions"
-        [idTable]="idTable"
-        
-        [endpoint]="endpoint"
-        [hostApi]="hostApi"
-        [hostApiFilter]="hostapiFilter"
-        [endpointFilter]="endpointFilter"
-        [hostApiFilterUser]="hostapiFiltroUsuarioApi"
-        [endpointFilterUser]="endpointFiltroUsuarioApi"
-        [hostApiPaginator]="hostapiPaginator"
-        [endpointPaginator]="endpointPaginator"
-        [hostApiSaveFilter]="hostapiSaveFilter"
-        [endpointSaveFilter]="endpointSaveFilter"
-        [listadoAccionesAux]="listadoAccionesAux"
-        [idSubsistema]="idSubsistema"
-
-        [filter]="'advance'"
-        (downloadAction)="descargar($event)"
-        (helpIconAction)="iconoAyuda()"
-        (checkAction)="check($event)"
+  
+    <div class="flex-container" *ngIf="!isLoading">
+      <lib-fomento-datagrid
+      [name]="api_name"
+      [apiContent]="apiContent"
+      [table_headers]="table_headers"
+      [table_data]="dataSource.data"
+      [rowsPerPageOptions]="rowsPerPageOptions"
+      [actions]="actions"
+      [actions_index]="actions_index"
+      [listadoAccionesAux]="listadoAccionesAux"
+      [show_download]="show_download"
+      [showAuxForm] = "showAuxForm"
+      [multicheck]="multicheck"
+      [multi_check_label]="multi_check_label"
+      [multi_check_index]="multi_check_index"
+      [multi_check_label_col]="multi_check_label_col"
+      [multi_check_type] = "'text'"
+      [universal_filter]="universal_filter"
+      [filter]="filter"
+      [form]="form"
+      [expansion_form]="expansion_form"
+      [sizePageParam]="sizePageParam"
+      [nPageParam]="nPageParam"
+      [show_ayuda]="show_ayuda"
+      [show_clean]="show_clean"
+      [show_fcolumnas]="show_fcolumnas"
+      [idTable]="idTable"
+      [id_subsistema]="id_subsistema"
+      [hostapi]="hostApi"
+      [endpoint]="endpoint"
+      [hostApiPaginator]="hostapiPaginator"
+      [endpointPaginator]="endpointPaginator"
+      [hostApiFilter]="hostapiFilter"
+      [endpointFilter]="endpointFilter"
+      [hostApiSaveFilter]="hostapiSaveFilter"
+      [endpointSaveFilter]="endpointSaveFilter"
+      [hostApiFilterUser]="hostapiFiltroUsuarioApi"
+      [endpointFilterUser]="endpointFiltroUsuarioApi"
+      [reset_button_form]="reset_button_form"
+      [submit_button_form]="submit_button_form"
+      [showSubmitForm]="showSubmitForm"
+      [showResetForm]="showResetForm"
+      [validate_form]="validate_form"
+      [useGetMethod]="useGetMethod"
+      [apiContent]="apiContent"
+      [length]="paginator_length"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      [tipoChurrera]="tipoChurrera"
+      [form_config]="formConfig"
+      [endpointUrl]="endpointUrl"
+      (page)="changePage($event)"
+      [headersTotalElements] = "headersTotalElements"
+      [codigoValue] = "codigoValue"
+      [nombreValue] = "nombreValue"
+      (formDataEvent)="handleFormData($event)" 
     ></lib-fomento-datagrid>
+    
     </div>
-
-</div>
+  </div>
+  

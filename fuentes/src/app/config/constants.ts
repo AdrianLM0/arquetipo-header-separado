@@ -169,7 +169,7 @@ export class Constants {
 		{ header: 'Primer apellido', field: 'apellido1', visible: true },
 		{ header: 'Segundo Apellido', field: 'apellido2', visible: true },
 		{ header: 'Usuarios Ldap', field: 'usuarioLDAP', visible: true },
-		{ header: '¿Activo?', field: 'usuarioBaja', visible: true },
+		{ header: 'Carlos Dormido', field: 'usuarioBaja', visible: true },
 	];
 
 	static EJEMPLO_LISTADO_ACCIONES_AUX = [
@@ -204,32 +204,51 @@ export class Constants {
 		},
 	];
 
+	static EJEMPLO_LISTADO_ACCIONES_AUX_2 = [
+		{
+			nombre: 'Funcion 1',
+			funcion: () => {
+				console.log('FUNCIÓN 1');
+			},
+			tooltip: 'Esto es un tooltip de visualizar',
+			icono: 'fas fa-eye',
+		},
+		{
+			nombre: 'Funcion 2',
+			funcion: () => {
+				console.log('FUNCIÓN 2');
+			},
+			tooltip: 'Esto es un tooltip de guardar',
+			icono: 'fas fa-save',
+		},
+	];
+
 	static EJEMPLO_FORMULARIO_TABLA = {
 		sections: [
-			{
-				label: 'Filtro avanzado',
-				groups: [
-					{
-						label: 'Filtrar usuarios',
-						rows: [
-							{
-								filters: [
-									{
-										header: 'Nombre',
-										formControlName: 'nombre',
-										type: 'input',
-									},
-									{
-										header: 'Primer Apellido',
-										formControlName: 'apellido1',
-										type: 'input',
-									},
-								],
-							},
-						],
-					},
+		  {
+			label: 'Filtro avanzado',
+			groups: [
+			  {
+				label: 'Guardar formulario',
+				rows: [
+				  {
+					filters: [
+					  {
+						header: 'Código',
+						formControlName: 'codigo', // Cambiado de 'nombre' a 'codigo'
+						type: 'input',
+					  },
+					  {
+						header: 'Nombre',
+						formControlName: 'nombre', // Cambiado de 'apellido1' a 'nombre'
+						type: 'input',
+					  },
+					],
+				  },
 				],
-			},
+			  },
+			],
+		  },
 		],
-	};
+	  };
 }

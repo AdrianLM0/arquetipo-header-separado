@@ -1,12 +1,7 @@
-import {
-	AfterViewInit,
-	ChangeDetectionStrategy,
-	Component,
-	OnInit,
-	ViewChild,
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FomentoPlantillaListadoComponent } from '@fomento/i-rf-web-component-node-lib';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
 	selector: 'app-ejemplo-fomento-plantilla-listado',
@@ -14,9 +9,7 @@ import { FomentoPlantillaListadoComponent } from '@fomento/i-rf-web-component-no
 	styleUrls: ['./ejemplo-fomento-plantilla-listado.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EjemploFomentoPlantillaListadoComponent
-	implements AfterViewInit, OnInit
-{
+export class EjemploFomentoPlantillaListadoComponent implements AfterViewInit, OnInit {
 	@ViewChild(FomentoPlantillaListadoComponent)
 	componentePlantillaListado!: FomentoPlantillaListadoComponent;
 
@@ -28,12 +21,18 @@ export class EjemploFomentoPlantillaListadoComponent
 		{ iconTitle: 'home', title: 'Viviendas' },
 	];
 
-	config_Card;
+	config_Card = [];
 
-	constructor(private router: Router) {}
+	constructor(private router: Router,) {}
+
+    hostApi = 'http://localhost:8080';
+
+	tipoChurrera = 'c1';
+	
+	// URL de la API desde la que se obtienen los datos
+	public apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/list';
 
 	ngOnInit() {
-		this.config_Card = this.generarCard();
 	}
 
 	ngAfterViewInit() {
@@ -48,20 +47,55 @@ export class EjemploFomentoPlantillaListadoComponent
 		console.log(event);
 	}
 
-	generarCard() {
-		const res = [];
-		this.valores_demo.forEach((i) => {
-			res.push({
-				label: '',
-				typeStyle: 'material',
-				iconTitle: `fas fa-${i.iconTitle}`,
-				title: i.title,
-				data: ['Consultar listado por defecto'],
-				iconEye: 'fas fa-eye',
-				iconFileCsv: 'fas fa-file-csv',
-				labelButtonCsv: 'LISTADOS EXPORTADOS',
-			});
-		});
-		return res;
-	}
+generarCard(
+    optionsPromociones: { value: string, description: string }[],
+    optionsInteresados: { value: string, description: string }[],
+    optionsOrganizacion: { value: string, description: string }[],
+    optionsViviendas: { value: string, description: string }[]
+) {
+    return [
+        {
+            label: '',
+            typeStyle: 'material',
+            iconTitle: 'fas fa-building',
+            title: 'Promociones',
+            data: optionsPromociones, 
+            iconEye: 'fas fa-eye',
+            iconFileCsv: 'fas fa-file-csv',
+            labelButtonCsv: 'LISTADOS EXPORTADOS',
+        },
+        {
+            label: '',
+            typeStyle: 'material',
+            iconTitle: 'fas fa-user-friends',
+            title: 'Interesados',
+            data: optionsInteresados, 
+            iconEye: 'fas fa-eye',
+            iconFileCsv: 'fas fa-file-csv',
+            labelButtonCsv: 'LISTADOS EXPORTADOS',
+        },
+        {
+            label: '',
+            typeStyle: 'material',
+            iconTitle: 'fas fa-sitemap',
+            title: 'Organización',
+            data: optionsOrganizacion,  
+            iconEye: 'fas fa-eye',
+            iconFileCsv: 'fas fa-file-csv',
+            labelButtonCsv: 'LISTADOS EXPORTADOS',
+        },
+        {
+            label: '',
+            typeStyle: 'material',
+            iconTitle: 'fas fa-home',
+            title: 'Viviendas',
+            data: optionsViviendas, 
+            iconEye: 'fas fa-eye',
+            iconFileCsv: 'fas fa-file-csv',
+            labelButtonCsv: 'LISTADOS EXPORTADOS',
+        }
+    ];
+}
+
+
 }
