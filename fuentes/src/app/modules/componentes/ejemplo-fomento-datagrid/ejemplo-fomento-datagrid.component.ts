@@ -13,6 +13,9 @@ import { FomentoDatagridComponent, FomentoFormularioComponent } from '@fomento/i
   styleUrls: ['./ejemplo-fomento-datagrid.component.scss'],
 })
 export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
+
+  @ViewChild(FomentoDatagridComponent) fomentoDatagrid: FomentoDatagridComponent;
+
   @Input() apiContent: string = 'content';
   @Input() tipoTratamiento: string;
   @Input() table_data: any[] = [];
@@ -22,6 +25,7 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
     { header: 'ID', field: 'id', visible: true },
     { header: 'Código', field: 'codigo', visible: true },
     { header: 'Nombre', field: 'nombre', visible: true },
+    { header: 'Descripcion', field: 'descripcion', visible: true },
   ];
 
   idTable = 1;
@@ -86,24 +90,39 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private requestApi: RequestApiService,
     private apiEndpoints: ApiEndpointsService
-  ) {}
-  
+  ) { }
+
 
   ngOnInit(): void {
     this.changeSize();
     this.endpoint = 'api/' + this.tipoChurrera + '/v1/formularios/listbyquerydsl';
     this.initializeForm();
     this.endpointUrl = this.apiEndpoints.createUrl('http://localhost:8080', 'api/c1/v1/formularios/create');
-    if (this.fomentoFormulario) {
-      this.fomentoFormulario.formSaved.subscribe(() => {
-        if (this.fomentoDatagrid) {
-          this.fomentoDatagrid.consumeApi(); // Llamar directamente a `consumeApi()` en FomentoDatagridComponent
-        }
-      });
-    }
   }
+
+  ngAfterViewInit() {
+      const formulario = this.fomentoDatagrid.getFormularioComponent();
+        formulario.formDataEvent.subscribe((formData) => {
+          this.handleFormData(formData);
+        });
+  }
+
+
+  crearBody(formData: any): any {
+    // Extraer los valores del formulario de manera dinámica
+    const { codigo, nombre } = formData;
+    // Construir el objeto body con los valores del formulario y otros datos adicionales
+    const body = {
+      codigo: codigo,
+      nombre: nombre,
+      descripcion: 'Descripción generada en EjemploFomentoDatagridComponent', // Ejemplo de un valor adicional estático
+      borrado: 0, // Otro valor estático o dinámico si se requiere
+      // Puedes añadir más campos aquí según sea necesario
+    };
+    return body;
+  }
+
 
   initializeForm() {
     // Inicializar el formulario con la estructura de Constants
@@ -118,57 +137,19 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
       });
     });
   }
-  
-  // Método para enviar los datos al backend
-  guardarFormulario() {
-    const body = {
-      codigo: this.codigoValue,
-      nombre: this.nombreValue,
-    };
-  
-    // Crear la URL usando el servicio ApiEndpointsService
-    const endpointUrl =  this.endpointUrl;
-  
-    // Hacer la petición POST usando RequestApiService
-    this.requestApi.post(endpointUrl, body).subscribe({
-      next: (response) => {
-        console.log('Formulario guardado con éxito:', response);
-        // Aquí puedes agregar lógica adicional si es necesario, como mostrar un mensaje de éxito
-      },
-      error: (error) => {
-        console.error('Error al guardar el formulario:', error);
-      }
-    });
+  handleFormData(formData: any): void {
+    const body = this.crearBody(formData);
+    // Verificamos si `fomentoDatagrid` existe y si contiene un formulario
+    if (this.fomentoDatagrid && this.fomentoDatagrid.getFormularioComponent()) {
+      const formulario = this.fomentoDatagrid.getFormularioComponent();
+      formulario.guardarFormulario(body);
+
+    } else {
+console.error('No existe un formulario')
+    }
   }
-  
- @ViewChild(FomentoFormularioComponent) fomentoFormulario: FomentoFormularioComponent; // Referencia al componente hijo
- @ViewChild(FomentoFormularioComponent) fomentoDatagrid: FomentoDatagridComponent; 
- guardarValores(data: any) {
-  if (this.fomentoFormulario) {
-    this.fomentoFormulario.guardarValores(data); // Llama al método del componente hijo
-  }
-}
-
-
-onFormSaved() {
-  console.log('Formulario guardado correctamente, recargando datos...');
-  this.fomentoDatagrid.consumeApi();
-}
-
   changeSize() {
     this.sizePageParam = this.tipoChurrera === 'c1' ? 'size' : 'pageSize';
-  }
-
-  descargar(datosTabla: any) {
-    console.log('Descargar datos:', datosTabla);
-  }
-
-  iconoAyuda() {
-    console.log('Icono de ayuda clicado');
-  }
-
-  check(datosSeleccionados: any) {
-    console.log('Datos seleccionados:', datosSeleccionados);
   }
 
   changePage(event: PageEvent) {

@@ -47,9 +47,6 @@
       [showResetForm]="showResetForm"
       [validate_form]="validate_form"
       [useGetMethod]="useGetMethod"
-      (downloadAction)="descargar($event)"
-      (helpIconAction)="iconoAyuda()"
-      (checkAction)="check($event)"
       [apiContent]="apiContent"
       [length]="paginator_length"
       [pageSize]="pageSize"
@@ -57,10 +54,11 @@
       [tipoChurrera]="tipoChurrera"
       [form_config]="formConfig"
       [endpointUrl]="endpointUrl"
-      (formSaved)="onFormSaved()"
       (page)="changePage($event)"
       [headersTotalElements] = "headersTotalElements"
-      (submitAction)="guardarValores($event)"
+      [codigoValue] = "codigoValue"
+      [nombreValue] = "nombreValue"
+      (formDataEvent)="handleFormData($event)" 
     ></lib-fomento-datagrid>
     
     </div>
