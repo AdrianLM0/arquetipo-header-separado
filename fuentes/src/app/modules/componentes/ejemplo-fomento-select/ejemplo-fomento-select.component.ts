@@ -14,7 +14,7 @@ export class EjemploFomentoSelectComponent implements OnInit {
 	hostApi = 'http://localhost:8080';
 
 	tipoChurrera = 'c1';
-		isRequired = true; 
+	isRequired = true; 
 	defaultOptionText = '- Elija una opción -'; 
 	additionalDescription = 'Seleccione una opción para continuar';
 	hasError = false; 
@@ -26,4 +26,27 @@ export class EjemploFomentoSelectComponent implements OnInit {
 
 	ngOnInit() {
 	}
+
+	// Manejador de errores
+	handleError(message: string) {
+		this.hasError = true;
+		this.errorMessage = message;
+	}
+
+	// Manejador de cambio de opción
+	onOptionChange(selectedOption: unknown) {  // Cambiar el tipo a unknown
+		if (typeof selectedOption === 'string') {
+		  if (selectedOption !== 'option1') {
+			this.hasSelectedOption = true;
+			this.additionalDescription = ''; 
+		  } else {
+			this.hasSelectedOption = false;
+			this.additionalDescription = 'Seleccione una opción para continuar'; 
+		  }
+		  console.log('Opción seleccionada:', selectedOption);
+		} else {
+		  console.error('El valor seleccionado no es un string:', selectedOption);
+		}
+	  }
+	  
 }
