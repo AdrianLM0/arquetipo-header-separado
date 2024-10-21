@@ -99,20 +99,17 @@ export class EjemploFomentoAlertaComponent {
 
 	showNotification(
 		tipo: string,
-		botonCerrar?: boolean,
 		showActionButtons?: boolean,
-		labelBotonera?: string,
 		textoPrimerBoton?: string,
 		textoSegundoBoton?: string,
 	) {
 		this.alerta.showNotification(
 			this.notificationsArray,
 			tipo,
-			botonCerrar,
+			true,
 			showActionButtons,
 			() => this.logicaPrimerBoton(),
 			() => this.logicaSegundoBoton(),
-			labelBotonera,
 			textoPrimerBoton,
 			textoSegundoBoton,
 		);
@@ -120,20 +117,17 @@ export class EjemploFomentoAlertaComponent {
 
 	showNotification2(
 		tipo: string,
-		botonCerrar?: boolean,
 		showActionButtons?: boolean,
-		labelBotonera?: string,
 		textoPrimerBoton?: string,
 		textoSegundoBoton?: string,
 	) {
 		this.alerta.showNotification(
 			this.notificationsArray2,
 			tipo,
-			botonCerrar,
+			true,
 			showActionButtons,
 			() => this.logicaPrimerBoton(),
 			() => this.logicaSegundoBoton(),
-			labelBotonera,
 			textoPrimerBoton,
 			textoSegundoBoton,
 		);
