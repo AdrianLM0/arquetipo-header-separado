@@ -1,36 +1,17 @@
-<div class="flex-container">
-
-    <div class="row">
-        <h2 class="title">Ejemplo del componente de Input</h2>
-    </div>
-
-
-    <div class="row">
-        <div class="column">
-
-            <lib-fomento-input [typeStyle]="typeStyle" [errorStateMatcher]="errorStateMatcher"
-                [typeMaterial]="typeMaterial" [errorState]="errorState" [label]="label"
-                [msgHelp]="msgHelp"></lib-fomento-input>
-
-        </div>
-        <div class="column">
-            <div class="item">
-
-            </div>
-
-        </div>
-        <div class="column">
-
-            <div class="item">
-
-            </div>
-        </div>
-        <div class="column">
-
-            <div class="item">
-
-            </div>
-        </div>
-    </div>
-
+<div class="test-container">
+  <h2>Input de Ejemplo</h2>
+    <lib-fomento-input 
+      [typeStyle]="typeStyle" 
+      [label]="label"
+      [id]="id" 
+      [name]="name"
+      [type]="typeMaterial" 
+      [formControlName]="'correo'"
+      [msgHelp]="msgHelp"
+      [msgError]="msgError"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      [required]="required"
+      [placeholder]="placeholder"
+    ></lib-fomento-input>
 </div>
