@@ -6,12 +6,10 @@ import { Component } from '@angular/core';
 	styleUrls: ['./ejemplo-fomento-card.component.scss'],
 })
 export class EjemploFomentoCardComponent {
-	//Atributo de estilo
-	typeStyle = 'material';
 
 	// Atributos card
 	title = 'Título';
-	size = 's';
+	size = 'm';
 	text = 'Texto de la tarjeta';
 
 	// Atributos del matter button
