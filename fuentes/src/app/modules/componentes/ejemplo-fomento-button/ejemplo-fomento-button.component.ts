@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
 	styleUrls: ['./ejemplo-fomento-button.component.scss'],
 })
 export class EjemploFomentoButtonComponent {
-	typeStyle = 'material';
 	label = 'Etiqueta';
 	theme = 'primary';
 	icon = '';
