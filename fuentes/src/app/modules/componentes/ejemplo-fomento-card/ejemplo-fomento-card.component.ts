@@ -15,4 +15,5 @@ export class EjemploFomentoCardComponent {
 	// Atributos del matter button
 	label = 'Etiqueta';
 	icon = 'book';
+	enableHover = true;
 }
