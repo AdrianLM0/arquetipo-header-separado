@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { FomentoDialogComponent } from '@fomento/i-rf-web-component-node-lib';
 
 @Component({
 	selector: 'app-ejemplo-fomento-dialog',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
 	styleUrls: ['./ejemplo-fomento-dialog.component.scss'],
 })
 export class EjemploFomentoDialogComponent {
-	width = '80%';
+	width = '60%';
+	height = '40%';
+	@ViewChild(FomentoDialogComponent) dialog!: FomentoDialogComponent;
 }

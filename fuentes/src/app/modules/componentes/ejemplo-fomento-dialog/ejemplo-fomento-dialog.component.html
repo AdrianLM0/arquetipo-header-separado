@@ -7,10 +7,18 @@
 
     <div class="flex-container">
 
-    <lib-fomento-dialog [width]="width">
-        <h2>Esto es un nuevo título</h2>
-        <p>Contenido de prueba</p>
-    </lib-fomento-dialog>
+<!-- Botón para abrir el modal -->
+<button (click)="dialog.openDialog()">Abrir modal</button>
+
+<!-- Aquí usamos el componente lib-fomento-dialog para mostrar el modal -->
+<lib-fomento-dialog [width]="width" [height]="height">
+  <!-- Contenido dentro del modal -->
+  <div dialog-content>
+    <button>Contenido modal</button>
+  </div>
+</lib-fomento-dialog>
+
+          
 
     </div>
 
