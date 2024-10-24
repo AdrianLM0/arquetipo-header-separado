@@ -9,5 +9,6 @@ import { FomentoDialogComponent } from '@fomento/i-rf-web-component-node-lib';
 export class EjemploFomentoDialogComponent {
 	width = '60%';
 	height = '40%';
+	closeButton = true;
 	@ViewChild(FomentoDialogComponent) dialog!: FomentoDialogComponent;
 }
