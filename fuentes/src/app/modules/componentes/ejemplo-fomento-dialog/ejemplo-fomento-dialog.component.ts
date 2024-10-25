@@ -38,7 +38,7 @@ export class EjemploFomentoDialogComponent {
 	//***** Métodos para button *****//
 
 	typeStyle = 'material';
-	label = 'Ejemplo botón';
+	label = 'CERRAR';
 	theme = 'secondary';
 	icon = '';
 	href = 'https://www.juntadeandalucia.es/';

@@ -21,10 +21,17 @@
         <lib-fomento-table [element_data]="element_data" [initColumns]="init_columns" [endpoint]="apiUrl">
         </lib-fomento-table>
 
-        <!-- Botón debajo de la tabla, alineado a la derecha -->
+        <!-- Botón debajo de la tabla, alineado a la derecha para cerrar el modal -->
         <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
-          <lib-fomento-button [typeStyle]="typeStyle" [label]="label" [theme]="theme" [icon]="icon" [href]="href"
-            [target]="target" [disabled]="disabled" [aria_label]="aria_label" [disableRipple]="disableRipple">
+          <lib-fomento-button
+            [typeStyle]="typeStyle"
+            [label]="label"
+            [theme]="theme"
+            [icon]="icon"
+            [disabled]="disabled"
+            [aria_label]="aria_label"
+            [disableRipple]="disableRipple"
+            (click)="dialog.closeDialog()">
           </lib-fomento-button>
         </div>
       </div>
