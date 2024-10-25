@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { FomentoDialogComponent } from '@fomento/i-rf-web-component-node-lib';
+import { FomentoDialogComponent, TableColumn } from '@fomento/i-rf-web-component-node-lib';
 
 @Component({
 	selector: 'app-ejemplo-fomento-dialog',
@@ -7,8 +7,48 @@ import { FomentoDialogComponent } from '@fomento/i-rf-web-component-node-lib';
 	styleUrls: ['./ejemplo-fomento-dialog.component.scss'],
 })
 export class EjemploFomentoDialogComponent {
-	width = '60%';
-	height = '40%';
+	width = '65%';
+	height = '80%';
 	closeButton = true;
 	@ViewChild(FomentoDialogComponent) dialog!: FomentoDialogComponent;
+
+
+	//***** Métodos para table *****//
+
+	// Propiedad para almacenar los datos que serán mostrados en la tabla
+	element_data = [];
+
+	// Definición de las columnas que se mostrarán en la tabla
+	init_columns = [
+		{ id: 'codigo', name: 'Código' },
+		{ id: 'nombre', name: 'Nombre' },
+		{ id: 'descripcion', name: 'Descripción' },
+		{ id: 'audAlta', name: 'Fecha Creación' },
+		{ id: 'usuModifica', name: 'Usuario Modificación' }
+	];
+
+
+	hostApi = 'http://localhost:8080';
+
+	tipoChurrera = 'c1';
+
+	// URL de la API desde la que se obtienen los datos
+	apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/list';
+
+	//***** Métodos para button *****//
+
+	typeStyle = 'material';
+	label = 'Ejemplo botón';
+	theme = 'secondary';
+	icon = '';
+	href = 'https://www.juntadeandalucia.es/';
+	target = '_self';
+	disabled = false;
+	aria_label = 'texto alt';
+	disableRipple = true;
+
+
 }
+
+
+

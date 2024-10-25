@@ -1,27 +1,34 @@
 <div class="flex-container">
-
-    <div class="item">
-        <h2 class="title">Ejemplo del componente 'Diálogo'</h2>
-    </div>
-
-
-    <div class="flex-container">
-
-<!-- Botón para abrir el modal -->
-<button (click)="dialog.openDialog()">Abrir modal</button>
-
-<!-- Aquí usamos el componente lib-fomento-dialog para mostrar el modal -->
-<lib-fomento-dialog [width]="width" 
-[height]="height"
-[closeButton]="closeButton">
-  <!-- Contenido dentro del modal -->
-  <div dialog-content>
-    <button>Contenido modal</button>
+  <div class="item">
+    <h2 class="title">Ejemplo del componente 'Diálogo'</h2>
   </div>
-</lib-fomento-dialog>
 
-          
+  <div class="flex-container">
+    <!-- Botón para abrir el modal -->
+    <button (click)="dialog.openDialog()">Abrir modal</button>
 
-    </div>
+    <!-- Componente lib-fomento-dialog para mostrar el modal -->
+    <lib-fomento-dialog [width]="width" [height]="height" [closeButton]="closeButton">
 
+      <!-- Contenido dentro del modal -->
+      <div dialog-content>
+        <!-- Título centrado en el modal -->
+        <div style="text-align: center; margin-bottom: 20px;">
+          <h1 style="font-size: 24px; font-weight: bold;">Ejemplo de DIALOG</h1>
+        </div>
+
+        <!-- Tabla dentro del modal -->
+        <lib-fomento-table [element_data]="element_data" [initColumns]="init_columns" [endpoint]="apiUrl">
+        </lib-fomento-table>
+
+        <!-- Botón debajo de la tabla, alineado a la derecha -->
+        <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+          <lib-fomento-button [typeStyle]="typeStyle" [label]="label" [theme]="theme" [icon]="icon" [href]="href"
+            [target]="target" [disabled]="disabled" [aria_label]="aria_label" [disableRipple]="disableRipple">
+          </lib-fomento-button>
+        </div>
+      </div>
+
+    </lib-fomento-dialog>
+  </div>
 </div>
