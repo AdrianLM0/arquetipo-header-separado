@@ -114,7 +114,6 @@ export class EjemploFomentoAlertaComponent {
 			() => this.logicaSegundoBoton(),
 			labelBotonera,
 			textoPrimerBoton,
-			textoSegundoBoton,
 		);
 	}
 
@@ -135,7 +134,7 @@ export class EjemploFomentoAlertaComponent {
 			() => this.logicaSegundoBoton(),
 			labelBotonera,
 			textoPrimerBoton,
-			textoSegundoBoton,
+			
 		);
 	}
 
