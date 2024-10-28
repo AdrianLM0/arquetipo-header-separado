@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
 	styleUrls: ['./ejemplo-fomento-button.component.scss'],
 })
 export class EjemploFomentoButtonComponent {
-	typeStyle = 'material';
 	label = 'Etiqueta';
 	theme = 'primary';
 	icon = '';
@@ -15,4 +14,11 @@ export class EjemploFomentoButtonComponent {
 	disabled = false;
 	aria_label = 'texto alt';
 	disableRipple = true;
+	badge='';
+
+	onButtonClick(event: any): void {
+		window.open(this.href, this.target);
+	  }
+
+	  
 }
