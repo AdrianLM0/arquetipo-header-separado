@@ -8,8 +8,9 @@ import { FomentoDialogComponent, TableColumn } from '@fomento/i-rf-web-component
 })
 export class EjemploFomentoDialogComponent {
 	width = '65%';
-	height = '80%';
+	height = '82%';
 	closeButton = true;
+	closeButtonPosition = 'right';
 	@ViewChild(FomentoDialogComponent) dialog!: FomentoDialogComponent;
 
 

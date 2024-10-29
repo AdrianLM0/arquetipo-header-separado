@@ -8,7 +8,7 @@
     <button (click)="dialog.openDialog()">Abrir modal</button>
 
     <!-- Componente lib-fomento-dialog para mostrar el modal -->
-    <lib-fomento-dialog [width]="width" [height]="height" [closeButton]="closeButton">
+    <lib-fomento-dialog [width]="width" [height]="height" [closeButton]="true" [closeButtonPosition]="'right'">
 
       <!-- Contenido dentro del modal -->
       <div dialog-content>
