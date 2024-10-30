@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestApiService } from '@fomento/i-rf-logic-component-node-lib';
 
 @Component({
 	selector: 'app-ejemplo-fomento-select',
@@ -6,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./ejemplo-fomento-select.component.scss'],
 })
 export class EjemploFomentoSelectComponent implements OnInit {
-	data = []; 
+	data = [
+		{value: '1', description: 'Opcion 1'},
+		{value: '2', description: 'Opcion 2'},
+	]; 
 	label = 'Selector'; 
 	disabled = false;
 	placeholder = 'Elije una opción'
@@ -24,7 +28,34 @@ export class EjemploFomentoSelectComponent implements OnInit {
 	// URL de la API desde la que se obtienen los datos
 	apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/list'; // Si se deja vacío se usaran los datos de "data".
 
+	constructor(private requestApi: RequestApiService) {}
+
 	ngOnInit() {
+		if (this.apiUrl){
+			this.fetchSelectOptions(); 
+		}
+	}
+
+	fetchSelectOptions() {
+		this.requestApi.get<any>(this.apiUrl).subscribe(
+			(data) => {
+				console.log('Datos del backend:', data);
+
+				if (Array.isArray(data)) {
+					this.data = data.map((item) => ({
+						value: item.id,
+						description: item.nombre,
+					}));
+
+					console.log('Opciones cargadas desde el backend:', this.data);
+				} else {
+					this.handleError('Error: formato de datos incorrecto o vacío.');
+				}
+			},
+			(error) => {
+				this.handleError('Error al obtener los datos del select: ' + error.message);
+			}
+		);
 	}
 
 	// Manejador de errores
