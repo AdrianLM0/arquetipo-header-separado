@@ -11,6 +11,7 @@ export class EjemploFomentoCardComponent {
 	title = 'Título';
 	size = 'm';
 	text = 'Texto de la tarjeta';
+	iconTitle = 'fas fa-info-circle'
 
 	// Atributos del matter button
 	label = 'Etiqueta';
