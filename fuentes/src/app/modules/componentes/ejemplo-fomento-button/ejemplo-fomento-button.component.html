@@ -7,8 +7,8 @@
 
     <div class="flex-container">
 
-        <lib-fomento-button [typeStyle]="typeStyle" [label]="label" [theme]="theme" [icon]="icon" [href]="href"
-            [target]="target" [disabled]="disabled" [aria_label]="aria_label" [disableRipple]="disableRipple">
+        <lib-fomento-button [label]="label" [theme]="theme" [icon]="icon" [href]="href"
+            [target]="target" [disabled]="disabled" [aria_label]="aria_label" [badge]="badge" [disableRipple]="disableRipple" (onclickevent)="onButtonClick($event)">
         </lib-fomento-button>
 
     </div>
