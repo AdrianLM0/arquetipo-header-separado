@@ -33,7 +33,7 @@ export class EjemploFomentoButtonToggleComponent {
 		  id: 'op1',
 		  value: 'op1',
 		  name: 'toggleGroup',
-		  label: 'Opcion 1',
+		  label: 'Opción 1',
 		},
 		{
 		  disabled: true,
@@ -44,7 +44,7 @@ export class EjemploFomentoButtonToggleComponent {
 		  id: 'op2',
 		  value: 'op2',
 		  name: 'toggleGroup',
-		  label: 'Opcion 2',
+		  label: 'Opción 2',
 		},
 		{
 		  disabled: false,
@@ -55,12 +55,11 @@ export class EjemploFomentoButtonToggleComponent {
 		  id: 'op3',
 		  value: 'op3',
 		  name: 'toggleGroup',
-		  label: 'Opcion 3',
+		  label: 'Opción 3',
 		},
 	  ];
 
 	clickbutton(event) {
 		this.onclickevent.emit(event);
-		console.log(event);
 	}
 }
