@@ -7,14 +7,11 @@ import { Component } from '@angular/core';
 })
 export class EjemploFomentoInputComponent {
   // Atributos para el input
-  typeStyle = 'material';
   msgError = '';
   msgHelp = 'Ex. pat@example.com';
   label = 'Correo Electrónico';
   id = 'inputCorreo';
   name = 'correo';
-  typeMaterial = 'email';
-  valueMatter = '';
   readonly = false;
   disabled = false;
   required = true;
