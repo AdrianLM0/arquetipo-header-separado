@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TableColumn } from '@fomento/i-rf-web-component-node-lib';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 // Declaración del componente
 @Component({
@@ -21,6 +22,10 @@ export class EjemploFiltroColumnasTablaComponent implements OnInit {
 
   // Variable para almacenar los datos que se mostrarán en la tabla
   dataSource = [];
+
+  appearance: MatFormFieldAppearance = 'outline';
+
+  label = '';
 
   hostApi = 'http://localhost:8080';
 
