@@ -10,7 +10,7 @@
 		"test:coverage": "jest --coverage",
 		"test:watch": "jest --watchAll",
 		"format": "prettier --write \"**/*.{js,ts,jsx,tsx,json,css,scss,md}\"",
-		"itest": "ng cache clean && npm install /app/codigo/web-component-lib/fuentes/dist/i-rf-web-component-node-lib/fomento-i-rf-web-component-node-lib-1.4.0.tgz && npm install && npm start"
+		"itest": "ng cache clean && npm install ../../web-component-lib/fuentes/dist/i-rf-web-component-node-lib/fomento-i-rf-web-component-node-lib-1.4.0.tgz && npm install && npm start"
 	},
 	"private": true,
 	"dependencies": {
