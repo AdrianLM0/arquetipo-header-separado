@@ -13,6 +13,8 @@
         [showSubmit]="showSubmit"
         [showReset]="showReset"
         (submitAction)="prueba($event)"
+        (savedform)="dataSaved($event)"
+        (formDataEvent)="dataEvent($event)"
         [alt]="true"
         alt_label="HOLA"
       ></lib-fomento-formulario>

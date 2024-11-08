@@ -8,12 +8,18 @@ import { Constants } from '../../../config/constants';
 })
 export class EjemploFomentoFormularioComponent {
 	form_config = Constants.EJEMPLO_FORMULARIO;
-	reset_button = 'TRAMITAR';
+	reset_button = 'BORRAR';
 	submit_button = 'GUARDAR';
 	showSubmit = true;
 	showReset = true;
 
 	prueba(data) {
 		console.log('FORMULARIO RECIBIDO', data);
+	}
+	dataSaved(data){
+		console.log('DATOS GUARDADOS', data);
+	}
+	dataEvent(data){
+		console.log('EVENTO DE DATOS', data);
 	}
 }
