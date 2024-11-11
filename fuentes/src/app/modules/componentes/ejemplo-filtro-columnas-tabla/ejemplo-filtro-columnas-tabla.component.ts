@@ -56,14 +56,6 @@ export class EjemploFiltroColumnasTablaComponent implements OnInit {
     );
   }
 
-  // Método que retorna las columnas visibles en el orden adecuado
-  get displayedColumns(): string[] {
-    // Filtra las columnas que son visibles y retorna su campo (field)
-    return this.columns
-      .filter((column) => column.visible)
-      .map((column) => column.field);
-  }
-
   // Método para manejar los cambios en las columnas visibles
   onColumnsChange(updatedColumns: TableColumn[]): void {
     this.columns = updatedColumns; // Actualiza el array de columnas
