@@ -9,5 +9,5 @@ export class EjemploFomentoDividerComponent {
 	//Atributos mat-divider
 	inset = false;
 	vertical = false;
-	color = '#087021';
+	color = '#33ff42';
 }
