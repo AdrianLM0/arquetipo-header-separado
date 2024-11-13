@@ -30,6 +30,8 @@ export class EjemploFiltroColumnasTablaComponent implements OnInit {
   hostApi = 'http://localhost:8080';
 
   tipoChurrera = 'c1';
+
+  placeholder = 'Seleccione columnas';
   
   // URL de la API desde la que se obtienen los datos
   private apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/list';
@@ -54,10 +56,5 @@ export class EjemploFiltroColumnasTablaComponent implements OnInit {
         console.error('Error fetching data from API', error);
       }
     );
-  }
-
-  // Método para manejar los cambios en las columnas visibles
-  onColumnsChange(updatedColumns: TableColumn[]): void {
-    this.columns = updatedColumns; // Actualiza el array de columnas
   }
 }

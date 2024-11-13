@@ -9,13 +9,13 @@
 
     <div class="item">
 
-      <lib-fomento-filtro-columnas-tabla #filtroColumnas [columns]="columns" (columnsChange)="onColumnsChange($event)" [appearance]="appearance" [label]="label" [ariaLabelledById]="'filter-column-label-executable'">
+      <lib-fomento-filtro-columnas-tabla #filtroColumnas [columns]="columns" [appearance]="appearance" [label]="label" [placeholder]="placeholder" [ariaLabelledById]="'filter-column-label-executable'">
       </lib-fomento-filtro-columnas-tabla>
 
 
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" aria-label="Table">
-          <ng-container *ngFor="let column of columns" [matColumnDef]="column.field">
+          <ng-container *ngFor="let column of filtroColumnas.columns" [matColumnDef]="column.field">
             <th mat-header-cell *matHeaderCellDef> {{ column.header }} </th>
             <td mat-cell *matCellDef="let element"> {{ element[column.field] }} </td>
           </ng-container>
