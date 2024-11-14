@@ -8,7 +8,12 @@
   <div class="item-alert">
     <lib-fomento-alerts
     #alertaComponent
-    [notifications]="notificationsArray">
+    [type]="type"
+    [labelFirstButton]="labelFirstButton"
+    [labelSecondButton]="labelSecondButton"
+    [notifications]="notificationsSimple"
+    [showActionButtons]="showActionButtons"
+    [currentIndex]="currentIndex">
   </lib-fomento-alerts>
   </div> 
 <div class="flex-container">
@@ -19,20 +24,20 @@
   (click)="showNotification('success',true)">Mostrar
   Notificación Simple con Botones</button>
   <button
-  (click)="showNotification('warning')">Mostrar
+  (click)="showNotification('warning',false)">Mostrar
+  Notificación Simple Aviso</button>
+  <button
+  (click)="showNotification('info',false)">Mostrar
   Notificación Simple Aviso</button>
   <button
   (click)="showPagedNotification('success',false)">Mostrar
   Notificación Paginada</button>
   <button
-  (click)="showPagedNotification('warning')">Mostrar
-  Notificación Paginada </button>
+  (click)="showPagedNotification('success',true)">Mostrar
+  Notificación Paginada Acciones</button>
   <button
-  (click)="showPagedNotification('error',true)">Mostrar
-  Notificación Acciones</button>
-  <button
-  (click)="showPagedNotification('error',false)">Mostrar
-  Notificación Acciones Paginada</button>  
+  (click)="showNotification('error',false)">Mostrar
+  Notificación Error</button>  
   </div>
 
 </div>

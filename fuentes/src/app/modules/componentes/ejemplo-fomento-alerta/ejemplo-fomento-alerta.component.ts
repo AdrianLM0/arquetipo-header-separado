@@ -14,8 +14,8 @@ export class EjemploFomentoAlertaComponent {
 	alerta: FomentoAlertsComponent;
 	/*alert fase1*/
 	type
-	textoPrimerBoton = 'Cancelar';
-	textoSegundoBoton = 'Aceptar';
+	labelFirstButton = 'Cancelar';
+	labelSecondButton = 'Aceptar';
 	showActionButtons = true;
 
 	themesuccess = 'primary';
@@ -109,8 +109,8 @@ export class EjemploFomentoAlertaComponent {
 	showPagedNotification(
 		tipo: string,
 		showActionButtons?: boolean,
-		textoPrimerBoton?: string,
-		textoSegundoBoton?: string,
+		labelFirstButton?: string,
+		labelSecondButton?: string,
 	) {
 		this.alerta.showPagedNotification(
 			this.notificationsArray,
@@ -118,16 +118,16 @@ export class EjemploFomentoAlertaComponent {
 			showActionButtons,
 			() => this.logicaPrimerBoton(),
 			() => this.logicaSegundoBoton(),
-			textoPrimerBoton,
-			textoSegundoBoton,
+			labelFirstButton,
+			labelSecondButton,
 		);
 	}
 
 	showNotification(
 		tipo: string,
 		showActionButtons?: boolean,
-		textoPrimerBoton?: string,
-		textoSegundoBoton?: string,
+		labelFirstButton?: string,
+		labelSecondButton?: string,
 	) {
 		this.alerta.showPagedNotification(
 			this.notificationsSimple,
@@ -135,8 +135,8 @@ export class EjemploFomentoAlertaComponent {
 			showActionButtons,
 			() => this.logicaPrimerBoton(),
 			() => this.logicaSegundoBoton(),
-			textoPrimerBoton,
-			textoSegundoBoton,
+			labelFirstButton,
+			labelSecondButton,
 		);
 	}
 
