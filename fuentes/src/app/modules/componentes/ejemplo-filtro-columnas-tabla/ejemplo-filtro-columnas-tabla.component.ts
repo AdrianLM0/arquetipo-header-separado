@@ -32,6 +32,8 @@ export class EjemploFiltroColumnasTablaComponent implements OnInit {
   tipoChurrera = 'c1';
 
   placeholder = 'Seleccione columnas';
+
+  enableSearch = true;
   
   // URL de la API desde la que se obtienen los datos
   private apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/list';

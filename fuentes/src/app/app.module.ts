@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IERFWebLibraryModule } from '@fomento/i-rf-web-component-node-lib';
 import { AppRoutingModule } from './app-routing.module';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 import {
 	SecurityModule,
@@ -39,6 +40,7 @@ const keycloakConfig: SecurityModuleConfig = {
 		IERFWebLibraryModule,
 		AppRoutingModule,
 		FormsModule,
+		NgxMatSelectSearchModule,
 
 		// Configura SecurityModule con la configuración de Keycloak
 		SecurityModule.forRoot(keycloakConfig),
