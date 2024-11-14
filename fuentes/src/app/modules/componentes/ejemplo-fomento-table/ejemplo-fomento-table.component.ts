@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core'; 
-import { HttpClient } from '@angular/common/http';
 
 // Declaración del componente
 @Component({
@@ -11,6 +10,8 @@ export class EjemploFomentoTableComponent implements OnInit {
   
   // Propiedad para almacenar los datos que serán mostrados en la tabla
   element_data = [];
+
+  tableDescription = "Ejemplo de tabla accesible para Test"
 
   // Definición de las columnas que se mostrarán en la tabla
   init_columns = [
