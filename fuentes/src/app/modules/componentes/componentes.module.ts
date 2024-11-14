@@ -39,7 +39,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatRippleModule } from '@angular/material/core';
+import { MatOptionModule, MatRippleModule } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -82,6 +82,7 @@ import { EjemploFomentoPropagarcambiosSeguridadComponent } from './ejemplo-fomen
 import { EjemploFomentoPlantillaAccesoDenegadoComponent } from './ejemplo-fomento-plantilla-acceso-denegado/ejemplo-fomento-plantilla-acceso-denegado.component';
 import { EjemploFomentoJsonDatagridComponent } from './ejemplo-fomento-jsondatagrid/ejemplo-fomento-jsondatagrid.component';
 import { EjemploAuthGuardComponent } from './ejemplo-auth-guard/ejemplo-auth-guard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
 	declarations: [
@@ -173,6 +174,8 @@ import { EjemploAuthGuardComponent } from './ejemplo-auth-guard/ejemplo-auth-gua
 		MatDialogModule,
 		FormsModule,
 		DirectivesModule,
+		MatOptionModule,
+		//BrowserAnimationsModule,
 	],
 
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
