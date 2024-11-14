@@ -1,24 +1,26 @@
 <div class="flex-container">
 
     <div class="item">
-        <h2 class="title">Ejemplo del componente Button Toggle</h2>
+        <h2 id="buttonToggleTitle" class="title">Ejemplo del componente Button Toggle</h2>
     </div>
   
   
     <div class="flex-container">
 
         <lib-fomento-button-toggle (click)="clickbutton($event)"
-            [disabled]="disabled"
             [appearance]="appearance"
+            [disabled]="disabled"
+            [vertical]="vertical"
             [name]="name"
             [value]="value"
-            [disabled]="disabled"
             [ariaLabel]="ariaLabel"
-            [ariaLabelledby]="ariaLabelledby"
+            [ariaLabelledby]="'buttonToggleTitle'" 
             [checked]="checked"
             [disableRipple]="disableRipple"
             [id]="id"  
-            [label]="label">       
+            [label]="label"
+            [multiple]="multiple"
+            [toggleGroup]="toggleGroup">  
         </lib-fomento-button-toggle>
         
         
