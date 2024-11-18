@@ -4,35 +4,40 @@
     <h2 class="title">Ejemplo del componente de alertas del sistema</h2>
   </div>
 
+<!-- Cambiar notifications para poder entre notificationsArray y notificationsSimple -->
   <div class="item-alert">
-    <lib-fomento-alerts>
-    </lib-fomento-alerts>
+    <lib-fomento-alerts
+    #alertaComponent
+    [type]="type"
+    [labelFirstButton]="labelFirstButton"
+    [labelSecondButton]="labelSecondButton"
+    [notifications]="notificationsSimple"
+    [showActionButtons]="showActionButtons"
+    [currentIndex]="currentIndex">
+  </lib-fomento-alerts>
   </div> 
 <div class="flex-container">
-    <button
-    (click)="showNotification2('success',false)">Mostrar
-    Notificación Simple</button>
-    <button
-    (click)="showNotification2('warning')">Mostrar
-    Notificación Simple Cierre</button>
-    <button
-    (click)="showNotification('success',false)">Mostrar
-    Notificación Paginada</button>
-    <button
-    (click)="showNotification('warning')">Mostrar
-    Notificación Paginada Cierre</button>
-    <button
-    (click)="showNotification2('error',false,true)">Mostrar
-    Notificación Acciones</button>
-    <button
-    (click)="showNotification2('info',true,true)">Mostrar
-    Notificación Acciones Cierre</button>
-    <button
-    (click)="showNotification('error',false,true)">Mostrar
-    Notificación Acciones Paginada</button>  
-    <button
-    (click)="showNotification('info',true,true)">Mostrar
-    Notificación Acciones Paginada Cierre</button>
+  <button
+  (click)="showNotification('success',false)">Mostrar
+  Notificación Simple</button>
+  <button
+  (click)="showNotification('success',true)">Mostrar
+  Notificación Simple con Botones</button>
+  <button
+  (click)="showNotification('warning',false)">Mostrar
+  Notificación Simple Aviso</button>
+  <button
+  (click)="showNotification('info',false)">Mostrar
+  Notificación Simple Aviso</button>
+  <button
+  (click)="showPagedNotification('success',false)">Mostrar
+  Notificación Paginada</button>
+  <button
+  (click)="showPagedNotification('success',true)">Mostrar
+  Notificación Paginada Acciones</button>
+  <button
+  (click)="showNotification('error',false)">Mostrar
+  Notificación Error</button>  
   </div>
 
 </div>
