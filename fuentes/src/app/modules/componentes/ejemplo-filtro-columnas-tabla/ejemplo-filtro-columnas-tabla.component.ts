@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TableColumn } from '@fomento/i-rf-web-component-node-lib';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 // Declaración del componente
 @Component({
@@ -22,10 +23,18 @@ export class EjemploFiltroColumnasTablaComponent implements OnInit {
   // Variable para almacenar los datos que se mostrarán en la tabla
   dataSource = [];
 
+  appearance: MatFormFieldAppearance = 'outline';
+
+  label = '';
+
   hostApi = 'http://localhost:8080';
 
   tipoChurrera = 'c1';
-  
+
+  placeholder = 'Seleccione columnas';
+
+  enableSearch = true;
+
   // URL de la API desde la que se obtienen los datos
   private apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/list';
 
@@ -49,18 +58,5 @@ export class EjemploFiltroColumnasTablaComponent implements OnInit {
         console.error('Error fetching data from API', error);
       }
     );
-  }
-
-  // Método que retorna las columnas visibles en el orden adecuado
-  get displayedColumns(): string[] {
-    // Filtra las columnas que son visibles y retorna su campo (field)
-    return this.columns
-      .filter((column) => column.visible)
-      .map((column) => column.field);
-  }
-
-  // Método para manejar los cambios en las columnas visibles
-  onColumnsChange(updatedColumns: TableColumn[]): void {
-    this.columns = updatedColumns; // Actualiza el array de columnas
   }
 }
