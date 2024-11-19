@@ -20,4 +20,7 @@ export class EjemploFomentoExpansionPanelComponent {
 	expanded = false;
 	collapsedHeight: string;
 	expandedHeight: string;
+	panelTitle: string = 'Título de expansion panel';
+	panelDescription: string = 'Resumen del contenido';
+	panelContent: string = 'Contenido de expansion panel';
 }
