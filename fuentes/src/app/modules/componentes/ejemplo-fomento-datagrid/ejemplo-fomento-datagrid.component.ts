@@ -6,6 +6,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiEndpointsService, RequestApiService } from '@fomento/i-rf-logic-component-node-lib';
 import { FomentoDatagridComponent, FomentoFormularioComponent } from '@fomento/i-rf-web-component-node-lib';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-ejemplo-fomento-datagrid',
@@ -84,9 +85,14 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   // Variables para almacenar los valores de los inputs
   codigoValue: string = '';
   nombreValue: string = '';
-
+  showBotonera = true;
   formu: FormGroup;
   endpointUrl: string;
+
+  miLabelPersonalizado = 'Filtrar Columnas';
+  miAppearancePersonalizado: MatFormFieldAppearance = 'outline';
+  miPlaceholderPersonalizado = 'Selecciona columnas';
+  miEnableSearchPersonalizado = true;
 
   constructor(
     private fb: FormBuilder,
