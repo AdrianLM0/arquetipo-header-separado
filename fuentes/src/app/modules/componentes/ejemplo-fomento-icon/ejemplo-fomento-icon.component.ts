@@ -9,26 +9,9 @@ export class EjemploFomentoIconComponent {
 	//@Input() typeStyle: string = "matter";
 	typeStyle = 'material';
 
-	//Atributos matter-icon
-	family = 'fa';
-	icon = 'home';
-	theme = '';
-	color = 'green';
-	className = '';
-	spin = true;
-	pulse = false;
-	fixedWidth = false;
-	inverse = false;
-	border = false;
-	listItem = false;
-	flip = '';
-	size = '';
-	pull = '';
-	alt = '';
-	mask = '';
-	transform = '';
-
 	//Atributos mat-icon
+	icon = 'home';
+	color = 'green';
 	svgIcon = '';
 	fontSet = 'fa';
 	inline = false;
