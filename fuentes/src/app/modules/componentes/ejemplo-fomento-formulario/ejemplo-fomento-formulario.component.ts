@@ -17,16 +17,24 @@ export class EjemploFomentoFormularioComponent {
 
 	constructor(private requestApi: RequestApiService) { }
 
+	//Evento que se emite desde la librería web al pulsar el botón de guardar o submit del formulario
+	//Emite un set de datos con la información del formulario
 	dataEvent(data){
 		// Hacer la petición POST usando RequestApiService
-		this.requestApi.post(this.endpointUrl, data).subscribe({
-			next: (response) => {
+		console.log('DATOS GUARDADOS', data);
+		// this.requestApi.post(this.endpointUrl, data).subscribe({
+		// 	next: (response) => {
 	  
-			  console.log('DATOS GUARDADOS', data); 
-			},
-			error: (error) => {
+			   
+		// 	},
+		// 	error: (error) => {
 	  
-			}
-		  });
+		// 	}
+		//   });
+	}
+
+
+	aux_button_event(data){
+		console.log("Los datos del formulario son: ", data)
 	}
 }
