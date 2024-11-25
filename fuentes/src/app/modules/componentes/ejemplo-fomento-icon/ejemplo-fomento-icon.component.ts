@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 	styleUrls: ['./ejemplo-fomento-icon.component.scss'],
 })
 export class EjemploFomentoIconComponent {
-	//@Input() typeStyle: string = "matter";
+	
 	typeStyle = 'material';
 
 	//Atributos mat-icon
