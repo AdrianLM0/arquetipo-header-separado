@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'; 
 import { HttpClient } from '@angular/common/http';
+import { RequestApiService } from '@fomento/i-rf-logic-component-node-lib';
 
 // Declaración del componente
 @Component({
@@ -9,8 +10,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EjemploFomentoTableComponent implements OnInit {
   
+constructor(private requestApi: RequestApiService) {}
+
   // Propiedad para almacenar los datos que serán mostrados en la tabla
   element_data = [];
+isLoading = true;
+tableDescription = "Ejemplo de table"
 
   // Definición de las columnas que se mostrarán en la tabla
   init_columns = [
@@ -30,5 +35,19 @@ export class EjemploFomentoTableComponent implements OnInit {
   apiUrl = this.hostApi + '/api/' + this.tipoChurrera + '/v1/formularios/list';
 
   ngOnInit(): void { 
+    this.fetchData();
+  }
+
+  fetchData(): void {
+    this.requestApi.get<any>(this.apiUrl).subscribe(
+      (data) => {
+        this.element_data = data.content || data;
+        this.isLoading = false;
+      },
+      (error) => {
+        console.error('Error al obtener datos de la API', error);
+        this.isLoading = false;
+      }
+    );
   }
 }

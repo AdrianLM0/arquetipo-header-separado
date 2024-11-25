@@ -13,19 +13,28 @@ export class EjemploFomentoAlertaComponent {
 	@ViewChild(FomentoAlertsComponent, { static: true })
 	alerta: FomentoAlertsComponent;
 	/*alert fase1*/
-	typeStyleButton = 'material';
+	type
+	labelFirstButton = 'Cancelar';
+	labelSecondButton = 'Aceptar';
+	showActionButtons = true;
 
 	themesuccess = 'primary';
 	themeinfo = 'accent';
 	themewarning = 'warn';
 	themeerror = 'warn';
 
-	disabled = false;
-
 	labelsuccess = 'Mostrar Notificación Success';
 	labelinfo = 'Mostrar Notificación Info';
 	labelwarning = 'Mostrar Notificación Warning';
 	labelerror = 'Mostrar Notificación Error';
+
+	currentIndex = 0;
+	onPrimaryButtonClick: any;
+	onSecondaryButtonClick: any;
+
+
+	disabled = false;
+
 
 	successevent = {
 		eventname: 'success',
@@ -90,51 +99,44 @@ export class EjemploFomentoAlertaComponent {
 		},
 	];
 
-	notificationsArray2: Notification[] = [
+	notificationsSimple: Notification[] = [
 		{
 			title: 'Notificación simple',
 			message: 'Este es el contenido de la notificacion simple',
 		},
 	];
 
-	showNotification(
+	showPagedNotification(
 		tipo: string,
-		botonCerrar?: boolean,
 		showActionButtons?: boolean,
-		labelBotonera?: string,
-		textoPrimerBoton?: string,
-		textoSegundoBoton?: string,
+		labelFirstButton?: string,
+		labelSecondButton?: string,
 	) {
-		this.alerta.showNotification(
+		this.alerta.showPagedNotification(
 			this.notificationsArray,
 			tipo,
-			botonCerrar,
 			showActionButtons,
 			() => this.logicaPrimerBoton(),
 			() => this.logicaSegundoBoton(),
-			labelBotonera,
-			textoPrimerBoton,
+			labelFirstButton,
+			labelSecondButton,
 		);
 	}
 
-	showNotification2(
+	showNotification(
 		tipo: string,
-		botonCerrar?: boolean,
 		showActionButtons?: boolean,
-		labelBotonera?: string,
-		textoPrimerBoton?: string,
-		textoSegundoBoton?: string,
+		labelFirstButton?: string,
+		labelSecondButton?: string,
 	) {
-		this.alerta.showNotification(
-			this.notificationsArray2,
+		this.alerta.showPagedNotification(
+			this.notificationsSimple,
 			tipo,
-			botonCerrar,
 			showActionButtons,
 			() => this.logicaPrimerBoton(),
 			() => this.logicaSegundoBoton(),
-			labelBotonera,
-			textoPrimerBoton,
-			
+			labelFirstButton,
+			labelSecondButton,
 		);
 	}
 

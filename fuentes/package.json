@@ -10,7 +10,7 @@
 		"test:coverage": "jest --coverage",
 		"test:watch": "jest --watchAll",
 		"format": "prettier --write \"**/*.{js,ts,jsx,tsx,json,css,scss,md}\"",
-		"itest": "ng cache clean && npm install /app/codigo/web-component-lib/fuentes/dist/i-rf-web-component-node-lib/fomento-i-rf-web-component-node-lib-1.4.0.tgz && npm install && npm start"
+		"itest": "ng cache clean && npm install ../../web-component-lib/fuentes/dist/i-rf-web-component-node-lib/fomento-i-rf-web-component-node-lib-1.4.0.tgz && npm install && npm start"
 	},
 	"private": true,
 	"dependencies": {
@@ -33,7 +33,7 @@
 		"jest": "^29.7.0",
 		"keycloak-angular": "^14.2.0",
 		"keycloak-js": "^23.0.7",
-		"ngx-mat-select-search": "^7.0.5",
+		"ngx-mat-select-search": "^7.0.8",
 		"rxjs": "~7.8.0",
 		"tslib": "^2.3.0",
 		"zone.js": "~0.13.0"
