@@ -45,7 +45,7 @@ describe('EjemploFomentoFormularioComponent', () => {
 	it('should log form data when prueba method is called', () => {
 		const consoleSpy = jest.spyOn(console, 'log');
 		const testData = { example: 'data' };
-		component.prueba(testData);
+		component.dataEvent(testData);
 		expect(consoleSpy).toHaveBeenCalledWith('FORMULARIO RECIBIDO', testData);
 	});
 });

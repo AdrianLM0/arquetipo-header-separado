@@ -12,9 +12,9 @@ export class EjemploFomentoDisclaimerComponent {
 	titulo = 'Obligaciones para el uso de Sistema';
 	parrafo =
 		"Para la ultilización de esta aplicación informática se debe tener en consideración el <a href='https://www.juntadeandalucia.es/boja/2020/208/34'>Código de Conducta</a> en el uso de las Tecnologías de la Información y la Comunicación para profesionales públicos de la Administracion de la Junta de Andalucía (Boja núm. 22 de Octubre de 2020).";
-	usuario: string;
-	ultimoAcceso: string;
-	ultimoCierreSesion: string;
+	usuario='XXXXXXXX';
+	ultimoAcceso='DD/MM/YYY hh:mm';
+	ultimoCierreSesion='DD/MM/YYY hh:mm';
 
 	//Atributos button
 	labelAceptar = 'Aceptar';
