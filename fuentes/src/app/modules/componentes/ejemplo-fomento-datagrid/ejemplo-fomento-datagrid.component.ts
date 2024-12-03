@@ -94,6 +94,10 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   miPlaceholderPersonalizado = 'Selecciona columnas';
   miEnableSearchPersonalizado = true;
 
+  helpButtonAriaLabel = '¿Necesitas ayuda?';
+	globalFilterLabel = 'Buscar en todos los campos'; 
+	dialogTitle = 'Título personalizado para el diálogo'; 
+
   constructor(
     private fb: FormBuilder,
     private apiEndpoints: ApiEndpointsService
