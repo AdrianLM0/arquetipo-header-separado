@@ -12,7 +12,8 @@
         [submit_button]="submit_button"
         [showSubmit]="showSubmit"
         [showReset]="showReset"
-        (submitAction)="prueba($event)"
+        (formDataEvent)="dataEvent($event)"
+        (auxAction)="aux_button_event($event)"
         [alt]="true"
         alt_label="HOLA"
       ></lib-fomento-formulario>
