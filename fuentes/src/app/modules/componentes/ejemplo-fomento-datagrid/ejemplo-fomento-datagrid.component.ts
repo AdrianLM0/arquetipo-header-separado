@@ -79,7 +79,8 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   multi_check_label = 'Seleccionar todos';
   multi_check_label_col = '';
   multicheck_icono = 'check-circle';
-
+	multi_check_arialabel_col = 'Seleccionar todas las filas';
+	multi_check_arialabel_row = "'Seleccionar fila con ID ' + data.id"
 
 
   pageSize: number = 4;
