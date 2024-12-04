@@ -38,10 +38,6 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   rowsPerPageOptions = [5, 10, 15];
   listadoAccionesAux = Constants.EJEMPLO_LISTADO_ACCIONES_AUX_2;
   nPageParam = 'page';
-  multicheck = false;
-  multi_check_index = -1;
-  multi_check_label = 'Multiseleccion';
-  multi_check_label_col = 'Botón multiselección';
   multi_check_type = 'text';
   universal_filter = true;
   filter: 'column' | 'advance' | 'none' = 'advance';
@@ -76,6 +72,15 @@ export class EjemploFomentoDatagridComponent implements OnDestroy, OnInit {
   isLoading = false;
   useGetMethod = true;
   headersTotalElements = 'total-elementos';
+  //Variables de multicheck
+  showMulti = true;
+  multicheck = true;
+  multi_check_index = 0; // Para que la columna de selección sea la primera
+  multi_check_label = 'Seleccionar todos';
+  multi_check_label_col = '';
+  multicheck_icono = 'check-circle';
+
+
 
   pageSize: number = 4;
   pageIndex: number = 0;
@@ -170,5 +175,9 @@ console.error('No existe un formulario')
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
+  onSelectionChange(selectedRows: any[]) {
+    console.log('Filas seleccionadas:', selectedRows);
+    // Puedes realizar otras acciones con los datos seleccionados aquí
+  }
+  
 }
