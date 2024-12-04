@@ -55,6 +55,11 @@ export class EjemploFomentoJsonDatagridComponent implements OnDestroy {
 		],
 	};
 
+
+	helpButtonAriaLabel = '¿Necesitas ayuda?';
+	globalFilterLabel = 'Buscar en todos los campos'; 
+	dialogTitle = 'Título personalizado para el diálogo'; 
+
 	private subscription: Subscription = new Subscription(); // Propiedad para la subscripción
 	constructor() {}
 
