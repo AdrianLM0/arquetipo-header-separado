@@ -22,7 +22,7 @@ export class LayoutComponent implements OnInit {
   brandCaption = 'Arquetipo de componentes reutilizables';
   brandSrc = '../../../assets/images/logo-Proxya-solo.png';
   fontSize = '22px';
-  version = '';
+  version = '0.0.0';
   mostrarfecha = true;
   mostrarhora = true;
   nombre_usuario = 'Usuario';
@@ -39,66 +39,7 @@ export class LayoutComponent implements OnInit {
   
   //para el componente de auth guard si se quiere implementar. Se ha eliminado porque da error.
   //{ "url": "/components/ejemplo-auth-guard", "titulo": "Auth Guard"}, 
-  data_mat = `{
-    "secciones": [ {
-            "name": "Componentes",
-            "url": "",
-            "id": "iconos_Componentes",
-            "icon": "book",
-            "familyIcon": "fas",
-            "subSecciones": [
-              { "url": "/components/alert", "titulo": "Alert"},
-              { "url": "/components/autocomplete", "titulo": "Autocomplete"},
-              { "url": "/components/badge", "titulo": "Badge"},
-              { "url": "/components/button", "titulo": "Boton"},
-              { "url": "/components/bottomSheet", "titulo": "Bottom Sheet"},
-              { "url": "/components/buttonToggle", "titulo": "Button Toggle"},
-              { "url": "/components/card", "titulo": "Card"},
-              { "url": "/components/checkbox", "titulo": "Checkbox"},
-              { "url": "/components/chips", "titulo": "Chips"},
-              { "url": "/components/jsondatagrid", "titulo": "Datagrid - JSON"},
-              { "url": "/components/dialog", "titulo": "Dialog"},
-              { "url": "/components/disclaimer", "titulo": "Disclaimer"},
-              { "url": "/components/divider", "titulo": "Divider"},
-              { "url": "/components/expansion-panel", "titulo": "Expansion Panel"},
-              { "url": "/components/filtro-columnas", "titulo": "Filtro Columnas"},
-              { "url": "/components/form", "titulo": "Formulario"},
-              { "url": "/components/form-field", "titulo": "Form Field"},
-              { "url": "/components/gestion-token", "titulo": "Gestion Token Lib Seguridad"},
-              { "url": "/components/grid-list", "titulo": "Grid List"},
-              { "url": "/components/icon", "titulo": "Icon"},
-              { "url": "/components/input", "titulo": "Input"},
-              { "url": "/components/input-group", "titulo": "Input-Group"},
-              { "url": "/components/brand", "titulo": "Logo"},
-              { "url": "/components/nav", "titulo": "Navigator"},
-              { "url": "/components/notifications", "titulo": "Notificaciones"},
-              { "url": "/components/progress", "titulo": "Progress"},
-              { "url": "/components/ripple", "titulo": "Ripple"},
-              { "url": "/components/select", "titulo": "Select"},
-              { "url": "/components/sidenav", "titulo": "Sidenav"},
-              { "url": "/components/slider", "titulo": "Slider"},
-              { "url": "/components/slide-toggle", "titulo": "Slide Toggle"},
-              { "url": "/components/snackbar", "titulo": "Snackbar"},
-              { "url": "/components/spinner", "titulo": "Spinner"},
-              { "url": "/components/stepper", "titulo": "Stepper"},
-              { "url": "/components/table", "titulo": "Table"},
-              { "url": "/components/tabs", "titulo": "Tabs"},
-              { "url": "/components/toolbar", "titulo": "Toolbar"},
-              { "url": "/components/tooltip", "titulo": "Tooltip"},
-              { "url": "/components/tree", "titulo": "Tree"},
-              { "url": "/components/plantilla-accesoDenegado", "titulo": "Plantilla acceso denegado"},
-              { "url": "/components/datagrid", "titulo": "Plantilla datagrid"},
-              { "url": "/components/plantilla-form", "titulo": "Plantilla formulario"},
-              { "url": "/components/plantilla-listado", "titulo": "Plantilla listado"}              
-            ]            
-        }
-    ],
-    "perfil": [
-      {
-        "iconLogOut": "fas fa-sign-out-alt",
-        "labelBotonLogOut": "CERRAR SESIÓN"
-      }
-    ]}`;
+  
 
   footerStyle = 'material';
   data_footer = `{
@@ -204,4 +145,52 @@ export class LayoutComponent implements OnInit {
       console.error('Error al mostrar la información del token:', error);
     }
   } 
+
+
+
+	rolUsuario = '';
+	ultimoAcceso = 'Hora y día del último acceso del usuario';
+
+	type = 'material';
+	perfil = 'Nombre Ejemplo';
+	mostrarperfil = true;
+  mostrarHeader = true;
+  mostrarAyuda = true;
+  
+	data_mat = `{
+    "secciones": [{
+      "name": "La Junta",
+      "url": "",
+      "id": "iconos_Junta",
+      "icon": "jda",
+      "familyIcon": "fac",
+      "subSecciones": [{"url":"", "titulo": "La Junta"}]
+    }, {
+      "name": "Servicios",
+      "url": "#",
+      "id": "iconos_Servicios",
+      "icon": "laptop",
+      "familyIcon": "fas",
+      "subSecciones": []
+    }, {
+      "name": "Noticias",
+      "url": "#",
+      "id": "iconos_Noticias",
+      "icon": "newspaper",
+      "familyIcon": "fas",
+      "subSecciones": []
+    }
+  ],
+  "perfil": [
+    {
+      "url": "",
+      "iconChangeRol": "fas fa-exchange-alt",
+      "labelBotonCambiaRol": "CAMBIAR DE ROL",
+      "iconLogOut": "fas fa-sign-out-alt",
+      "iconOff": "fas fa-power-off",
+      "labelBotonLogOut": "CERRAR SESIÓN"
+    }
+  ]
+}`;
+
 }

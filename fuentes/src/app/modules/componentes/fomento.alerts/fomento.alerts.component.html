@@ -1,0 +1,145 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+<notifier-container></notifier-container>
+
+<ng-template class="notificacion" #customNotificationSuccess let-notificationData="notification">
+  <div class="alert-container">
+    <my-custom-alert type="notificationData.type">
+      <div style="display: flex; align-items: center; margin-bottom: 6px;">
+        <i class="fa fa-check-circle"></i>
+        <h3 id="textoCabecera" style="margin: 0 16px;">{{ notifications[currentIndex].title }}</h3>
+      </div>
+      <div id="textoCuerpo" style="margin-left: 40px; color: #000;">{{ notifications[currentIndex].message }}</div> 
+      <div class="action-buttons" *ngIf="showActionButtons">
+        
+        <button class="action-button secondary-action" (click)="primerBotonActionClicked(notificationData)">{{
+          labelFirstButton
+          }}</button>
+        <button class="action-button primary-action" (click)="segundoBotonActionClicked(notificationData)">{{
+          labelSecondButton
+          }}</button>
+      </div> 
+    </my-custom-alert>
+    <div class="botones-derecha">
+      <button class="close-button" *ngIf="showCloseButton" (click)="hide(notificationData.id)">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>      
+      <div class="pagination-container" *ngIf="notifications.length > 1">
+        <div class="pagination-buttons">
+          <button class="pagination-button" (click)="previousNotification(notificationData)" [disabled]="currentIndex === 0">&lt;</button>
+          <button class="pagination-button" (click)="nextNotification(notificationData)" [disabled]="currentIndex === notifications.length - 1">&gt;</button>
+        </div>
+        <div class="pagination-label">
+          <span class="pagination-count">{{ currentIndex + 1 }}/{{ notifications.length }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template class="notificacion" #customNotificationError let-notificationData="notification">
+  <div class="alert-container">
+    <my-custom-alert type="notificationData.type">
+      <div style="display: flex; align-items: center; margin-bottom: 6px;">
+        <i class="fa fa-check-circle"></i>
+        <h3 id="textoCabecera" style="margin: 0 16px;">{{ notifications[currentIndex].title }}</h3>
+      </div>
+      <div id="textoCuerpo" style="margin-left: 40px; color: #000;">{{ notifications[currentIndex].message }}</div> 
+      <div class="action-buttons" *ngIf="showActionButtons">
+        
+        <button class="action-button secondary-action" (click)="primerBotonActionClicked(notificationData)">{{
+          labelFirstButton
+          }}</button>
+        <button class="action-button primary-action" (click)="segundoBotonActionClicked(notificationData)">{{
+          labelSecondButton
+          }}</button>
+      </div> 
+    </my-custom-alert>
+    <div class="botones-derecha">
+      <button class="close-button" *ngIf="showCloseButton" (click)="hide(notificationData.id)">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>      
+      <div class="pagination-container" *ngIf="notifications.length > 1">
+        <div class="pagination-buttons">
+          <button class="pagination-button" (click)="previousNotification(notificationData)" [disabled]="currentIndex === 0">&lt;</button>
+          <button class="pagination-button" (click)="nextNotification(notificationData)" [disabled]="currentIndex === notifications.length - 1">&gt;</button>
+        </div>
+        <div class="pagination-label">
+          <span class="pagination-count">{{ currentIndex + 1 }}/{{ notifications.length }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+
+<ng-template class="notificacion" #customNotificationWarning let-notificationData="notification">
+  <div class="alert-container">
+    <my-custom-alert type="notificationData.type">
+      <div style="display: flex; align-items: center; margin-bottom: 6px;">
+        <i class="fa fa-check-circle"></i>
+        <h3 id="textoCabecera" style="margin: 0 16px;">{{ notifications[currentIndex].title }}</h3>
+      </div>
+      <div id="textoCuerpo" style="margin-left: 40px; color: #000;">{{ notifications[currentIndex].message }}</div> 
+      <div class="action-buttons" *ngIf="showActionButtons">
+        
+        <button class="action-button secondary-action" (click)="primerBotonActionClicked(notificationData)">{{
+          labelFirstButton
+          }}</button>
+        <button class="action-button primary-action" (click)="segundoBotonActionClicked(notificationData)">{{
+          labelSecondButton
+          }}</button>
+      </div> 
+    </my-custom-alert>
+    <div class="botones-derecha">
+      <button class="close-button" *ngIf="showCloseButton" (click)="hide(notificationData.id)">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>      
+      <div class="pagination-container" *ngIf="notifications.length > 1">
+        <div class="pagination-buttons">
+          <button class="pagination-button" (click)="previousNotification(notificationData)" [disabled]="currentIndex === 0">&lt;</button>
+          <button class="pagination-button" (click)="nextNotification(notificationData)" [disabled]="currentIndex === notifications.length - 1">&gt;</button>
+        </div>
+        <div class="pagination-label">
+          <span class="pagination-count">{{ currentIndex + 1 }}/{{ notifications.length }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template class="notificacion" #customNotificationAdvise let-notificationData="notification">
+  <div class="alert-container">
+  <my-custom-alert type="notificationData.type">
+    <div style="display: flex; align-items: center; margin-bottom: 6px;">
+      <i class="fa fa-check-circle"></i>
+      <h3 id="textoCabecera" style="margin: 0 16px;">{{ notifications[currentIndex].title }}</h3>
+    </div>
+    <div id="textoCuerpo" style="margin-left: 40px; color: #000;">{{ notifications[currentIndex].message }}</div> 
+    <div class="action-buttons" *ngIf="showActionButtons">
+      
+      <button class="action-button secondary-action" (click)="primerBotonActionClicked(notificationData)">{{
+        labelFirstButton
+        }}</button>
+      <button class="action-button primary-action" (click)="segundoBotonActionClicked(notificationData)">{{
+        labelSecondButton
+        }}</button>
+    </div> 
+  </my-custom-alert>
+  <div class="botones-derecha">
+    <button class="close-button" *ngIf="showCloseButton" (click)="hide(notificationData.id)">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </button>      
+    <div class="pagination-container" *ngIf="notifications.length > 1">
+      <div class="pagination-buttons">
+        <button class="pagination-button" (click)="previousNotification(notificationData)" [disabled]="currentIndex === 0">&lt;</button>
+        <button class="pagination-button" (click)="nextNotification(notificationData)" [disabled]="currentIndex === notifications.length - 1">&gt;</button>
+      </div>
+      <div class="pagination-label">
+        <span class="pagination-count">{{ currentIndex + 1 }}/{{ notifications.length }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-template>

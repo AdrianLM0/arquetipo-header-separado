@@ -1,0 +1,31 @@
+@use '../../../../assets/variables.scss';
+
+.upper-bar {
+	padding: 0px 2.5rem;
+	background-color: rgb(51, 51, 51);
+	color: #ffffff;
+	height: 2.5rem;
+	font-family: variables.$source-sans-pro-font;
+	line-height: 1.25rem;
+	font-size: 0.9rem;
+	cursor: default;
+
+	.font_1 {
+		font-weight: 700;
+	}
+
+	.far {
+		margin-left: 30%;
+	}
+}
+
+.example-spacer {
+	flex: 1 1 auto;
+}
+
+.font_2,
+.font_2 a {
+	text-decoration: none;
+	color: #ffffff;
+	font-weight: variables.$font-weight-default;
+}

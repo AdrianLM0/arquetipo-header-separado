@@ -1,0 +1,24 @@
+<div class="header-menu">
+<ng-template ngFor let-i [ngForOf]="DATA.secciones">
+    <div class="el_header_container" tabindex="0" id="header-{{ i.name }}" (click)="changeFocus(i.name)" 
+            (keypress)="changeFocus(i.name)">
+        <div class="elemento_header" *ngIf="i.subSecciones.length > 0; else elseBlock" [matMenuTriggerFor]="menu" role="button">
+        <i class="{{ i.familyIcon }} fa-{{ i.icon }}" *ngIf="i.icon !== 'jda'"></i>
+        <i class="{{ i.familyIcon }}" *ngIf="i.icon === 'jda'"><svg aria-hidden="true" focusable="false" data-prefix="fac" data-icon="jda" class="svg-inline--fa fa-jda fa-w-18 fa- " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62 57"><path fill="currentColor" d="M12.4730476,60.000381 L0.499714286,60.000381 L28.6768571,0.0737142857 L40.6492381,0.0737142857 L64.4637143,59.8484762 L64.4357143,59.8477143 L64.5388571,60.0000952 L52.4912381,60.0000952 C47.7121905,55.6677143 41.3702857,53.0267619 34.4112381,53.0267619 C32.4426667,53.0267619 30.5255238,53.2439048 28.6769524,53.6448571 L28.6769524,53.6448571 L28.6769524,44.2772381 C30.5312381,43.9839048 32.4321905,43.8305714 34.368381,43.8305714 C38.7798054,43.8305714 43.0069381,44.6191906 46.9166101,46.0630963 L34.1551429,13.8865714 L12.4730476,60.000381 Z"></path></svg></i>
+        <span>{{ i.name }}&nbsp;&nbsp;<a class="fas fa-chevron-down"><span></span></a></span>
+        <mat-menu #menu="matMenu" class="menu_el">
+            <a href="{{ sub.url }}" *ngFor="let sub of i.subSecciones"><button mat-menu-item>{{ sub.titulo }}</button></a>
+        </mat-menu>
+        </div>
+
+        <ng-template #elseBlock>
+            <a href="{{i.url}}"><div class="elemento_header">
+                <i class="{{ i.familyIcon }} fa-{{ i.icon }}" *ngIf="i.icon !== 'jda'"></i>
+                <i class="{{ i.familyIcon }}" *ngIf="i.icon === 'jda'"><svg aria-hidden="true" focusable="false" data-prefix="fac" data-icon="jda" class="svg-inline--fa fa-jda fa-w-18 fa- " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62 57"><path fill="currentColor" d="M12.4730476,60.000381 L0.499714286,60.000381 L28.6768571,0.0737142857 L40.6492381,0.0737142857 L64.4637143,59.8484762 L64.4357143,59.8477143 L64.5388571,60.0000952 L52.4912381,60.0000952 C47.7121905,55.6677143 41.3702857,53.0267619 34.4112381,53.0267619 C32.4426667,53.0267619 30.5255238,53.2439048 28.6769524,53.6448571 L28.6769524,53.6448571 L28.6769524,44.2772381 C30.5312381,43.9839048 32.4321905,43.8305714 34.368381,43.8305714 C38.7798054,43.8305714 43.0069381,44.6191906 46.9166101,46.0630963 L34.1551429,13.8865714 L12.4730476,60.000381 Z"></path></svg></i>
+                <span>{{ i.name }}</span>
+            </div></a>
+        </ng-template>
+    </div>
+</ng-template>
+<lib-fomento-user *ngIf="mostrarmenu_usuario" [data]="DATA.perfil" [usuario]="nombre_usuario" [listaPrivilegios]="listaPrivilegios" [ultimoAcceso]="ultimoAcceso" [type]="type"/>
+</div>

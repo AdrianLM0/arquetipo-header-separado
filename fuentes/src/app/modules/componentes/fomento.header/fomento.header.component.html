@@ -1,0 +1,17 @@
+<mat-toolbar class="upper-bar">
+
+    <span class="font_1">{{ version_pattern }}{{ version }}</span>
+    <span *ngIf="version && (mostrarfecha || mostrarhora)">&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+    <div *ngIf="mostrarfecha">
+        <span class="font_2">{{ time | date: pattern}}</span>
+        <span *ngIf="mostrarhora">&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+    </div>
+    <span *ngIf="mostrarhora">{{ time | date: 'hh:mm:ss'}}</span>
+    <span class="example-spacer"></span>
+
+    <a *ngIf="mostrarAyuda" href="{{ urlAyuda }}">
+        <span class="font_2">Ayuda</span>
+        <span><i class="far fa-question-circle font_2"></i></span>
+    </a>
+
+</mat-toolbar>

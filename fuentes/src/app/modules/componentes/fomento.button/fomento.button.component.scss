@@ -1,0 +1,185 @@
+@use '../../../../assets/variables.scss';
+@import '../../../../assets/theme-JdA.scss';
+
+:host {
+	display: block;
+	font-family: variables.$source-sans-pro-font, variables.$sans-serif-font;
+	--main-hover: #{variables.$primary-color};
+	--main: #{variables.$primary-color};
+	--main-help: #{variables.$primary-light-color};
+	--main-specific-help: #f7fbf8;
+	--main-backgroung: #ffffff;
+	--grey-main: #333333;
+	--grey-help: #bebebe;
+	--grey-container: #eeeeee;
+	--grey-specific-help: #f5f5f5;
+	--status-success: #2abc67;
+	--status-info: #5bc0de;
+	--status-warning: #f0ad4e;
+	--status-error: #d9534f;
+	--graph-1: #77b5c3;
+	--graph-2: #4863a3;
+	--graph-3: #9371ac;
+	--graph-4: #d87d7d;
+	--graph-5: #d9a46c;
+	--graph-6: #e3cd66;
+}
+
+:host a {
+	text-decoration: none !important;
+}
+
+/* :host:not([label]) button {
+	padding: 27.4px 34.125px !important;
+} */
+
+:host([label='']) button {
+	padding: 18.5px 18px !important;
+}
+
+:host([icon='']) button {
+	padding: 10.46px 28px !important;
+}
+
+:host([label='']) i {
+	position: absolute !important;
+	top: 0px !important;
+	left: 47% !important;
+}
+
+:host a button {
+	font-family: variables.$source-sans-pro-font !important;
+	font-size: variables.$font-size-default !important;
+	font-weight: bold !important;
+	border-radius: 5px !important;
+	padding: 10px 33px !important;
+	border: 2px solid transparent !important;
+	min-width: 0px !important;
+	color: white !important;
+
+	letter-spacing: normal !important;
+	position: relative !important;
+	height: 92% !important;
+}
+
+/* Ajusta el tamaño del botón cuando haya un icono material dentro */
+:host a button.has-font-icon {
+	font-family: variables.$source-sans-pro-font !important;
+	font-size: variables.$font-size-default !important;
+	font-weight: bold !important;
+	border-radius: 5px !important;
+	padding: 10px 33px !important;
+	border: 2px solid transparent !important;
+	min-width: 0px !important;
+	color: white !important;
+	letter-spacing: normal !important;
+	position: relative !important;
+	padding-top: 30px !important;
+	height: 92% !important;
+}
+
+:host([theme='primary']) button {
+	background-color: variables.$primary-color !important;
+}
+
+:host([theme='secondary']) button {
+	background: white !important;
+	color: variables.$primary-color !important;
+	border: 2px solid variables.$primary-color !important;
+}
+
+:host([theme='secondary']) button:hover {
+	color: white !important;
+	border: 2px solid variables.$primary-color !important;
+}
+
+:host([theme='info']) button {
+	background-color: rgb(91, 192, 222) !important;
+}
+
+:host([theme='success']) button {
+	background-color: rgb(92, 150, 106) !important;
+}
+
+:host([theme='warning']) button {
+	background-color: rgb(240, 173, 78) !important;
+}
+
+:host([theme='error']) button {
+	background-color: rgb(217, 83, 79) !important;
+}
+
+:host([theme='primary']) button:hover {
+	background-color: rgb(11, 76, 26) !important;
+}
+
+:host([ng-reflect-disabled='true']) button {
+	opacity: 0.5 !important;
+	cursor: default !important;
+}
+
+.mat-mdc-unelevated-button.mat-unthemed {
+	--mdc-filled-button-container-color: #{variables.$primary-color};
+	--mdc-filled-button-label-text-color: white !important;
+}
+
+.mat-mdc-unelevated-button[disabled][disabled] {
+	--mdc-filled-button-disabled-container-color: #83b88f !important;
+	--mdc-filled-button-disabled-label-text-color: white !important;
+}
+
+.mdc-button--unelevated:hover {
+	background-color: #0b4c1a;
+	--mdc-filled-button-label-text-color: white !important;
+}
+
+.mdc-button:hover {
+	background-color: variables.$primary-color;
+	color: white !important;
+}
+
+.mat-mdc-outlined-button:not(:disabled) {
+	border-color: variables.$primary-color !important;
+	color: variables.$primary-color;
+}
+
+.mdc-button {
+	font-family: variables.$source-sans-pro-font !important;
+	font-size: 14px !important;
+	font-weight: bold !important;
+	border-radius: 5px !important;
+	padding: 21px 28px !important;
+	letter-spacing: 0em !important;
+	border: 2px solid transparent !important;
+	min-width: 0px !important;
+}
+
+i {
+	position: relative; 
+	top: 0; 
+	left: auto; 
+	transform: none;
+	margin-right: 4px;
+}
+
+
+.button-container {
+	display: flex !important;
+	gap: 10px !important;
+	flex-wrap: wrap !important;
+}
+
+button .mat-icon {
+	margin-bottom: -15px !important;
+	font-size: 18px !important;
+}
+
+button {
+	cursor: pointer !important;
+}
+
+.inline-icon i,
+.alt-button i {
+position: initial !important;
+transform: none !important;
+}

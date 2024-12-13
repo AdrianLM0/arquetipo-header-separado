@@ -1,0 +1,131 @@
+// ENCONTRAR REGLAS EN THEMEJDA.SCSSS
+@use '../../../../assets/variables.scss';
+
+::ng-deep .hidden {
+    display: none;
+}
+::ng-deep .mat-mdc-select-arrow-wrapper {
+		display: none !important;
+}
+
+::ng-deep .mat-mdc-form-field-subscript-wrapper.mat-mdc-form-field-bottom-align {
+		display: none;
+}
+
+::ng-deep .page-selector .mat-mdc-form-field-infix {
+		width: 10px !important;
+}
+
+::ng-deep .page-selector .mat-mdc-form-field-subscript-wrapper {
+		height: 0px;
+}
+
+::ng-deep .mat-focused .mdc-text-field--focused #iconoSelect {
+		transform: rotate(180deg);
+}
+
+::ng-deep .mat-mdc-select {
+		font-size: 14px;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--outlined
+		.mat-mdc-form-field-infix {
+		padding-top: 10px;
+		padding-bottom: 10px;
+}
+
+::ng-deep .mat-mdc-form-field-icon-suffix > .mat-icon {
+		padding: 10px;
+}
+
+::ng-deep .mat-mdc-form-field-infix {
+		min-height: 0;
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__leading,
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__notch,
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__trailing {
+		border-color: variables.$primary-light-color !important;
+		border-width: 2px !important;
+}
+
+.select-container
+		.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__leading,
+	.select-container
+		.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__notch,
+	.select-container
+		.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__trailing {
+		border-color: variables.$primary-color !important;
+		border-width: 2px !important;
+}
+
+.mdc-text-field--outlined:not(
+			.mdc-text-field--disabled
+		).mdc-text-field--focused
+		.mdc-notched-outline__trailing,
+	.mdc-text-field--outlined:not(
+			.mdc-text-field--disabled
+		).mdc-text-field--focused
+		.mdc-notched-outline__leading {
+		border-color: #087020 !important;
+}
+
+::ng-deep h4.select-title {
+		margin: 0 0 10px !important;
+		font-family: variables.$source-sans-pro-font;
+		font-weight: 600;
+}
+
+::ng-deep div.mat-mdc-select-panel.panel-select {
+	box-shadow: 0px 4px 10px 1px rgba(219, 216, 219, 1);
+	margin-top: 5px;
+	background-color: #fff;
+}
+
+::ng-deep .mat-mdc-option:hover:not(.mdc-list-item--disabled) {
+	background-color: variables.$primary-light-color 20 !important;
+}
+
+::ng-deep .panel-select.mat-primary
+	.mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after,
+.panel-select.mat-primary
+	.mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-minimal::after {
+	color: variables.$primary-color !important;
+}
+
+::ng-deep .panel-select
+	.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(
+		.mat-mdc-option-multiple
+	) {
+	background-color: variables.$primary-light-color 20;
+}
+
+::ng-deep .select-form.mat-focused .mdc-text-field--focused #iconoSelect {
+	transform: rotate(180deg);
+}
+
+::ng-deep .mat-pseudo-checkbox-checked{
+	background-color: transparent !important;
+}
+
+/* ::ng-deep .mdc-text-field--outlined {
+	padding-right: max(16px, var(--mdc-outlined-text-field-container-shape)) !important;
+} */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+  }
+  

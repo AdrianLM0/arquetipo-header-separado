@@ -1,0 +1,142 @@
+@use '../../../../assets/variables.scss';
+
+.perfil_container {
+	height: 72px;
+	width: 82px;
+	background-color: variables.$primary-light-color;
+	color: variables.$primary-color;
+
+	display: variables.$display-default;
+	align-items: variables.$align-default;
+	align-self: center;
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+}
+
+.header-perfil {
+	display: variables.$display-default;
+}
+
+.perfil-t {
+	font-size: 26px;
+	font-weight: 700;
+	line-height: 16px;
+	margin-left: 15px;
+	font-family: variables.$source-sans-pro-font;
+}
+
+.container-menu-perfil {
+	padding: 2% 5%;
+}
+
+.container-button-basic {
+	display: flex;
+	align-items: baseline;
+	gap: 5%;
+	margin-top: 8%;
+	cursor: pointer;
+}
+
+.fas {
+	color: variables.$primary-color;
+	font-size: 20px;
+}
+
+.nombre-usuario {
+	color: #007a33;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 16px;
+	font-family: variables.$source-sans-pro-font;
+	padding-bottom: 3%;
+}
+
+.funcion {
+	font-family: variables.$source-sans-pro-font;
+}
+
+.ultimoAcceso {
+	font-family: variables.$source-sans-pro-font;
+}
+
+.container-spans {
+	display: grid;
+}
+
+.span-funcion {
+	display: inline;
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+.span-ultimoAcceso {
+	display: inline;
+}
+
+.container-buttons {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin-top: 5%;
+}
+
+.close-button {
+	margin-right: 5%;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+
+	.fas {
+		font-size: 16px;
+		color: variables.$primary-color;
+	}
+}
+
+.ri-more-2-fill {
+	margin-left: 5px;
+	cursor: variables.$cursor-default;
+}
+
+.mat-mdc-menu-panel {
+	border-radius: 16px !important;
+	margin-top: 10px;
+}
+
+.container-dialog {
+	margin-top: 2%;
+}
+
+.container-headerDialog {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+.title-dialog {
+	margin-left: 5%;
+}
+
+.text-dialog {
+	margin-left: -5%;
+}
+
+.container-textSelect {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.container-buttonDialog {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 2%;
+	margin-top: 3%;
+}
+
+.select-dialog {
+	margin-top: 2%;
+}

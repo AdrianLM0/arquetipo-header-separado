@@ -1,20 +1,34 @@
 <div class="wrapper">
-
+<!--
   <header>
     <lib-fomento-nav class="custom-nav" [data_mat]="data_mat" [data_matter]="data_matter" [version]="version" [mostrarfecha]="mostrarfecha"
       [mostrarhora]="mostrarhora" [urlAyuda]="urlAyuda" [brandStyle]="brandStyle" [brandName]="brandName" [brandCaption]="brandCaption" [brandSrc]="brandSrc"
       [mostrarmenu_usuario]="mostrarmenu_usuario" [alt_text]="alt_text" [listaPrivilegios]="lista" [typeStyle]="navTypeStyle" [nombre_usuario]="nombre_usuario" [type]="typeTemplate"></lib-fomento-nav>
   </header>
-
+-->
+<header><lib-fomento-nav
+  [typeStyle]="type"
+  [perfil]="perfil"
+  [version]="version"
+  [urlAyuda]="urlAyuda"
+  [brandStyle]="brandStyle"
+  [brandCaption]="brandCaption"
+  [mostrar_perfil]="mostrarperfil"
+  [mostrarfecha]="mostrarfecha"
+  [mostrarhora]="mostrarhora"
+  [data_mat]="data_mat"
+  [nombre_usuario]="nombre_usuario"
+  [privilegioUsuario]="rolUsuario"
+  [ultimoAcceso]="ultimoAcceso"
+  [type]="typeTemplate"
+  [mostrarHeader]="mostrarHeader"
+  [mostrarAyuda]="mostrarAyuda"
+/></header>
 
   <main>
     <div class="container">
-
-      <router-outlet></router-outlet>
+      
+      <!--<router-outlet></router-outlet>-->
     </div>
   </main>
-
-   <lib-fomento-footer [typeStyle]="footerStyle" [data]="data_footer" [ocultarSecciones]="ocultarSecciones"
-    [ocultarSeccionSocial]="ocultarSeccionSocial">
-  </lib-fomento-footer> 
 </div>

@@ -34,4 +34,5 @@ export class HomeDashboardComponent implements OnInit {
 			console.error('Error al mostrar la información del token:', error);
 		}
 	}
+
 }

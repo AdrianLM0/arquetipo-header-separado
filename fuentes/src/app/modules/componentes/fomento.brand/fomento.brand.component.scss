@@ -1,0 +1,84 @@
+@use '../../../../assets/variables.scss';
+
+:host {
+	display: block;
+	font-family: variables.$source-sans-pro-font, variables.$sans-serif-font;
+	--main-hover: #{variables.$primary-color};
+	--main: #{variables.$primary-color};
+	--main-help: #{variables.$primary-color};
+	--main-specific-help: #f7fbf8;
+	--main-backgroung: #ffffff;
+	--grey-main: #333333;
+	--grey-help: #bebebe;
+	--grey-container: #eeeeee;
+	--grey-specific-help: #f5f5f5;
+	--status-success: #2abc67;
+	--status-info: #5bc0de;
+	--status-warning: #f0ad4e;
+	--status-error: #d9534f;
+	--graph-1: #77b5c3;
+	--graph-2: #4863a3;
+	--graph-3: #9371ac;
+	--graph-4: #d87d7d;
+	--graph-5: #d9a46c;
+	--graph-6: #e3cd66;
+	--theme: #{variables.$primary-color};
+	--gray: #333333;
+}
+
+.logo {
+	display: inline-flex;
+	align-items: variables.$align-default;
+}
+
+.logo img {
+	max-width: 4.125rem;
+	max-height: 3.875rem;
+	padding: 0.75rem;
+}
+
+.logo .site-name {
+	/*font-family: Montserrat, variables.$sans-serif-font;
+  letter-spacing: -0.27px;
+  color: var(--gray);*/
+
+	color: var(--Principal, variables.$primary-color);
+	font-family: variables.$noto-sans-hk-font;
+	font-size: 1.5rem;
+	font-style: normal;
+	font-weight: variables.$font-weight-default;
+	line-height: normal;
+	padding-bottom: 0.125rem;
+	width: 16.2rem;
+
+	.split {
+		line-height: 1.6rem;
+		font-size: 1.3rem;
+	}
+}
+
+.logo .site-name .subtitle {
+	/*font-weight: 700;
+  color: var(--theme);*/
+
+	color: #333;
+
+	font-family: variables.$noto-sans-hk-font;
+	font-size: 0.75rem;
+	font-style: normal;
+	font-weight: 800;
+	line-height: 0.875rem;
+	/* 116.667% */
+}
+
+a {
+	text-decoration: none;
+}
+
+.line-vertical {
+	box-sizing: variables.$box-sizing-default;
+	height: 33px;
+	width: 1px;
+	border: 2px solid var(--theme);
+	margin: 0px 30px;
+}

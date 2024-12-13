@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css"/>
+
+
+<!-- <ng-template [ngIf]="typeStyle === 'matter' ">
+    <matter-header
+      [data]="data_matter"
+      [opcionesAdministrador]="OPCIONES_ADMINISTRADOR"
+      [ocultarAccesibilidadTopHeader]="OCULTAR_ACCESIBILIDAD_TOP_HEADER"
+      [ocultarSocialTopHeader]="OCULTAR_SOCIAL_TOP_HEADER"
+      [ocultarPopUpMiPerfil]="OCULTAR_POPUP_MI_PERFIL"
+      [ocultarBarraVerde]="OCULTAR_BARRA_VERDE"
+      [ocultarTextosLogos]="OCULTAR_TEXTO_LOGOS"
+      [ocultarSecciones]="OCULTAR_SECCIONES"
+      [ocultarSeccionMiPerfil]="OCULTAR_SECCION_MI_PERFIL"
+      [perfil]="PERFIL"
+      [enlaceSeccionMiPerfil]="ENLACE_SECCION_MI_PERFIL"
+      [enlaceMiPerfil]="ENLACE_MI_PERFIL"
+      [usuarioLogado]="USUARIO_LOGADO"
+      [enlaceCerrarSesion]="ENLACE_CERRAR_SESSION"
+      [isAdministrador]="IS_ADMINISTRADOR"
+      [ultimoAcceso]="ULTIMO_ACCESO"
+      [fechaHoy]="FECHA_HOY"
+      [horaHoy]="HORA_HOY"
+      [perfilIconIN]="PERFIL_ICON_IN"
+      [perfilIcon]="PERFIL_ICON"
+      [listaIcon]="LISTA_ICON"
+      [perfilText]="PERFIL_TEXT"
+      [razonSocial]="RAZON_SOCIAL"
+      [userFuncionario]="USER_FUNCIONARIO"
+      [nombrefuncionarioRepresentante]="NOMBRE_FUNCIONARIO_REPRESENTANTE"
+      [listaServicios]="LISTA_SERVICIOS"
+      [tamlistaServicio]="TAM_LISTA_SERVICIOS"
+      [clickRealizado]="CLICK_REALIZADO"
+      [codigoModal]="CODIGO_MODAL"
+      [imagenModal]="IMAGEN_MODAL"
+      [imagenModalPequeNa]="IMAGEN_MODAL_PEQUENA"
+      [mostrarModal]="MOSTRAR_MODAL"
+      [textSupModal]="TEXT_SUP_MODAL"
+      [textInfModal]="TEXT_INF_MODAL"
+    ></matter-header>
+</ng-template> -->
+
+<ng-template [ngIf]="typeStyle === 'material'">
+  <div>
+  <lib-fomento-header [version]="version" [mostrarfecha]="mostrarfecha" [mostrarhora]="mostrarhora" [urlAyuda]="urlAyuda" [mostrarAyuda]="mostrarAyuda" />
+</div>
+  <i class="fa fa-bars iconoRes" *ngIf="mostrar_menu || data_mat.length === 0" role="button"
+    (click)="mostrarDesplegable($event)" (keypress)="mostrarDesplegable" tabindex="0"></i>
+  <mat-toolbar class="mat-container">
+    <lib-fomento-brand [brandStyle]="brandStyle" [name]="brandName" [caption]="brandCaption" [src]="brandSrc" [alt_text]="alt_text"></lib-fomento-brand>
+    <span class="example-spacer"></span>
+    <lib-fomento-menu [DATA]="data_mat" *ngIf="mostrar_menu" [nombre_usuario]="nombre_usuario" [mostrarmenu_usuario]="mostrarmenu_usuario" [listaPrivilegios]="listaPrivilegios" [ultimoAcceso]="ultimoAcceso" [type]="type"/>
+  </mat-toolbar>
+  <div class="barraH"></div>
+</ng-template>

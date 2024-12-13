@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.0.1/remixicon.css"/>
+
+<label class="sr-only" *ngIf="label !== ''" [attr.for]="selectId">{{ label }}</label>
+
+<mat-form-field 
+  class="formField" 
+  appearance="outline" 
+  [hideRequiredMarker]="hideRequiredMarker"
+  [attr.aria-labelledby]="selectId"
+  [attr.aria-describedby]="descriptionId"
+  [attr.aria-label]="label"
+  [attr.role]="'combobox'"
+  [attr.aria-expanded]="!readonly"
+  [attr.aria-required]="isRequired"
+  [attr.aria-disabled]="disabled"
+>
+  <mat-select 
+    [id]="selectId"
+    [panelClass]="readonly ? 'hidden' : 'panel-select'"
+    class="fomento-select"
+    [disableOptionCentering]="true"
+    [isRequired]="isRequired"
+    [disabled]="disabled"
+    [(value)]="selected"
+    (selectionChange)="selectEvent($event.value)" 
+    aria-live="polite"
+    [attr.aria-label]="label"
+  >
+    <mat-option 
+      value="option1" 
+      [ngStyle]="{ display: 'none'}" 
+      aria-hidden="true">{{ default }}
+    </mat-option>
+
+    <mat-optgroup label="- Elija una opción -">
+      <mat-option 
+        *ngFor="let option of data" 
+        [value]="option.value" 
+        attr.aria-label="{{ option.description }}" 
+        role="option">
+        {{ option.description }}
+      </mat-option>
+    </mat-optgroup>
+  </mat-select>
+
+  <mat-icon 
+    id="iconoSelect" 
+    matSuffix 
+    class="ri-arrow-down-s-line">
+  </mat-icon>
+</mat-form-field>
+
+<!-- Descripción adicional -->
+<p [id]="descriptionId" *ngIf="additionalDescription && selected === 'option1'">
+  {{ additionalDescription }}
+</p>

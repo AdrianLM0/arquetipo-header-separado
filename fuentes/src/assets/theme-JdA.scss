@@ -1,0 +1,1135 @@
+@use './variables.scss';
+@use '@angular/material' as mat;
+/*@use '@angular/material/prebuilt-themes/indigo-pink.css';*/
+@include mat.core();
+@import 'https://fonts.googleapis.com/css?family=Material+Icons';
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+@import url('https://cdn.jsdelivr.net/npm/@angular/material@14.0.0/prebuilt-themes/indigo-pink.css');
+$fontConfig: (
+	display-4: mat-typography-level(112px, 112px, 300, 'Noto Sans HK', -0.0134em),
+	display-3: mat-typography-level(56px, 56px, 400, 'Noto Sans HK', -0.0089em),
+	display-2: mat-typography-level(45px, 48px, 400, 'Noto Sans HK', 0em),
+	display-1: mat-typography-level(34px, 40px, 400, 'Noto Sans HK', 0.0074em),
+	headline: mat-typography-level(24px, 32px, 400, 'Noto Sans HK', 0em),
+	title: mat-typography-level(20px, 32px, 500, 'Noto Sans HK', 0.0075em),
+	subheading-2: mat-typography-level(16px, 28px, 400, 'Noto Sans HK', 0.0094em),
+	subheading-1: mat-typography-level(15px, 24px, 500, 'Noto Sans HK', 0.0067em),
+	body-2: mat-typography-level(14px, 24px, 500, 'Noto Sans HK', 0.0179em),
+	body-1: mat-typography-level(14px, 20px, 400, 'Noto Sans HK', 0.0179em),
+	button: mat-typography-level(14px, 14px, 500, 'Noto Sans HK', 0.0893em),
+	caption: mat-typography-level(12px, 20px, 400, 'Noto Sans HK', 0.0333em),
+	input: mat-typography-level(inherit, 1.125, 400, 'Noto Sans HK', 1.5px),
+);
+
+$my-app-typography: mat.define-typography-config($fontConfig);
+
+/*Foreground Elements*/
+/*Light Theme Text*/
+
+$mat-light-theme-foreground: (
+	base: black,
+	divider: variables.$dark-dividers,
+	dividers: variables.$dark-dividers,
+	disabled: variables.$dark-disabled-text,
+	disabled-button: rgba(variables.$dark-text, 0.26),
+	disabled-text: variables.$dark-disabled-text,
+	elevation: black,
+	secondary-text: variables.$dark-accent-text,
+	hint-text: variables.$dark-disabled-text,
+	accent-text: variables.$dark-accent-text,
+	icon: variables.$dark-accent-text,
+	icons: variables.$dark-accent-text,
+	text: variables.$dark-primary-text,
+	slider-min: variables.$dark-primary-text,
+	slider-off: rgba(variables.$dark-text, 0.26),
+	slider-off-active: variables.$dark-disabled-text,
+);
+
+$mat-dark-theme-foreground: (
+	base: variables.$light-text,
+	divider: variables.$light-dividers,
+	dividers: variables.$light-dividers,
+	disabled: variables.$light-disabled-text,
+	disabled-button: rgba(variables.$light-text, 0.3),
+	disabled-text: variables.$light-disabled-text,
+	elevation: black,
+	hint-text: variables.$light-disabled-text,
+	secondary-text: variables.$light-accent-text,
+	accent-text: variables.$light-accent-text,
+	icon: variables.$light-text,
+	icons: variables.$light-text,
+	text: variables.$light-text,
+	slider-min: variables.$light-text,
+	slider-off: rgba(variables.$light-text, 0.3),
+	slider-off-active: rgba(variables.$light-text, 0.3),
+);
+
+$mat-light-theme-background: (
+	background: variables.$light-background,
+	status-bar: variables.$light-bg-darker-20,
+	app-bar: variables.$light-bg-darker-5,
+	hover: variables.$dark-bg-alpha-4,
+	card: variables.$light-bg-lighter-5,
+	dialog: variables.$light-bg-lighter-5,
+	tooltip: variables.$dark-bg-tooltip,
+	disabled-button: variables.$dark-bg-alpha-12,
+	raised-button: variables.$light-bg-lighter-5,
+	focused-button: variables.$dark-focused,
+	selected-button: variables.$light-bg-darker-20,
+	selected-disabled-button: variables.$light-bg-darker-30,
+	disabled-button-toggle: variables.$light-bg-darker-10,
+	unselected-chip: variables.$light-bg-darker-10,
+	disabled-list-option: variables.$light-bg-darker-10,
+);
+
+/*Background palette for dark themes.*/
+$mat-dark-theme-background: (
+	background: variables.$dark-background,
+	status-bar: variables.$dark-bg-lighter-20,
+	app-bar: variables.$dark-bg-lighter-5,
+	hover: variables.$light-bg-alpha-4,
+	card: variables.$dark-bg-lighter-5,
+	dialog: variables.$dark-bg-lighter-5,
+	tooltip: variables.$dark-bg-lighter-20,
+	disabled-button: variables.$light-bg-alpha-12,
+	raised-button: variables.$dark-bg-lighter-5,
+	focused-button: variables.$light-focused,
+	selected-button: variables.$dark-bg-lighter-20,
+	selected-disabled-button: variables.$dark-bg-lighter-30,
+	disabled-button-toggle: variables.$dark-bg-lighter-10,
+	unselected-chip: variables.$dark-bg-lighter-20,
+	disabled-list-option: variables.$dark-bg-lighter-10,
+);
+
+/*heme Config*/
+body {
+	--primary-color: #{variables.$primary-color};
+	--primary-lighter-color: #{variables.$primary-light-color};
+	--primary-darker-color: #{variables.$primary-color};
+	--text-primary-color: #{variables.$light-primary-text};
+	--text-primary-lighter-color: #{variables.$dark-primary-text};
+	--text-primary-darker-color: #{variables.$light-primary-text};
+	--accent-color: #{variables.$primary-color};
+	--accent-lighter-color: #{variables.$primary-light-color};
+	--accent-darker-color: #{variables.$primary-color};
+	--text-accent-color: #{variables.$light-primary-text};
+	--text-accent-lighter-color: #{variables.$dark-primary-text};
+	--text-accent-darker-color: #{variables.$light-primary-text};
+}
+
+$mat-primary: (
+	main: variables.$primary-color,
+	lighter: #020202,
+	darker: variables.$primary-color,
+	200: variables.$primary-color,
+	// For slide toggle,
+	contrast:
+		(
+			main: variables.$light-primary-text,
+			lighter: variables.$dark-primary-text,
+			darker: variables.$light-primary-text,
+		),
+);
+$theme-primary: mat.define-palette($mat-primary, main, lighter, darker);
+
+$mat-accent: (
+	main: #6c757d,
+	lighter: lighten(#6c757d, 20%),
+	darker: darken(#6c757d, 20%),
+	contrast: (
+	  main: variables.$light-primary-text,
+	  lighter: variables.$dark-primary-text,
+	  darker: variables.$light-primary-text
+	)
+  );
+$theme-accent: mat.define-palette($mat-accent, main, lighter, darker);
+
+$mat-warn: (
+	main: #d9534f,
+	lighter: #ffb3b3,
+	darker: #ff0000,
+	200: #d9534f,
+	// For slide toggle,
+	contrast:
+		(
+			main: variables.$light-primary-text,
+			lighter: variables.$dark-primary-text,
+			darker: variables.$light-primary-text,
+		),
+);
+$theme-warn: mat.define-palette($mat-warn, main, lighter, darker);
+
+$mat-info: (
+  main: #17a2b8,
+  lighter: lighten(#17a2b8, 20%),
+  darker: darken(#17a2b8, 20%),
+  contrast: (
+    main: variables.$light-primary-text,
+    lighter: variables.$dark-primary-text,
+    darker: variables.$light-primary-text
+  )
+);
+$theme-info: mat.define-palette($mat-info, main, lighter, darker);
+
+$mat-success: (
+  main: #28a745,
+  lighter: lighten(#28a745, 20%),
+  darker: darken(#28a745, 20%),
+  contrast: (
+    main: variables.$light-primary-text,
+    lighter: variables.$dark-primary-text,
+    darker: variables.$light-primary-text
+  )
+); 
+$theme-success: mat.define-palette($mat-success, main, lighter, darker);
+$theme-info: mat.define-palette($mat-info, main, lighter, darker);
+
+
+/*Luego, aplicas estas paletas donde corresponda*/
+
+
+$theme: mat.define-light-theme($theme-primary, $theme-accent, $theme-warn);
+
+$altTheme: mat.define-dark-theme($theme-primary, $theme-accent, $theme-warn);
+/*Theme Init*/
+
+@include mat.all-component-themes($theme);
+
+.theme-alternate {
+	@include mat.all-component-themes($altTheme);
+}
+
+/* ===========================      **SCSS COMPONENTES**      =========================================*/
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+/* ===========================      fomento.table - fomento.datagrid      =========================================*/
+
+lib-fomento-table,
+lib-fomento-datagrid,
+lib-fomento-jsondatagrid {
+	mat-table {
+		padding-left: 10px;
+	}
+
+	.inline {
+		display: inline-block;
+	}
+
+	lib-fomento-button i {
+		position: initial !important;
+		transform: none !important;
+	}
+
+	.custom-paginator-page-enabled {
+		background-color: variables.$primary-color;
+		color: white;
+		border: 2px solid variables.$primary-color;
+		border-radius: 3px;
+		padding: 9px 13px;
+		font-size: 15px;
+	}
+
+	.custom-paginator-page-disabled {
+		background-color: white;
+		color: variables.$primary-color;
+		border: 2px solid variables.$primary-color;
+		border-radius: 3px;
+		padding: 9px 13px;
+		font-size: 15px;
+	}
+
+	.custom-paginator-page-enabled:hover {
+		background-color: #0b4c1a;
+		border: 2px solid #0b4c1a;
+	}
+
+	.customButton button {
+		border: 2px solid variables.$primary-light-color !important;
+	}
+
+	.customButton .mat-mdc-unelevated-button .mdc-button__label {
+		color: rgba(0, 0, 0, 0.87);
+		font-weight: 500;
+		font-size: 15px;
+	}
+
+	.page-option button {
+		border: 2px solid variables.$primary-color !important;
+	}
+
+	.page-option .mdc-button {
+		padding: 21px 18px !important;
+	}
+
+	@media screen and (max-width: 900px) {
+		table {
+			border: 0;
+		}
+
+		table thead {
+			border: none;
+			clip: rect(0 0 0 0);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute;
+			width: 1px;
+		}
+
+		table tr {
+			border-bottom: 3px solid #ddd;
+			display: block;
+			height: 100% !important;
+		}
+
+		table td {
+			display: block;
+			font-size: 0.8em;
+			text-align: right !important;
+		}
+
+		.mdc-data-table__row:last-child .mat-mdc-cell {
+			border-bottom: 1px solid #ddd;
+		}
+
+		tbody td::before {
+			content: attr(data-th);
+			float: left;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+
+		table td:last-child {
+			border-bottom: 0 !important;
+		}
+	}
+}
+
+/* ===========================      fomento.tabs       =========================================*/
+
+lib-fomento-tabs {
+	.mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs
+		> .mat-mdc-tab-header
+		.mat-mdc-tab {
+		flex-grow: 0 !important;
+	}
+
+	.mat-mdc-tab-list {
+		border-bottom: 1px solid black;
+		z-index: -99;
+	}
+
+	.mat-mdc-tab .mdc-tab-indicator__content--underline {
+		border-color: white !important;
+		position: relative;
+		top: 1px;
+		z-index: 10000;
+	}
+
+	.mdc-tab--active.ng-star-inserted.mdc-tab-indicator--active {
+		border: 1px solid black;
+		border-bottom: none;
+		border-top-right-radius: 5px;
+		border-top-left-radius: 5px;
+	}
+
+	.mat-mdc-tab.mdc-tab--active .mdc-tab__text-label,
+	.mat-mdc-tab.mdc-tab--active:focus .mdc-tab__text-label {
+		color: black;
+	}
+
+	.mat-mdc-tab .mdc-tab__text-label {
+		color: variables.$primary-color;
+	}
+
+	.mat-mdc-tab-body-content {
+		margin: 20px;
+	}
+
+	.mat-mdc-tab-group {
+		--mat-tab-header-active-focus-label-text-color: black;
+		--mat-tab-header-active-hover-label-text-color: black;
+		--mat-tab-header-active-focus-indicator-color: #{variables.$primary-color};
+		--mat-tab-header-active-hover-indicator-color: #{variables.$primary-color};
+		--mat-tab-header-active-label-text-color: #{variables.$primary-light-color};
+		--mat-tab-header-active-ripple-color: #{variables.$primary-color};
+		--mat-tab-header-inactive-ripple-color: #{variables.$primary-color};
+	}
+}
+
+/* ===========================      fomento.nav       =========================================*/
+
+lib-fomento-nav div.line-vertical {
+	display: none !important;
+}
+
+lib-fomento-nav .logo img {
+	width: 66px;
+	height: 62px;
+	margin-right: 10px;
+}
+
+lib-fomento-nav {
+	@media screen and (max-width: 1245px) and (min-width: 1000px) {
+		.elemento_header {
+			font-size: 14px;
+			margin: 0px 10px;
+		}
+	}
+
+	@media screen and (max-width: 1000px) {
+		.perfil_container {
+			margin-left: calc(91vw - 250px);
+		}
+	}
+
+	@media screen and (max-width: 1000px) {
+		.header-menu {
+			display: block;
+			position: absolute;
+			width: 20px;
+		}
+
+		.elemento_header {
+			display: block;
+			font-size: 20px;
+			height: 40px;
+			float: left;
+			margin: 0px 0px;
+		}
+
+		.elemento_header i.fas,
+		.elemento_header i.fab,
+		.elemento_header i.fa,
+		.elemento_header i.fac {
+			color: #007932;
+			opacity: 0.3;
+			font-size: 20px;
+			margin-right: 5px;
+		}
+	}
+
+	lib-fomento-brand {
+		display: flex !important;
+	}
+
+	lib-fomento-brand a.image {
+		display: flex;
+	}
+}
+
+lib-fomento-menu {
+	.perfil_container {
+		margin-left: 45px;
+	}
+
+	.h-100 {
+		height: 100px;
+		display: flex;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	lib-fomento-nav a.site-name {
+		display: none;
+	}
+
+	lib-fomento-nav .logo img {
+		width: 40px;
+		height: 40px;
+		margin-top: 10px;
+		margin-right: 10px;
+	}
+}
+
+.elemento_header i.fas,
+.elemento_header i.fab,
+.elemento_header i.fa,
+.elemento_header i.fac {
+	color: #007932;
+	opacity: 0.3;
+	font-size: 18px;
+}
+
+@media screen and (max-width: 1000px) {
+	:not(lib-fomento-nav) .elemento_header {
+		font-size: 14px;
+		margin: 0 10px;
+	}
+}
+
+fomento-menu {
+	.perfil_container {
+		margin-left: 45px;
+	}
+
+	.h-100 {
+		height: 100px;
+		display: flex;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	fomento-nav a.site-name {
+		display: none;
+	}
+
+	fomento-nav .logo img {
+		width: 40px;
+		height: 40px;
+		margin-top: 10px;
+		margin-right: 10px;
+	}
+}
+
+.header-menu {
+	display: flex;
+}
+
+.elemento_header {
+	font-family: variables.$source-sans-pro-font;
+	color: variables.$primary-color;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 20px;
+	margin: 0 30px;
+	text-align: center;
+	height: 98px;
+
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
+	justify-content: center;
+}
+
+@media screen and (max-width: 1000px) {
+	:not(fomento-nav) .elemento_header {
+		font-size: 14px;
+		margin: 0 10px;
+	}
+}
+
+/* ===========================      fomento.radio       =========================================*/
+
+lib-fomento-radio,
+.radio-form {
+	.mat-radio-button ~ .mat-radio-button {
+		margin-left: 20px;
+	}
+
+	.mat-mdc-radio-button
+		.mdc-radio
+		.mdc-radio__native-control:enabled:checked
+		+ .mdc-radio__background
+		.mdc-radio__outer-circle,
+	.mat-mdc-radio-button
+		.mdc-radio
+		.mdc-radio__native-control:enabled:checked
+		+ .mdc-radio__background
+		.mdc-radio__outer-circle:hover {
+		border-color: variables.$primary-color;
+		border-width: 6px;
+	}
+
+	.mat-mdc-radio-button
+		.mdc-radio
+		.mdc-radio__native-control:enabled
+		+ .mdc-radio__background
+		.mdc-radio__inner-circle {
+		border: none;
+	}
+
+	.mat-mdc-radio-button
+		.mdc-radio
+		.mdc-radio__native-control:disabled:checked
+		+ .mdc-radio__background
+		.mdc-radio__outer-circle,
+	.mat-mdc-radio-button
+		.mdc-radio
+		.mdc-radio__native-control:disabled:checked
+		+ .mdc-radio__background
+		.mdc-radio__outer-circle:hover {
+		border-color: variables.$primary-color;
+		border-width: 6px;
+	}
+
+	.mat-mdc-radio-button
+		.mdc-radio
+		.mdc-radio__native-control:disabled
+		+ .mdc-radio__background
+		.mdc-radio__inner-circle {
+		border: none;
+	}
+
+	.mat-mdc-radio-button.mat-accent {
+		--mdc-radio-selected-hover-icon-color: #{variables.$primary-color};
+		--mat-radio-checked-ripple-color: #{variables.$primary-color};
+	}
+}
+
+/* ===========================      fomento.stepper       =========================================*/
+
+lib-fomento-stepper {
+	.mat-step-icon-state-edit {
+		background-color: #087020;
+		opacity: 1;
+	}
+
+	.mat-step-icon-state-number {
+		background-color: #087020;
+		opacity: 0.3;
+	}
+
+	.mat-step-header {
+		pointer-events: none;
+	}
+
+	.mat-stepper-vertical-line::before {
+		border-left: 3px solid #087020;
+		opacity: 0.3;
+		top: calc(8px - calc((var(--mat-stepper-header-height) - 8px) / 2));
+		bottom: calc(8px - calc((var(--mat-stepper-header-height) - 8px) / 2));
+	}
+
+	.mat-stepper-horizontal-line {
+		border-top: 3px solid #087020;
+		opacity: 0.3;
+	}
+
+	.mat-stepper-horizontal-line.active {
+		opacity: 1;
+	}
+
+	.mat-stepper-label-position-bottom
+		.mat-horizontal-stepper-header:not(
+			:first-child
+		)[ng-reflect-state='edit']::before,
+	.mat-stepper-label-position-bottom
+		.mat-horizontal-stepper-header:not(
+			:last-child
+		)[ng-reflect-state='edit']::after {
+		border-top: 3px solid variables.$primary-color;
+		width: calc(50% - 12px);
+	}
+
+	.mat-stepper-label-position-bottom
+		.mat-horizontal-stepper-header:not(
+			:first-child
+		)[ng-reflect-state='number']::before,
+	.mat-stepper-label-position-bottom
+		.mat-horizontal-stepper-header:not(
+			:last-child
+		)[ng-reflect-state='number']::after {
+		border-top: 3px solid variables.$primary-color;
+		opacity: 0.3;
+		width: calc(50% - 12px);
+	}
+
+	.mat-step-text-label {
+		font-family: variables.$noto-sans-hk-font, variables.$sans-serif-font;
+		font-size: 0.85rem;
+		font-weight: bold;
+	}
+
+	.mat-step-icon-selected {
+		background-color: white;
+		opacity: 1;
+		font-weight: bold;
+		color: variables.$primary-color;
+		border: 2px solid variables.$primary-color;
+	}
+}
+
+/* ===========================      fomento.select (usado en filtro, table, datagrid..)      =========================================*/
+
+lib-fomento-select,
+lib-fomento-table,
+lib-fomento-datagrid,
+lib-fomento-jsondatagrid,
+.select-form {
+	.mat-mdc-select-arrow-wrapper {
+		display: none;
+	}
+
+	.mat-mdc-form-field-subscript-wrapper.mat-mdc-form-field-bottom-align {
+		display: none;
+	}
+
+	.page-selector .mat-mdc-form-field-infix {
+		width: 10px !important;
+	}
+
+	.page-selector .mat-mdc-form-field-subscript-wrapper {
+		height: 0px;
+	}
+
+	.mat-focused .mdc-text-field--focused #iconoSelect {
+		transform: rotate(180deg);
+	}
+
+	.mat-mdc-select {
+		font-size: 14px;
+	}
+
+	.mat-mdc-text-field-wrapper.mdc-text-field--outlined
+		.mat-mdc-form-field-infix {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	.mat-mdc-form-field-icon-suffix > .mat-icon {
+		padding: 10px;
+	}
+
+	.mat-mdc-form-field-infix {
+		min-height: 0;
+	}
+
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__leading,
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__notch,
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__trailing {
+		border-color: variables.$primary-light-color !important;
+		border-width: 2px !important;
+	}
+
+	.select-container
+		.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__leading,
+	.select-container
+		.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__notch,
+	.select-container
+		.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__trailing {
+		border-color: variables.$primary-color !important;
+		border-width: 2px !important;
+	}
+
+	.mdc-text-field--outlined:not(
+			.mdc-text-field--disabled
+		).mdc-text-field--focused
+		.mdc-notched-outline__trailing,
+	.mdc-text-field--outlined:not(
+			.mdc-text-field--disabled
+		).mdc-text-field--focused
+		.mdc-notched-outline__leading {
+		border-color: #087020 !important;
+	}
+
+	h4.select-title {
+		margin: 0 0 10px !important;
+		font-family: variables.$source-sans-pro-font;
+		font-weight: 600;
+	}
+}
+
+div.mat-mdc-select-panel.panel-select {
+	box-shadow: 0px 4px 10px 1px rgba(219, 216, 219, 1);
+	margin-top: 5px;
+}
+
+.mat-mdc-option:hover:not(.mdc-list-item--disabled) {
+	background-color: variables.$primary-light-color 20 !important;
+}
+
+.panel-select.mat-primary
+	.mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after,
+.panel-select.mat-primary
+	.mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-minimal::after {
+	color: variables.$primary-color;
+}
+
+.panel-select
+	.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(
+		.mat-mdc-option-multiple
+	) {
+	background-color: variables.$primary-light-color 20;
+}
+
+.select-form.mat-focused .mdc-text-field--focused #iconoSelect {
+	transform: rotate(180deg);
+}
+
+/* ===========================      fomento.input-group       =========================================*/
+
+lib-fomento-input-group {
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__leading,
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__notch,
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__trailing {
+		border-color: variables.$primary-light-color !important;
+		border-width: 2px !important;
+	}
+
+	.select-container
+		.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__leading,
+	.select-container
+		.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__notch,
+	.select-container
+		.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__trailing {
+		border-color: variables.$primary-color !important;
+		border-width: 2px !important;
+	}
+
+	.mdc-text-field__input {
+		font-family: variables.$source-sans-pro-font !important;
+		font-weight: 600 !important;
+		font-size: 14px !important;
+		color: #bebebe;
+		letter-spacing: normal !important;
+	}
+
+	.mat-mdc-text-field-wrapper.mdc-text-field--outlined
+		.mat-mdc-form-field-infix {
+		padding: 12px 0 !important;
+	}
+
+	.mat-mdc-form-field-infix {
+		min-height: 45px;
+	}
+}
+
+/* ===========================      fomento.input       =========================================*/
+
+lib-fomento-input {
+	.mat-mdc-text-field-wrapper.mdc-text-field--outlined
+		.mat-mdc-form-field-infix {
+		padding: 12px 0 !important;
+	}
+
+	.mat-icon.mat-icon-no-color {
+		position: absolute;
+		top: 0.75rem;
+		right: 0.75rem;
+	}
+
+	.mat-mdc-form-field-infix {
+		min-height: auto;
+	}
+
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__leading,
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__notch,
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__trailing {
+		border-color: variables.$primary-light-color !important;
+		border-width: 2px !important;
+	}
+
+	.mdc-text-field--outlined:not(
+			.mdc-text-field--disabled
+		).mdc-text-field--focused
+		.mdc-notched-outline__trailing,
+	.mdc-text-field--outlined:not(
+			.mdc-text-field--disabled
+		).mdc-text-field--focused
+		.mdc-notched-outline__leading {
+		border-color: #087020 !important;
+	}
+}
+
+/* =======================================    fomento.progress-bar  =====================================*/
+
+lib-fomento-progress-bar {
+	.mdc-linear-progress__buffer-bar {
+		border-radius: 6px;
+	}
+
+	.mdc-linear-progress__bar-inner.allBorder {
+		border-radius: 6px;
+	}
+
+	.mdc-linear-progress__bar-inner {
+		border-top-left-radius: 6px;
+		border-bottom-left-radius: 6px;
+	}
+}
+
+/*  ========================================  fomento.formulario-date   ========================================================  */
+
+.date-form {
+	.mat-mdc-text-field-wrapper.mdc-text-field--outlined
+		.mat-mdc-form-field-infix {
+		padding-top: 11px;
+		padding-bottom: 11px;
+	}
+
+	.mat-mdc-form-field-infix {
+		min-height: auto;
+	}
+
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__leading,
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__notch,
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__trailing {
+		border-color: variables.$primary-light-color !important;
+		border-width: 2px !important;
+	}
+
+	.mdc-text-field--outlined:not(
+			.mdc-text-field--disabled
+		).mdc-text-field--focused
+		.mdc-notched-outline__trailing,
+	.mdc-text-field--outlined:not(
+			.mdc-text-field--disabled
+		).mdc-text-field--focused
+		.mdc-notched-outline__leading {
+		border-color: variables.$primary-color !important;
+	}
+}
+
+.boton-dateform {
+	display: inline-block;
+	border: 2px solid variables.$primary-light-color;
+	border-radius: 5px;
+	height: 44px;
+	margin-left: 5px;
+	cursor: pointer;
+
+	.fas {
+		color: variables.$primary-color;
+		font-size: 20px;
+		padding: 12px;
+	}
+}
+
+.d-flex {
+	display: flex;
+}
+
+.mat-calendar-body-selected {
+	background-color: variables.$primary-color !important;
+}
+
+.cdk-overlay-pane.mat-datepicker-popup {
+	top: 150px !important;
+	--mat-datepicker-calendar-date-hover-state-background-color: #{variables.$primary-light-color};
+	--mat-datepicker-calendar-date-focus-state-background-color: #{variables.$primary-light-color};
+}
+
+/* ========================================  fomento.formulario-textarea    ====================================================*/
+
+.textarea-form {
+	::placeholder {
+		font-size: 14px;
+		font-family: variables.$source-sans-pro-font;
+	}
+
+	::-webkit-resizer {
+		/*background-image: url('./img/textarea.png');*/
+		background-size: cover !important;
+	}
+
+	.mat-mdc-text-field-wrapper.mdc-text-field--outlined
+		.mat-mdc-form-field-infix {
+		padding-bottom: 0.5rem;
+	}
+
+	.mdc-text-field--outlined:not(
+			.mdc-text-field--disabled
+		).mdc-text-field--focused
+		.mdc-notched-outline__leading,
+	.mdc-text-field--outlined:not(
+			.mdc-text-field--disabled
+		).mdc-text-field--focused
+		.mdc-notched-outline__notch,
+	.mdc-text-field--outlined:not(
+			.mdc-text-field--disabled
+		).mdc-text-field--focused
+		.mdc-notched-outline__trailing {
+		border-color: variables.$primary-color;
+	}
+
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__leading,
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__notch,
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__trailing {
+		border-color: variables.$primary-light-color;
+		border-width: 2px !important;
+	}
+
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover 
+	.mdc-notched-outline .mdc-notched-outline__leading, 
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__notch, 
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__trailing
+	{
+		border-color: variables.$primary-color;
+		border-width: 2px !important;
+	}
+}
+
+lib-fomento-formulario {
+	.mat-expansion-panel:not([class*='mat-elevation-z']) {
+		box-shadow: 0px 4px 20px rgba(31, 45, 61, 0.05);
+		margin: 0 20px;
+	}
+
+	.mat-expansion-panel-header {
+		padding: 0.5rem 24px;
+	}
+
+	.mat-expansion-panel-header .mat-content {
+		overflow: visible;
+	}
+}
+
+/* ===========================      fomento.formulario-input       ========================================= */
+
+.input-form {
+	.mat-mdc-text-field-wrapper.mdc-text-field--outlined
+		.mat-mdc-form-field-infix {
+		padding: 11px 0 !important;
+	}
+
+	.mat-icon.mat-icon-no-color {
+		position: absolute;
+		top: 0.75rem;
+		right: 0.75rem;
+	}
+
+	.mat-mdc-form-field-infix {
+		min-height: auto;
+	}
+
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__leading,
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__notch,
+	.mdc-text-field--outlined:not(.mdc-text-field--disabled)
+		.mdc-notched-outline__trailing {
+		border-color: variables.$primary-light-color; 
+		border-width: 2px !important;
+	}
+
+	.mdc-text-field--outlined:not(
+			.mdc-text-field--disabled
+		).mdc-text-field--focused
+		.mdc-notched-outline__trailing,
+	.mdc-text-field--outlined:not(
+			.mdc-text-field--disabled
+		).mdc-text-field--focused
+		.mdc-notched-outline__notch,
+	.mdc-text-field--outlined:not(
+			.mdc-text-field--disabled
+		).mdc-text-field--focused
+		.mdc-notched-outline__leading {
+		border-color: variables.$primary-color; 
+	}
+
+	.mdc-text-field--outlined.mdc-text-field--invalid:not(
+			.mdc-text-field--disabled
+		)
+		.mdc-notched-outline__leading,
+	.mdc-text-field--outlined.mdc-text-field--invalid:not(
+			.mdc-text-field--disabled
+		)
+		.mdc-notched-outline__notch,
+	.mdc-text-field--outlined.mdc-text-field--invalid:not(
+			.mdc-text-field--disabled
+		)
+		.mdc-notched-outline__trailing {
+		border-color: variables.$warning-color;
+	}
+}
+
+.form-container .mat-mdc-text-field-wrapper.mdc-text-field--outlined {
+	width: 18rem !important;
+}
+
+/*================================================= fomento.platilla.listado ==============================================*/
+
+lib-fomento-card {
+	.mat-mdc-card {
+		@media screen and (max-width: 768px) {
+			.container-cardRow {
+				display: block;
+			}
+
+			.d-flex-row {
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
+				width: 100%;
+			}
+		}
+
+		@media screen and (max-width: 480px) {
+			width: 65%;
+
+			.d-flex {
+				display: block;
+				margin-left: 6%;
+			}
+
+			lib-fomento-select {
+				display: flex;
+				width: 95%;
+			}
+
+			.container-buttons-grid {
+				margin-top: 5%;
+				margin-left: 25%;
+			}
+
+			.d-flex-row {
+				display: block !important;
+			}
+
+			.container-buttons-row {
+				display: flex;
+				margin-top: 5%;
+			}
+
+			.boton-filecsvrow {
+				width: 77% !important;
+			}
+
+			.lib-fomento-card-formatRow {
+				width: 150% !important;
+			}
+		}
+	}
+}
+
+/*========================================== fomento.user =============================================================*/
+
+.mat-mdc-menu-panel .mat-mdc-menu-content lib-fomento-button i {
+	position: initial !important;
+	transform: none !important;
+}
+
+.mat-mdc-menu-panel .mat-mdc-menu-content lib-fomento-button button {
+	margin-bottom: 5%;
+	width: 100%;
+}
+
+.mat-mdc-menu-panel .container-acciones {
+	display: flex;
+	flex-direction: column;
+	padding: 0 0.5rem;
+}
+
+.mat-mdc-menu-panel .listado-accion {
+	padding: 0.2rem 0;
+	cursor: pointer;
+}

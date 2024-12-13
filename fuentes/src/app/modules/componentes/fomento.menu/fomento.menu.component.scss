@@ -1,0 +1,43 @@
+@use '../../../../assets/variables.scss';
+
+.example-spacer {
+	flex: 1 1 auto;
+}
+
+a {
+	text-decoration: none;
+	color: variables.$primary-color;
+}
+
+.mat-mdc-menu-item a {
+	color: #333;
+}
+
+.svg-inline--fa {
+	height: 1em;
+}
+
+.el_header_container {
+	border-bottom: 4px solid transparent;
+
+	i.fas,
+	i.fa,
+	i.fab {
+		margin-bottom: 5px;
+	}
+}
+
+.el_header_container:hover {
+	border-bottom: 4px solid variables.$primary-color;
+
+	i.fas,
+	i.fa,
+	i.fab,
+	i.fac {
+		opacity: 1;
+	}
+}
+
+lib-fomento-user {
+	align-self: center;
+}
