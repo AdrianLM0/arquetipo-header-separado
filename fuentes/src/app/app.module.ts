@@ -5,13 +5,13 @@ import { SharedModule } from './shared/shared.module';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IERFWebLibraryModule } from '@fomento/i-rf-web-component-node-lib';
+//import { IERFWebLibraryModule } from '@fomento/i-rf-web-component-node-lib';
 import { AppRoutingModule } from './app-routing.module';
 
 import {
 	SecurityModule,
 	SecurityModuleConfig,
-} from '@fomento/i-rf-security-component-node-lib';
+} from './shared/security.module';
 import { FormsModule } from '@angular/forms';
 import localeEs from '@angular/common/locales/es';
 

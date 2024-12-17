@@ -1,0 +1,23 @@
+<div class="flex-container">
+    <div class="grid">
+        <lib-fomento-dialog [width]="width" [showbutton]="showbutton">
+
+            <p class="dialog_title">Se han realizado cambios a nivel de Privilegios</p>
+
+            <lib-fomento-divider [inset]="inset" [vertical]="vertical" [color]="color"></lib-fomento-divider>
+
+            <p class="dialog_text">{{messageEvent}}</p>
+
+            <p class="dialog_text">Los cambios son de tipo {{typeEvent}} y requiere la accicón {{actionEvent}}</p>
+
+            <lib-fomento-button (click)="closeDialog()" [typeStyle]="typeStyle" [label]="label_boton2"
+                [theme]="theme_boton" [disabled]="disabled" [aria_label]="aria_label"
+                [disableRipple]="disableRipple">
+            </lib-fomento-button>
+        </lib-fomento-dialog>
+    </div>
+    <div class="grid">
+
+    </div>
+</div>
+

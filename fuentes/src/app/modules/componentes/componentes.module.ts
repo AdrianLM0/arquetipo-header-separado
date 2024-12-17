@@ -48,7 +48,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { LocalDatePipe } from './pipes/local-date.pipe';
+/*import { LocalDatePipe } from './pipes/local-date.pipe';
 import { SanitizeHtmlPipe } from './pipes/sanitize-html.pipe';
 
 
@@ -90,9 +90,9 @@ import { FomentoSliderComponent } from '../componentes/componentes-web/component
 import { FomentoSnackbarComponent } from '../componentes/componentes-web/components/fomento.snackbar/fomento.snackbar.component';
 import { FomentoDisclaimerComponent } from '../componentes/componentes-web/components/fomento.disclaimer/fomento.disclaimer.component';
 
-import { FomentoNotificacionesComponent } from '../componentes/componentes-web/components/fomento.notificaciones/fomento.notificaciones.component';
-import { FomentoPropagarcambiosseguridadComponent } from '../componentes/componentes-web/components/fomento.propagarcambiosseguridad/fomento.propagarcambiosseguridad.component';
-
+//import { FomentoNotificacionesComponent } from '../componentes/componentes-web/components/fomento.notificaciones/fomento.notificaciones.component';
+//import { FomentoPropagarcambiosseguridadComponent } from '../componentes/componentes-web/components/fomento.propagarcambiosseguridad/fomento.propagarcambiosseguridad.component';
+*/
 @NgModule({
 	declarations: [
 		

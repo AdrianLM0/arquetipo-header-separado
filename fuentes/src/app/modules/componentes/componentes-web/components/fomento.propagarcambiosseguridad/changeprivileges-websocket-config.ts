@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { WebsocketConfig } from '@fomento/i-rf-logic-component-node-lib';
+import { WebsocketConfig } from '../fomento.websockets/websocket-config.interface';
 @Injectable({
 	providedIn: 'root',
 })

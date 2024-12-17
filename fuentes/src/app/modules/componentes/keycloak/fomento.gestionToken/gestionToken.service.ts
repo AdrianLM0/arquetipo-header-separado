@@ -10,7 +10,7 @@ import {
   IPermisoToken,
   IRecurso,
 } from "./InterfacesGestionToken";
-import * as CryptoJS from "crypto-js";
+
 
 @Injectable({
   providedIn: "root",

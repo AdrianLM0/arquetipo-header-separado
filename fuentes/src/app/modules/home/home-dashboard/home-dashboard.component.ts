@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GestionTokenService } from '@fomento/i-rf-security-component-node-lib';
+import { GestionTokenService } from '../../componentes/keycloak/fomento.gestionToken/gestionToken.service';
 import { environment } from '../../../env/environment.des';
 
 @Component({

@@ -88,13 +88,13 @@ import { FomentoSliderComponent } from './fomento.slider/fomento.slider.componen
 import { FomentoSnackbarComponent } from './fomento.snackbar/fomento.snackbar.component';
 import { FomentoDisclaimerComponent } from './fomento.disclaimer/fomento.disclaimer.component';
 
-import { FomentoNotificacionesComponent } from './fomento.notificaciones/fomento.notificaciones.component';
+//import { FomentoNotificacionesComponent } from './fomento.notificaciones/fomento.notificaciones.component';
 import { FomentoPropagarcambiosseguridadComponent } from './fomento.propagarcambiosseguridad/fomento.propagarcambiosseguridad.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FomentoFormularioComponent } from './fomento.formulario/fomento.formulario.component';
-import { FomentoJsonDatagridComponent } from './fomento.datagrid/fomento.jsondatagrid.component';
+//import { FomentoFormularioComponent } from './fomento.formulario/fomento.formulario.component';
+//import { FomentoJsonDatagridComponent } from './fomento.datagrid/fomento.jsondatagrid.component';
 import { FomentoButtonComponent } from './fomento.button/fomento.button.component';
-import { FomentoDatagridComponent } from './fomento.datagrid/fomento.datagrid.component';
+//import { FomentoDatagridComponent } from './fomento.datagrid/fomento.datagrid.component';
 import { FomentoBottomSheetComponent } from './fomento.bottom-sheet/fomento.bottom-sheet.component';
 import { FomentoToolbarComponent } from './fomento.toolbar/fomento.toolbar.component';
 import { FomentoSelectComponent } from './fomento.select/fomento.select.component';
@@ -169,15 +169,15 @@ registerLocaleData(localeEs, 'es');
 		FomentoBottomSheetComponent,
 		FomentoTreeComponent,
 		FomentoSlideToggleComponent,
-		FomentoDatagridComponent,
+		//FomentoDatagridComponent,
 		FomentoSliderComponent,
 		FomentoSnackbarComponent,
 		FomentoDisclaimerComponent,
 		FomentoButtonComponent,
-		FomentoFormularioComponent,
-		FomentoJsonDatagridComponent,
+		//FomentoFormularioComponent,
+		//FomentoJsonDatagridComponent,
 		
-		FomentoNotificacionesComponent,
+		//FomentoNotificacionesComponent,
 		FomentoPropagarcambiosseguridadComponent,
 	],
 	imports: [
@@ -274,15 +274,15 @@ registerLocaleData(localeEs, 'es');
 		FomentoBottomSheetComponent,
 		FomentoTreeComponent,
 		FomentoSlideToggleComponent,
-		FomentoDatagridComponent,
+		//FomentoDatagridComponent,
 		FomentoSliderComponent,
 		FomentoSnackbarComponent,
 		FomentoDisclaimerComponent,
 		FomentoButtonComponent,
-		FomentoJsonDatagridComponent,
-		FomentoFormularioComponent,
-		FomentoNotificacionesComponent,
-		FomentoPropagarcambiosseguridadComponent,
+		//FomentoJsonDatagridComponent,
+		//FomentoFormularioComponent,
+		//FomentoNotificacionesComponent,
+		//FomentoPropagarcambiosseguridadComponent,
 	],
 	providers: [{ provide: LOCALE_ID, useValue: 'es' }],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
