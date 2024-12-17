@@ -1,0 +1,26 @@
+<mat-stepper [linear]="true" [orientation]="orientation" labelPosition="bottom" #stepper>
+    <div *ngIf="steps.length > 1">
+      <ng-container *ngFor="let step of steps; let i = index">
+        <div *ngIf="i === steps.length - 1">
+          <mat-step label="Paso {{ i + 1 }}">
+            <ng-container *ngTemplateOutlet="step.content"></ng-container>
+            <div>
+              <button mat-button (click)="stepper.reset(); limpiarPaso()">Finalizar</button>
+            </div>
+          </mat-step>
+        </div>
+        <div *ngIf="i !== steps.length - 1">
+          <mat-step label="Paso {{ i + 1 }}" (click)="activarPaso(i)">
+            <ng-container *ngTemplateOutlet="step.content"></ng-container>
+            <div>
+                <button mat-button matStepperNext (click)="activarPaso(i)">Continuar</button>
+            </div>
+          </mat-step>
+        </div>
+      </ng-container>
+  
+      <ng-template matStepperIcon="edit">
+            <mat-icon fontIcon="check">check</mat-icon>
+        </ng-template>
+    </div>
+  </mat-stepper>

@@ -1,0 +1,22 @@
+
+    <ng-container *ngIf="typeStyle === 'material'" && icon != null && ico != ''>
+        <div>
+            <mat-icon class="fa-{{ icon }}"
+                [ngStyle]="{'color': color}"
+                [fontSet]="fontSet"
+                [inline]="inline"
+                [svgIcon]="svgIcon"                   
+                [fontIcon]="fontIcon"
+                >
+            </mat-icon>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="typeStyle === 'font-awesome'">
+        <i [class]="'fa ' + icon" [ngStyle]="{ color: color }"></i>
+      </ng-container>
+
+
+
+
+

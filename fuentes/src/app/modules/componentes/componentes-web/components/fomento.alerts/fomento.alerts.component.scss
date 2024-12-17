@@ -1,0 +1,195 @@
+@use '../../../../../../assets/variables.scss';
+
+#textoCabecera {
+	font-family: variables.$source-sans-pro-font, variables.$sans-serif-font;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 26px;
+	color: #333333;
+}
+
+#textoCuerpo {
+	font-family: variables.$source-sans-pro-font, variables.$sans-serif-font;
+	font-weight: variables.$font-weight-default;
+	font-size: 15px;
+	line-height: 24px;
+	color: #333333;
+}
+
+.action-label {
+	font-weight: bold; /* Texto en negrita */
+	margin-right: 1rem; /* Margen a la derecha */
+	//color: rgb(8, 112, 33); /* Puedes ajustar el color del texto si es necesario */
+}
+
+/* Estilos para las notificaciones de angular-notifier */
+
+.notifier__container {
+	width: 100%;
+	height: 50%;
+}
+
+.notifier__notification {
+	width: 100%; /* Ocupar el ancho completo */
+	position: relative !important;
+	height: 50%;
+}
+
+.my-custom-alert {
+	flex-grow: 1; /* Permite que el alerta crezca para ocupar el espacio disponible */
+}
+
+.notifier__container-list {
+	margin-left: 20px !important;
+	margin-right: 20px !important;
+}
+.notifier__notification--success {
+    background-color: #d4edda !important; /* Fondo verde claro */
+    border: 1px solid #28a745 !important; /* Borde verde */
+    color: #155724 !important; /* Texto verde oscuro */
+    border-radius: 4px;
+    padding: 16px;
+    width: 100%;
+	display: flex;
+}
+.notifier__notification--error {
+	background-color: #fff5f7 !important;
+	color: #a94442 !important;
+	border: 1px solid #d4403a !important;
+	border-radius: 4px;
+    padding: 16px;
+    width: 100%;
+	display: flex;
+}
+
+/* Personalizar cada tipo de notificación */
+.notifier__notification--info {
+	background-color: #eefbff !important;
+	color: #31708f !important;
+	border: 1px solid #5bc0de !important;
+	border-radius: 4px;
+    padding: 16px;
+    width: 100%;
+	display: flex;
+}
+
+.notifier__notification--warning {
+	background-color: #fff8ee !important;
+	color: #8a6d3b !important;
+	border: 1px solid #f0ad4e ;
+	border-radius: 4px;
+    padding: 16px;
+    width: 100%;
+	display: flex;
+}
+
+.action-buttons {
+	display: variables.$display-default;
+	align-items: variables.$align-default;
+	justify-content: flex-start; /* Alinea los botones a la izquierda */
+	gap: 10px; /* Espacio entre los elementos */
+	margin-top: 10px; /* Espacio por encima de la botonera */
+}
+
+.action-button {
+	border: 2px solid rgb(8, 112, 33); /* Borde del botón */
+	background-color: #fff; /* Fondo blanco */
+	color: rgb(8, 112, 33); /* Texto color verde */
+	padding: 10px 20px; /* Padding para tamaño de botón */
+	font-size: variables.$font-size-default; /* Tamaño del texto del botón */
+	cursor: variables.$cursor-default; /* Cursor tipo pointer */
+	border-radius: 5px; /* Bordes redondeados */
+	outline: none; /* Remover el outline al hacer focus */
+}
+
+.primary-action {
+	//font-weight: bold;
+	background-color: rgb(
+		8,
+		112,
+		33
+	); /* Fondo verde para el botón de acción principal */
+	color: #fff; /* Texto blanco */
+}
+
+.secondary-action {
+	// font-weight: bold;
+	background-color: #fff; /* Fondo blanco para el botón de acción secundaria */
+	color: rgb(8, 112, 33); /* Texto verde */
+}
+
+.botones-derecha {
+	display: variables.$display-default;
+	flex-direction: column;
+	align-items: flex-end;
+	margin-left: auto; /* Esto empujará botones-derecha hacia la derecha */
+}
+
+.close-button {
+	margin-bottom: 10px;
+	margin-right: 10px; /* Espacio debajo del botón de cierre si los botones de paginación están presentes */
+	font-size: 1.5rem;
+	border: none;
+	background: transparent;
+	cursor: variables.$cursor-default;
+	color: #000;
+	display: variables.$display-default;
+}
+
+/* Si el ícono de Font Awesome necesita ajustes específicos, puedes agregarlos así */
+.close-button .fa {
+	font-size: inherit;
+	padding: 0% 119% 0%;
+}
+
+.pagination-container {
+	display: variables.$display-default;
+	flex-direction: column;
+	align-items: variables.$align-default; /* Centra los elementos en el eje cruzado */
+	justify-content: variables.$justify-content-default; /* Centra los elementos en el eje principal */
+}
+
+.pagination-buttons {
+	display: variables.$display-default;
+	gap: 10px;
+	/* Eliminar margin-top si ya no es necesario */
+}
+
+.pagination-label {
+	display: variables.$display-default;
+	align-items: variables.$align-default;
+	justify-content: variables.$justify-content-default;
+	gap: 10px;
+	margin-top: 10px;
+}
+
+.pagination-button {
+	background-color: #fff; /* Fondo blanco */
+	border: 2px solid rgb(8, 112, 33); /* Borde verde */
+	color: rgb(8, 112, 33); /* Texto verde */
+	padding: 5px 10px; /* Padding para acomodar el tamaño de los símbolos */
+	font-size: variables.$font-size-default; /* Tamaño del texto */
+	cursor: variables.$cursor-default; /* Cursor tipo pointer */
+	border-radius: 5px; /* Bordes redondeados */
+	outline: none; /* Remover el outline al hacer focus */
+	display: variables.$display-default; /* Usar flex para centrar el contenido */
+	align-items: variables.$align-default; /* Centrar verticalmente */
+	justify-content: variables.$justify-content-default; /* Centrar horizontalmente */
+}
+
+.pagination-button[disabled] {
+	border-color: #ccc; /* Borde gris para botones deshabilitados */
+	color: #ccc; /* Texto gris para botones deshabilitados */
+	cursor: not-allowed; /* Cursor tipo not-allowed para botones deshabilitados */
+}
+.pagination-count {
+	font-size: variables.$font-size-default; /* Tamaño de texto para el contador */
+	color: #333; /* Color de texto */
+}
+
+.alert-container {
+	display: variables.$display-default;
+	justify-content: space-between; /* Alinea los hijos a los extremos opuestos */
+	align-items: start; /* Alinea los hijos al inicio de su contenedor en el eje cruzado */
+	width: 100%; /* Ocupa el ancho completo del contenedor padre */
+}

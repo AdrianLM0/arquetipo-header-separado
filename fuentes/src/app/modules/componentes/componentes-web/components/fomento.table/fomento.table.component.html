@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css" />
+
+<!-- <div class="container botones">
+    <div><i class="fas fa-question-circle" style="color: #087021"></i></div>
+    <div><lib-fomento-button label="Limpiar filtros" typeStyle="material" class="customButton" theme="secondary"></lib-fomento-button></div>
+    <div><lib-fomento-button label="Exportar" typeStyle="material" class="customButton" theme="secondary"></lib-fomento-button></div>
+    <div><lib-fomento-select [data]="select" default="Columnas"></lib-fomento-select></div>
+    <div><lib-fomento-button class="dflex" typeStyle="material" label="GUARDAR CONSULTA" theme="secondary" icon="search-plus"></lib-fomento-button></div>
+    <div><lib-fomento-button label="BUSCAR"></lib-fomento-button></div>
+ </div> -->
+
+ <div *ngIf="isLoading" class="loading-indicator" role="status" aria-live="polite">
+	<p>Cargando datos...</p>
+  </div>
+  
+  <div *ngIf="!isLoading">
+	<p id="tabla-datos" class="visually-hidden">{{ tableDescription }}</p>
+	<div class="container tabla-multirregistro" role="region" aria-labelledby="tabla-datos">
+	  <mat-table [dataSource]="dataSource" matSort role="table">
+		<!-- Definición de columnas y filas -->
+		<ng-container *ngFor="let column of initColumns; let i = index" [matColumnDef]="column.id">
+		  <th id="{{ column.id }}" mat-header-cell *matHeaderCellDef mat-sort-header cdkDrag cdkDragLockAxis="x"
+			  scope="col" role="columnheader" [attr.aria-label]="column.name" [attr.title]="column.name" tabindex="0">
+			<span>{{ column.name }}</span>
+		  </th>
+		  <td mat-cell *matCellDef="let row" tabindex="0" role="cell"
+			  [attr.aria-label]="'Fila ' + (i + 1) + ', ' + column.name + ': ' + row[column.id]">
+			<span *ngIf="row[column.id] !== ''"> {{ row[column.id] }} </span>
+		  </td>
+		</ng-container>
+		<tr mat-header-row *matHeaderRowDef="displayedColumns" role="row"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns" role="row"></tr>
+	  </mat-table>
+	</div>
+  </div>
+  

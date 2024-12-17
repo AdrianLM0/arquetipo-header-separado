@@ -1,0 +1,14 @@
+@use '../../../../../../assets/variables.scss';
+
+.mat-mdc-slider.mat-primary {
+	--mdc-slider-handle-color: #{variables.$primary-color};
+	--mdc-slider-focus-handle-color: #{variables.$primary-color};
+	--mdc-slider-hover-handle-color: #{variables.$primary-color};
+	--mdc-slider-active-track-color: #{variables.$primary-color};
+	--mdc-slider-inactive-track-color: #{variables.$primary-color};
+	--mdc-slider-with-tick-marks-active-container-color: #fff;
+	--mdc-slider-with-tick-marks-inactive-container-color: #{variables.$primary-color};
+	--mat-mdc-slider-ripple-color: #{variables.$primary-color};
+	--mat-mdc-slider-hover-ripple-color: rgba(0, 128, 0, 0.05);
+	--mat-mdc-slider-focus-ripple-color: rgba(0, 128, 0, 0.2);
+}

@@ -1,0 +1,14 @@
+<span
+    *ngIf="tooltipEnabled"
+    matTooltip="{{ description }}"
+    [matTooltipHideDelay]="delay_hide"
+    [matTooltipShowDelay]="delay_show"
+    [matTooltipPosition]="position"
+    matTooltipClass="custom-tooltip"
+    [attr.role]="role"
+    [attr.aria-live]="ariaLive"
+    tabindex="0"
+    [attr.aria-label]="ariaLabel || description"
+    aria-hidden="false">
+  <ng-content></ng-content>
+</span>

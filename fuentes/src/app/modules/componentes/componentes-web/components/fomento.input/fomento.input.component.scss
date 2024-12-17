@@ -1,0 +1,58 @@
+/* Estilo para el contenedor */
+.flex-container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+  }
+  
+  /* Estilo para las filas */
+  .row {
+	margin-bottom: 20px;
+  }
+  
+  .title {
+	font-size: 24px;
+	font-weight: bold;
+  }
+  
+  /* Estilo para las columnas */
+  .column {
+	flex: 1;
+	padding: 10px;
+  }
+  
+  /* Estilo para las etiquetas */
+  .ejemplo-label {
+	font-size: 16px;
+	margin-bottom: 5px;
+	display: block;
+  }
+  
+  /* Estilo para los mensajes de error */
+  .errorLabel {
+	color: red;
+	font-size: 12px;
+	margin-top: 5px;
+  }
+  
+  /* Foco claro en el input */
+  .mat-input input:focus {
+  }
+  
+  /* Foco en el botón de limpiar */
+  button[mat-icon-button]:focus {
+	border-radius: 50%;
+  }
+  
+  /* Placeholder estilizado */
+  input::placeholder {
+	color: #888;
+	opacity: 1;
+  }
+  
+  /* Estilo para los inputs deshabilitados */
+  input[disabled] {
+	background-color: #f5f5f5;
+	cursor: not-allowed;
+  }
+  

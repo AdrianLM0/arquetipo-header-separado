@@ -1,0 +1,20 @@
+<div class="wrapper">
+
+  <header>
+    <lib-fomento-nav [data_mat]="data_mat" [data_matter]="data_matter" [version]="version" [mostrarfecha]="mostrarfecha"
+      [mostrarhora]="mostrarhora" [urlAyuda]="urlAyuda" [brandStyle]="brandStyle" [brandName]="brandName" [brandCaption]="brandCaption"
+      [mostrar_perfil]="mostrar_perfil" [typeStyle]="navTypeStyle"></lib-fomento-nav>
+  </header>
+
+
+  <main>
+    <div class="container">
+      <router-outlet name="layoutrouter"></router-outlet>
+    </div>
+  </main>
+
+  <footer>
+    <lib-fomento-footer [typeStyle]="footerStyle" [data]="data_footer" [ocultarSecciones]="ocultarSecciones"
+      [ocultarSeccionSocial]="ocultarSeccionSocial"></lib-fomento-footer>
+  </footer>
+</div>

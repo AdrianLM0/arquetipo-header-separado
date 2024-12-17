@@ -1,0 +1,29 @@
+
+<mat-form-field 
+    aria-label="Componente autoComplete"
+    aria-labelledby="title-ng-select" 
+    appearance="outline">
+    <mat-label >{{label}}</mat-label>
+    <input 
+        type="text"
+        [placeholder]="placeholder"
+        matInput
+        [formControl]="myControl"
+        [matAutocomplete]="auto">
+    <mat-autocomplete 
+        #auto="matAutocomplete" 
+        [requireSelection]="requireSelection" 
+        [panelWidth]="panelWidth" 
+        [autoActiveFirstOption]="autoActiveFirstOption"  
+        [disableRipple]="disabledRipple" 
+        [hideSingleSelectionIndicator]="hideSingleSelectionIndicator"
+        [ariaLabel]="ariaLabel"
+        [ariaLabelledby]="ariaLabelledby">
+        <mat-option  *ngFor="let option of filteredOptions | async" 
+            [value]="option">{{option}}</mat-option>       
+    </mat-autocomplete>
+</mat-form-field>
+
+
+
+

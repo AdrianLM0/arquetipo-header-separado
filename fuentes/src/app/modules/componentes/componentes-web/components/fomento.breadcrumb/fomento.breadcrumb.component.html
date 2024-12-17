@@ -1,0 +1,6 @@
+
+<ul class="breadcrumb-list">
+    <li *ngFor="let breadcrumb of breadcrumbList; let isFirst = first">       
+      <a [href]="isFirst ? '/' : null" class="breadcrumb-link" [ngStyle]="{'pointer-events': isFirst ? 'auto' : 'none'}">{{ breadcrumb.label }}</a>      
+    </li>
+  </ul>

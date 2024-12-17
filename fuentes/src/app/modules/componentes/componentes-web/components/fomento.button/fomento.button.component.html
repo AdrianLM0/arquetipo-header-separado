@@ -1,0 +1,117 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+/>
+  <ng-container *ngIf="theme === 'primary'">
+    <div class="button-container ng-star-inserted" [aria-label]="aria_label">
+        <button
+          mat-flat-button
+          [disableRipple]="disableRipple"
+          aria-label
+          [ngClass]="{ 'has-font-icon': icon !== null && icon !== '' }"
+          [disabled]="disabled"
+          (click)="clickbutton($event)"
+        >
+          <ng-container *ngIf="icon !== null && icon !== ''"
+            ><i class="fas fa-{{ icon }}"></i
+          ></ng-container>
+          {{ label }}
+        </button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="theme === 'secondary'">
+    <div class="button-container ng-star-inserted">
+      <span [matBadge]="badge" *ngIf="badge !== ''">
+        <button
+        mat-stroked-button
+        [disableRipple]="disableRipple"
+        aria-label
+        [ngClass]="{ 'has-font-icon': icon !== null }"
+        (click)="clickbutton($event)"
+      >
+        <ng-container *ngIf="icon !== null && icon !== ''"
+          ><i class="fas fa-{{ icon }}"></i
+        ></ng-container>
+        {{ label }}
+      </button></span>
+        <button
+        mat-stroked-button
+        [disableRipple]="disableRipple"
+        aria-label
+        [ngClass]="{ 'has-font-icon': icon !== null }"
+        (click)="clickbutton($event)"
+        *ngIf="badge === ''"
+      >
+        <ng-container *ngIf="icon !== null && icon !== ''"
+          ><i class="fas fa-{{ icon }}"></i
+        ></ng-container>
+        {{ label }}
+      </button>
+    </div>
+  </ng-container>
+  <!-- <ng-container *ngIf="theme === 'info'">
+    <div class="button-container ng-star-inserted">
+        <button
+          mat-flat-button
+          [disableRipple]="disableRipple"
+          aria-label
+          [ngClass]="{ 'has-font-icon': icon !== null }"
+          (click)="clickbutton($event)"
+        >
+          <ng-container *ngIf="icon !== null && icon !== ''"
+            ><i class="fas fa-{{ icon }}"></i
+          ></ng-container>
+          {{ label }}
+        </button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="theme === 'success'">
+    <div class="button-container ng-star-inserted">
+        <button
+          mat-flat-button
+          [disableRipple]="disableRipple"
+          aria-label
+          [ngClass]="{ 'has-font-icon': icon !== null }"
+          (click)="clickbutton($event)"
+        >
+          <ng-container *ngIf="icon !== null && icon !== ''"
+            ><i class="fas fa-{{ icon }}"></i
+          ></ng-container>
+          {{ label }}
+        </button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="theme === 'warning'">
+    <div class="button-container ng-star-inserted">
+        <button
+          mat-flat-button
+          [disableRipple]="disableRipple"
+          aria-label
+          [ngClass]="{ 'has-font-icon': icon !== null }"
+          (click)="clickbutton($event)"
+        >
+          <ng-container *ngIf="icon !== null && icon !== ''"
+            ><i class="fas fa-{{ icon }}"></i
+          ></ng-container>
+          {{ label }}
+        </button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="theme === 'error'">
+    <div class="button-container ng-star-inserted">
+        <button
+          mat-flat-button
+          [disableRipple]="disableRipple"
+          aria-label
+          style
+          [type]="type"
+          [ngClass]="{ 'has-font-icon': icon !== null }"
+          (click)="clickbutton($event)"
+        >
+          <ng-container *ngIf="icon !== null && icon !== ''"
+            ><i class="fas fa-{{ icon }}"></i
+          ></ng-container>
+          {{ label }}
+        </button>
+    </div>
+  </ng-container> -->

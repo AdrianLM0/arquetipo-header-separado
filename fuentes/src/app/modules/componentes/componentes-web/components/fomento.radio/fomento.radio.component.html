@@ -1,0 +1,12 @@
+<!-- <matter-radio-button *ngIf="typeStyle === 'matter'"></matter-radio-button> -->
+
+<mat-radio-button  
+    [disabled]="disabled"
+    [labelPosition]="labelPosition"
+    [name]="name"
+    [required]="required"
+    [value]="value"
+    [checked]="checked"
+    *ngIf="typeStyle === 'material'"
+    >{{ label }}
+</mat-radio-button>

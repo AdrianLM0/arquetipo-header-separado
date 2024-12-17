@@ -1,0 +1,17 @@
+<mat-form-field [appearance]="appearance" class="column-select-panel" role="group" [attr.aria-label]="label || 'Filtrar columnas'">
+  <mat-label *ngIf="label !== ''">{{ label }}</mat-label>
+  <mat-select [formControl]="filterControl" multiple aria-label="Select columns">
+     <mat-select-trigger aria-label="Nombre del selector" class="select-title">
+        {{placeholder}}
+     </mat-select-trigger>
+     <div class="search-container" *ngIf="enableSearch">
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput [(ngModel)]="searchText" (keydown)="$event.stopPropagation()" (ngModelChange)="applyFilter()" />
+    </div>
+     <mat-option *ngFor="let column of filteredColumns" [value]="column.field" role="option" [attr.aria-selected]="filterControl.value.includes(column.field)">
+        {{ column.header }}
+     </mat-option>
+  </mat-select>
+  <mat-icon id="iconoSelect" matSuffix class='ri-arrow-down-s-line' aria-hidden="true"></mat-icon>
+</mat-form-field>
+

@@ -1,0 +1,79 @@
+@use '../../../../../../assets/variables.scss';
+
+//FOOTER TOP
+.footer-container-top {
+	background-color: #333333;
+	color: white;
+}
+.footer-grid {
+	max-width: 1245px;
+	margin: auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+	padding-bottom: 2rem;
+}
+.footer-array {
+	margin-bottom: 20px;
+}
+
+.array-title {
+	font-family: variables.$source-sans-pro-font, variables.$sans-serif-font;
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 30px;
+	margin: 0px 0px 1rem;
+	padding-top: 2rem;
+}
+
+.array-item a {
+	color: white;
+	text-decoration: none;
+}
+.array-item.array-icon {
+	display: inline-block;
+	font-size: 1.2rem;
+	margin-right: 2rem;
+	margin-top: 0;
+}
+.array-item {
+	margin: 1rem 0px;
+}
+.array-item a:hover {
+	text-decoration: underline;
+}
+//FOOTER BOT
+.footer-container-bot {
+	background-color: #eeeeee;
+	padding: 1rem;
+}
+
+.footerbot {
+	max-width: 1245px;
+	margin: auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+	padding-bottom: 2rem;
+}
+.columnlogos {
+	display: inline-flex;
+	padding-top: 1.5rem;
+}
+.arraylogos {
+	padding: 0.5rem;
+}
+
+.columnlinks {
+	display: variables.$display-default;
+	justify-content: space-around;
+	padding-left: 5rem;
+	padding-top: 4rem;
+}
+
+.arraylinks a {
+	color: #333;
+	text-decoration: none;
+}
+
+.arraylinks a:hover {
+	text-decoration: underline;
+}

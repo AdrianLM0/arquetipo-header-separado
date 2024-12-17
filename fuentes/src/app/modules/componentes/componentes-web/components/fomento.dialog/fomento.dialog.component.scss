@@ -1,0 +1,35 @@
+@import '../../../../../../assets/theme-JdA.scss';
+
+.dialog-header {
+  display: flex;
+  padding: 10px;
+
+  &.align-left {
+    justify-content: flex-start;
+  }
+
+  &.align-right {
+    justify-content: flex-end;
+  }
+
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: black;
+
+    mat-icon {
+      font-size: 24px;
+      color: black;
+    }
+
+    &:hover mat-icon {
+      color: red;
+    }
+  }
+}
+
+.dialog-content {
+  padding: 20px;
+}

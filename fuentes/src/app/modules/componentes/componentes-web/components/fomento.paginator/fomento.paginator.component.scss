@@ -1,0 +1,146 @@
+@use '../../../../../../assets/variables.scss';
+
+.wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 10px 0;
+
+	@media screen and (max-width: 1200px) {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+		row-gap: 20px;
+	}
+}
+
+.boton-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.page-option {
+		color: variables.$light-primary-text;
+		border-radius: 3px;
+		padding: 9px 13px;
+		font-size: 15px;
+		cursor: pointer;
+	}
+}
+
+span[aria-live='polite'] {
+	color: variables.$dark-primary-text;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.boton-container lib-fomento-button {
+	color: variables.$light-primary-text;
+	font-size: 14px;
+	font-weight: bold;
+
+	&:disabled {
+		background-color: variables.$light-bg-darker-10;
+		color: variables.$dark-disabled-text;
+		cursor: not-allowed;
+	}
+}
+
+.select-container {
+
+	.titulo {
+		margin-right: 10px;
+		color: variables.$primary-color;
+		font-weight: bold;
+		align-items: center; 
+		justify-content: center;
+	}
+
+	mat-form-field {
+		width: 85px; 
+		min-width: 85px;
+		height: auto;
+		margin: 0; 
+		align-items: center;
+
+		.mat-mdc-form-field-infix {
+			padding: 0px;
+			height: 10px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.mat-mdc-form-field-wrapper {
+			margin: 0;
+			height: 20px;
+		}
+
+		mat-select {
+			width: 40px;
+			height: 40px;
+			line-height: 40px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.mat-select-value {
+			font-size: 14px;
+			color: variables.$dark-primary-text;
+			text-align: center;
+			padding: 0 10px;
+		}
+
+		mat-icon {
+			color: variables.$primary-color;
+			margin-right: auto;
+			font-size: auto;
+			align-items: center;
+		}
+	}
+}
+
+.mat-mdc-select-panel {
+	max-height: 200px;
+	overflow-y: auto;
+	border-radius: 4px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.mat-mdc-option {
+	height: 40px;
+	line-height: 40px;
+	padding: 0 16px;
+	font-size: 14px;
+	color: variables.$dark-primary-text;
+}
+
+.mat-mdc-option:hover {
+	background-color: variables.$primary-light-color;
+}
+
+.mat-mdc-option.mat-selected {
+	background-color: variables.$primary-color;
+	color: white;
+}
+
+
+@media screen and (max-width: 600px) {
+	.mat-mdc-form-field {
+		width: 100%;
+	}
+
+	.mat-mdc-text-field-wrapper {
+		height: 36px;
+	}
+
+	.mat-select {
+		height: 36px;
+	}
+
+	.mat-select-value {
+		font-size: 13px;
+	}
+}

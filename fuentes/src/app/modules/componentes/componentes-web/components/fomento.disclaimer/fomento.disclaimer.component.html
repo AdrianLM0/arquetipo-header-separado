@@ -1,0 +1,30 @@
+
+<div class="modal">
+  <div class="modal-content">
+    <div class="header-modal">
+        <h2 class="tittle">{{ titulo }}</h2>
+    </div>
+    <div class="first-text">
+        <p [innerHTML]="parrafoSeguro"></p>
+    </div>
+
+    <div class="user-info-content">
+        <p><strong class="data-user">Usuario:</strong> {{ usuario }}</p>
+        <p><strong class="data-user">Último acceso:</strong> {{ ultimoAcceso }}</p>
+        <p><strong class="data-user">Último cierre de sesión:</strong> {{ ultimoCierreSesion }}</p>
+    </div>
+
+    <div class="buttons">
+        <lib-fomento-button class="button" 
+        [label]="labelAceptar"
+        [theme]="'primary'" 
+        typeStyle="material" 
+        (click)="buttonAceptar()"/>
+        <lib-fomento-button class="button" 
+        [label]="labelCerrar"
+        [theme]="'primary'" 
+        typeStyle="material" 
+        (click)="buttonCloseSesion()"/>   
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<mat-nav-list class="color-hover">
+  <ng-container *ngFor="let link of data.links">
+    <a [href]="link.url" mat-list-item (click)="openLink($event, link.url)">
+      <span matListItemTitle>{{ link.title }}</span>
+      <span matLine *ngIf="link.subtitle">{{ link.subtitle }}</span>
+    </a>
+  </ng-container>
+</mat-nav-list>

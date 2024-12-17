@@ -1,0 +1,78 @@
+
+@use '../../../../../../assets/variables.scss';
+// Usa ::ng-deep para aplicar los estilos solo a los tooltips dentro del componente sin perder la encapsulación.
+::ng-deep .mat-mdc-tooltip .mdc-tooltip__surface {
+  font-family: variables.$source-sans-pro-font !important;
+  font-size: 15px !important;
+  line-height: 24px !important;
+}
+
+::ng-deep .mat-mdc-tooltip {
+  --mdc-plain-tooltip-container-color: #ffffff;
+  --mdc-plain-tooltip-supporting-text-color: #000000;
+  box-shadow: 0px 0px 7px 0px #00000040 !important;
+  position: relative;
+  max-width: 30em;
+  padding: 0.125em 0.5em;
+  font-size: 1.25em;
+  border-radius: 1rem;
+}
+
+::ng-deep .mat-mdc-tooltip::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 100%;
+  border: 0.75rem solid transparent;
+  border-top: none;
+  border-bottom-color: #fff;
+  filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, 0.1));
+}
+
+::ng-deep .mat-mdc-tooltip-panel-below .mat-mdc-tooltip::before {
+  top: -12px !important;
+  left: 43% !important;
+}
+
+::ng-deep .mat-mdc-tooltip-panel-above .mat-mdc-tooltip::before {
+  top: 35px !important;
+  left: 43% !important;
+  transform: rotate(180deg);
+}
+
+::ng-deep .mat-mdc-tooltip-panel-right .mat-mdc-tooltip::before {
+  top: 35% !important;
+  left: -16px !important;
+  transform: rotate(-90deg);
+}
+
+::ng-deep .mat-mdc-tooltip-panel-left .mat-mdc-tooltip::before {
+  top: 35% !important;
+  left: 96% !important;
+  transform: rotate(90deg);
+}
+
+::ng-deep .mdc-tooltip--shown {
+  border-radius: 3px;
+}
+
+::ng-deep .cdk-overlay-pane.mat-mdc-tooltip-panel.mat-mdc-tooltip-panel-below {
+  transform: translateY(20px) !important;
+}
+
+::ng-deep .cdk-overlay-pane.mat-mdc-tooltip-panel.mat-mdc-tooltip-panel-above {
+  transform: translateY(-20px) !important;
+}
+
+::ng-deep .cdk-overlay-pane.mat-mdc-tooltip-panel.mat-mdc-tooltip-panel-left {
+  transform: translateX(-20px) !important;
+}
+
+::ng-deep .cdk-overlay-pane.mat-mdc-tooltip-panel.mat-mdc-tooltip-panel-right {
+  transform: translateX(20px) !important;
+}
+
+::ng-deep .custom-tooltip {
+  background-color: white;
+}

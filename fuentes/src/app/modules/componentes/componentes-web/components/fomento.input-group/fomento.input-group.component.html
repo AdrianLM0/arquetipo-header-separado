@@ -1,0 +1,40 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+/>
+
+<!-- <matter-input-group
+  [width_input]="width_input"
+  [input_msgError]="input_msgError"
+  [input_msgHelp]="placeholder"
+  [input_type]="type"
+  [input_value]="value"
+  [input_id]="id"
+  [input_name]="name"
+  [button_label]="button_label"
+  [button_icon]="button_icon"
+  [button_icon_theme]="button_icon_theme"
+  [button_href]="button_href"
+  [button_target]="button_target"
+
+  *ngIf="typeStyle === 'matter'"
+></matter-input-group> -->
+
+<div *ngIf="typeStyle === 'material'">
+<mat-form-field appearance="outline" class="matInputJunta">     
+
+    <input 
+    matInput [type]="type" 
+    [value]="value"
+    [placeholder]="placeholder"
+    style="width: {{width_input}};"
+    [id]="id" 
+    [name]="name"
+    [disabled]="disabled">
+
+</mat-form-field>
+<button mat-button color="primary" class="buttonInput">{{button_label}}
+    <mat-icon color="{{button_icon_theme}}">{{button_icon}}</mat-icon>
+</button> 
+</div>
+<label class="errorLabel" for="{{ id }}">{{input_msgError}}</label>

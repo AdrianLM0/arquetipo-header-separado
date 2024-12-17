@@ -1,0 +1,57 @@
+@use '../../../../../../assets/variables.scss';
+
+.mat-mdc-standard-chip.mat-mdc-chip-selected.mat-warn{
+    --mdc-chip-disabled-label-text-color: white;
+    --mdc-chip-elevated-container-color: #d9534f;
+    --mdc-chip-elevated-disabled-container-color: #d9534f;
+    --mdc-chip-focus-state-layer-color: black;
+    --mdc-chip-focus-state-layer-opacity: 0.12;
+    --mdc-chip-label-text-color: white;
+    --mdc-chip-with-icon-icon-color: white;
+    --mdc-chip-with-icon-disabled-icon-color: white;
+    --mdc-chip-with-icon-selected-icon-color: white;
+    --mdc-chip-with-trailing-icon-disabled-trailing-icon-color: white;
+    --mdc-chip-with-trailing-icon-trailing-icon-color: white;
+}
+
+.mat-mdc-standard-chip.mat-mdc-chip-selected.mat-primary{
+    --mdc-chip-disabled-label-text-color: white;
+    --mdc-chip-elevated-container-color: green;
+    --mdc-chip-elevated-disabled-container-color: green;
+    --mdc-chip-focus-state-layer-color: black;
+    --mdc-chip-focus-state-layer-opacity: 0.12;
+    --mdc-chip-label-text-color: white;
+    --mdc-chip-with-icon-icon-color: white;
+    --mdc-chip-with-icon-disabled-icon-color: white;
+    --mdc-chip-with-icon-selected-icon-color: white;
+    --mdc-chip-with-trailing-icon-disabled-trailing-icon-color: white;
+    --mdc-chip-with-trailing-icon-trailing-icon-color: white;
+}
+
+.mat-mdc-standard-chip.mat-mdc-chip-selected.mat-accent{
+    --mdc-chip-disabled-label-text-color: white;
+    --mdc-chip-elevated-container-color: blue;
+    --mdc-chip-elevated-disabled-container-color: blue;
+    --mdc-chip-focus-state-layer-color: black;
+    --mdc-chip-focus-state-layer-opacity: 0.12;
+    --mdc-chip-label-text-color: white;
+    --mdc-chip-with-icon-icon-color: white;
+    --mdc-chip-with-icon-disabled-icon-color: white;
+    --mdc-chip-with-icon-selected-icon-color: white;
+    --mdc-chip-with-trailing-icon-disabled-trailing-icon-color: white;
+    --mdc-chip-with-trailing-icon-trailing-icon-color: white;
+}
+
+.mat-mdc-standard-chip {
+    --mdc-chip-disabled-label-text-color: #212121;
+    --mdc-chip-elevated-container-color: #e0e0e0;
+    --mdc-chip-elevated-disabled-container-color: #e0e0e0;
+    --mdc-chip-focus-state-layer-color: black;
+    --mdc-chip-focus-state-layer-opacity: 0.12;
+    --mdc-chip-label-text-color: #212121;
+    --mdc-chip-with-icon-icon-color: #212121;
+    --mdc-chip-with-icon-disabled-icon-color: #212121;
+    --mdc-chip-with-icon-selected-icon-color: #212121;
+    --mdc-chip-with-trailing-icon-disabled-trailing-icon-color: #212121;
+    --mdc-chip-with-trailing-icon-trailing-icon-color: #212121;
+}

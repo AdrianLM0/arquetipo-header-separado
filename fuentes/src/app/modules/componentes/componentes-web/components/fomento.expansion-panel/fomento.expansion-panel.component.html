@@ -1,0 +1,24 @@
+
+<mat-accordion 
+  [hideToggle]="hideToggle" 
+  [togglePosition]="togglePosition" 
+  [displayMode]="displayMode"
+  [id]="id"
+  [multi]="multi">
+    <mat-expansion-panel 
+      [disabled]="disabled" 
+      [expanded]="expanded">
+        <mat-expansion-panel-header 
+          [collapsedHeight]="collapsedHeight"  
+          [expandedHeight]="expandedHeight">
+          <mat-panel-title>
+            {{ panelTitle }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ panelDescription }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>{{ panelContent }}</p>
+      </mat-expansion-panel>
+</mat-accordion>
+

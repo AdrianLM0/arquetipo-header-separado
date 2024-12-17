@@ -1,0 +1,148 @@
+@use '../../../../../../assets/variables.scss';
+
+	::ng-deep .mat-mdc-select-arrow-wrapper {
+		display: none !important;
+	}
+
+	::ng-deep .mat-mdc-form-field-subscript-wrapper.mat-mdc-form-field-bottom-align {
+		display: none !important;
+	}
+
+	::ng-deep .page-selector .mat-mdc-form-field-infix {
+		width: 10px !important;
+	}
+
+	::ng-deep .page-selector .mat-mdc-form-field-subscript-wrapper {
+		height: 0px !important;
+	}
+
+	::ng-deep .mat-focused .mdc-text-field--focused #iconoSelect {
+		transform: rotate(180deg) !important;
+	}
+
+	::ng-deep .mat-mdc-select {
+		font-size: 14px !important;
+	}
+
+	::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--outlined
+		.mat-mdc-form-field-infix {
+		padding-top: 10px !important;
+		padding-bottom: 10px !important;
+	}
+
+	::ng-deep .mat-mdc-form-field-icon-suffix > .mat-icon {
+		padding: 10px !important;
+	}
+
+	::ng-deep .mat-mdc-form-field-infix {
+		min-height: 0 !important;
+	}
+
+	::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+	::ng-deep .mdc-notched-outline__leading,
+	::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+	::ng-deep .mdc-notched-outline__notch,
+	::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+	::ng-deep .mdc-notched-outline__trailing {
+		border-color: variables.$primary-light-color !important;
+		border-width: 2px !important;
+	}
+
+	::ng-deep .select-container
+	::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+	::ng-deep .mdc-notched-outline__leading,
+	::ng-deep .select-container
+	::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+	::ng-deep .mdc-notched-outline__notch,
+	::ng-deep .select-container
+	::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+	::ng-deep .mdc-notched-outline__trailing {
+		border-color: variables.$primary-color !important;
+		border-width: 2px !important;
+	}
+
+	::ng-deep .mdc-text-field--outlined:not(
+			.mdc-text-field--disabled
+		).mdc-text-field--focused
+		.mdc-notched-outline__trailing,
+		::ng-deep .mdc-text-field--outlined:not(
+			.mdc-text-field--disabled
+		).mdc-text-field--focused
+		::ng-deep .mdc-notched-outline__leading {
+		border-color: #087020 !important;
+	}
+
+	::ng-deep .select-title {
+	margin: 0 0 10px !important;
+	font-family: Roboto, "Helvetica Neue", sans-serif I !important;
+    font-size: 14px !important;
+	margin-left: 5px !important;
+}
+
+::ng-deep div.mat-mdc-select-panel .panel-select {
+	box-shadow: 0px 4px 10px 1px rgba(219, 216, 219, 1) !important;
+	margin-top: 5px !important;
+}
+
+::ng-deep .mat-mdc-option:hover:not(.mdc-list-item--disabled) {
+	background-color: variables.$primary-light-color 20 !important;
+}
+
+::ng-deep .panel-select.mat-primary
+	.mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after,
+.panel-select.mat-primary
+	.mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-minimal::after {
+	color: variables.$primary-color !important;
+}
+
+::ng-deep .panel-select
+	.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(
+		.mat-mdc-option-multiple
+	) {
+	background-color: variables.$primary-light-color 20 !important;
+}
+
+::ng-deep .select-form.mat-focused .mdc-text-field--focused #iconoSelect {
+	transform: rotate(180deg) !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-primary {
+	background-color: white !important;
+}
+
+::ng-deep div.mat-mdc-select-panel{
+	background-color: white !important;
+}
+
+::ng-deep .mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-full::after,
+::ng-deep .mat-primary .mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-full::after {
+  color: #087021 !important;
+}
+
+::ng-deep .mat-pseudo-checkbox-full {
+    border: 2px solid #087021 !important;
+}
+
+::ng-deep .mat-pseudo-checkbox-full.mat-pseudo-checkbox-checked,
+::ng-deep .mat-pseudo-checkbox-full.mat-pseudo-checkbox-indeterminate {
+  border-color: #087021 !important;
+  background: transparent !important;
+}
+
+::ng-deep .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) .mdc-list-item__primary-text {
+    color: black !important;
+}
+
+.search-container {
+	padding: 8px 16px;
+	display: flex;
+	align-items: center;
+  
+	mat-icon {
+	  margin-right: 8px;
+	}
+  
+	input {
+	  width: 100%;
+	}
+  }

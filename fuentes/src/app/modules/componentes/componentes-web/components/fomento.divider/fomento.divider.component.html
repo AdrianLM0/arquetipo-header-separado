@@ -1,0 +1,15 @@
+<div class="divider-container" [ngClass]="{'vertical-layout': vertical, 'horizontal-layout': !vertical}">
+    <div>Contenido 1</div>
+    
+    <mat-divider 
+        aria-hidden="true"
+        class="custom-divider vertical-divider"
+        [ngClass]="{'vertical-divider': vertical, 'horizontal-divider': !vertical}" 
+        [inset]="inset"
+        [color]="color">
+    </mat-divider>
+  
+    <div>Contenido 2</div>
+  </div>
+  
+

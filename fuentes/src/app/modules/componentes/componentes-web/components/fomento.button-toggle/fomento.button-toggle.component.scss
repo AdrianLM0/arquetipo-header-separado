@@ -1,0 +1,27 @@
+@use '../../../../../../assets/variables.scss';
+
+mat-button-toggle {
+	color: white;
+	background-color: variables.$primary-color !important;
+
+	// Añadimos borde para destacar el estado de "seleccionado"
+	&.mat-button-toggle-checked {
+		color: white !important;
+		background-color: variables.$primary-color !important;
+		border: 2px solid darken(variables.$primary-color, 15%) !important;
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.2) !important;
+	}
+
+	// Hover para botones que no están seleccionados
+	&:hover {
+		color: white;
+		background-color: lighten(variables.$primary-color, 10%) !important;
+	}
+}
+
+// Quitamos borde para destacar el estado de "deshabilitado"
+.mat-button-toggle-appearance-standard.mat-button-toggle-disabled {
+	color: rgba(255, 255, 255, 0.5) !important;
+	background-color: variables.$primary-color !important;
+	border: none !important;
+}

@@ -1,0 +1,44 @@
+
+<lib-fomento-input *ngIf="type === 'inputFomento'" 
+    [typeStyle]="typeStyle" 
+    [errorStateMatcher]="errorStateMatcher" 
+    [readonly]="readonly"
+    [typeMaterialInput]="typeMaterialInput" 
+    [errorState]="errorState" 
+    [label]="labelInput"
+    [msgHelp]="msgHelp"
+    [typeMatInput]="'text'">
+</lib-fomento-input>
+
+<lib-fomento-select *ngIf="type === 'selectFomento'" 
+    [data]="data" 
+    [label]='labelSelect' 
+    [disabled]="disabled">
+</lib-fomento-select>
+
+<lib-fomento-input *ngIf="type === 'password'" 
+    [typeStyle]="typeStyle" 
+    [errorStateMatcher]="errorStateMatcher" 
+    [readonly]="readonly"
+    [typeMaterialPassword]="typeMaterialPassword" 
+    [errorState]="errorState" 
+    [label]="labelInputPassword"
+    [msgHelp]="msgHelp"
+    [hide]="hide"
+    [type]="type"
+    [typeMatInput]="'password'">
+</lib-fomento-input>
+
+<lib-fomento-input *ngIf="type === 'number'" 
+    [typeStyle]="typeStyle" 
+    [errorStateMatcher]="errorStateMatcher" 
+    [readonly]="readonly"    
+    [typeMaterialNumber]="typeMaterialNumber" 
+    [errorState]="errorState" 
+    [label]="labelInputNumber"
+    [msgHelp]="msgHelp"
+    [typeMatInput]="'number'">
+</lib-fomento-input>
+
+
+  

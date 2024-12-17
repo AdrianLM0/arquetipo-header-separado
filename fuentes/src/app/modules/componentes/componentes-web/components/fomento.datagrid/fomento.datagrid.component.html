@@ -1,0 +1,140 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.0.1/remixicon.css" />
+
+<h2 class="datagrid_title">{{ name }}</h2>
+
+<lib-fomento-formulario [form_config]="form" [endpointUrl]="endpointUrl" [showReset]="showResetForm"
+  [submit_button]="submit_button_form" [reset_button]="reset_button_form" [expansion_form]="expansion_form"
+  [showSubmit]="showSubmitForm" [validate_form]="validate_form" [showAux]="showAuxForm" [aux_button]="aux_label"
+  [show_header]="show_header" (auxAction)="saveFilterEvent($event)" *ngIf="filter === 'advance'"
+  (formSaved)="onFormSaved()"></lib-fomento-formulario>
+
+<div class="container botones" *ngIf="showBotonera">
+  <div><i class="fas fa-question-circle" style="color: #087021" role="button" (click)="emitHelpIconEvent()"
+      (keypress)="emitHelpIconEvent()" tabindex="0" [aria_label]="cleanButtonAriaLabel" *ngIf="show_ayuda"></i></div>
+  <div>
+    <lib-fomento-button [label]="cleanButtonLabel" [theme]="cleanButtonTheme" [icon]="cleanButtonIcon"
+      [type]="cleanButtonType" [aria_label]="cleanButtonAriaLabel" [disableRipple]="cleanButtonDisableRipple"
+      (onclickevent)="cleanFilterEvent()">
+    </lib-fomento-button>
+  </div>
+  <div>
+    <lib-fomento-button [label]="exportButtonLabel" [theme]="exportButtonTheme" [icon]="exportButtonIcon"
+      [type]="exportButtonType" [aria_label]="exportButtonAriaLabel" [disableRipple]="exportButtonDisableRipple"
+      (onclickevent)="emitDownloadEvent()">
+    </lib-fomento-button>
+  </div>
+
+  <div> <lib-fomento-filtro-columnas-tabla [columns]="table_headers" (columnsChange)="onColumnsChange($event)"
+      [appearance]="filtroColumnasAppearance" [placeholder]="filtroColumnasPlaceholder"
+      [enableSearch]="filtroColumnasEnableSearch" *ngIf="show_fcolumnas"
+      class="filtroColumnas"></lib-fomento-filtro-columnas-tabla>
+  </div>
+  <div>
+    <lib-fomento-select [data]="paginator_version === 'json' ? consultas_guardadas : consultas_parse"
+      [label]="selectLabel" [disabled]="selectDisabled" [default]="selectDefault" [ariaLabel]="selectAriaLabel"
+      [isRequired]="selectIsRequired" [readonly]="selectReadonly" [formControlName]="selectFormControlName"
+      [additionalDescription]="selectAdditionalDescription" [endpoint]="selectEndpoint" [(selected)]="selectedOption"
+      (changeOptionAction)="useFilter($event)" (selectedChange)="onSelectedChange($event)"
+      *ngIf="filter === 'advance'"></lib-fomento-select>
+
+
+
+  </div>
+</div>
+
+<div class="container tabla-multirregistro">
+  <span (click)="emitCheckEvent()" role="button" class="multitext" *ngIf="showMulti"><em
+      class="{{ multicheck_icono }}"></em>{{ multi_check_label }}</span>
+  <span class="globalFilter" *ngIf="universal_filter">{{ globalFilterLabel }}</span>
+  <input type="text" *ngIf="universal_filter" value="" class="inputFilter globalFilter" (keyup)="applyFilterG($event)"
+    matInput />
+  <table mat-table [dataSource]="dataSource" matSort aria-label="Datagrid">
+    <!-- Acciones -->
+    <ng-container matColumnDef="acciones" *ngIf="show_actions">
+      <th mat-header-cell *matHeaderCellDef scope="col"> {{ actions_label }} </th>
+      <td mat-cell *matCellDef="let data" class="accion_row" [ngClass]="'actions'" data-th="acciones">
+        <ng-template ngFor let-a [ngForOf]="listadoAccionesAux">
+          <lib-fomento-tooltip *ngIf="a.tooltip" [description]="a.tooltip" [position]="tooltipPosition || 'below'"
+            [delay_hide]="tooltipDelayHide || 0" [delay_show]="tooltipDelayShow || 0"
+            [tooltipEnabled]="tooltipEnabled !== false" [ariaLabel]="tooltipAriaLabel || a.tooltip"
+            [ariaLive]="tooltipAriaLive || 'polite'" [role]="tooltipRole || 'tooltip'"
+            [tabindex]="tooltipTabindex || '0'">
+            <em class="{{ a.icono }}" role="button" (keypress)="a.funcion()" (click)="a.funcion(data)" tabindex="0"
+              [attr.aria-label]="'Acción: ' + a.nombre + ' - ' + a.tooltip"></em>
+          </lib-fomento-tooltip>
+
+          <em *ngIf="!a.tooltip" class="{{ a.icono }}" role="button" (keypress)="a.funcion()" (click)="a.funcion(data)"
+            tabindex="0" [attr.aria-label]="'Acción: ' + a.nombre">
+          </em>
+        </ng-template>
+      </td>
+
+    </ng-container>
+
+    <!-- Selección -->
+    <ng-container matColumnDef="seleccion">
+      <th mat-header-cell *matHeaderCellDef>
+        <lib-fomento-checkbox [disabled]="false" class="inline" typeStyle="material" [checked]="false" label=""
+          (changeCheck)="controlCheck($event)" tabindex="0"></lib-fomento-checkbox>
+        {{ multi_check_label_col }}
+      </th>
+      <td mat-cell *matCellDef="let data" class="accion_row" [ngClass]="'seleccion'"
+        attr.data-th="{{ multi_check_label }}">
+        <lib-fomento-checkbox [disabled]="false" typeStyle="material" [checked]="check_value" label=""
+          (changeCheck)="isCheck($event, data)"></lib-fomento-checkbox>
+      </td>
+    </ng-container>
+
+    <!-- Columnas dinámicas -->
+    <ng-container *ngFor="let column of table_headers" matColumnDef="{{ column.field }}">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ column.header }} </th>
+      <td mat-cell *matCellDef="let element" attr.data-th="{{ column.header }}">
+        <span class="dataRow" *ngIf="column.field.includes('.')">{{ getFieldValue(element, column.field) }}</span>
+        <span class="dataRow">{{ element[column.field] }}</span>
+      </td>
+    </ng-container>
+
+    <!-- Filtro en columnas -->
+    <div *ngIf="filter === 'column'">
+      <ng-container *ngFor="let column of displayedColumns; let j = index" matColumnDef="input{{ column }}">
+        <th mat-header-cell *matHeaderCellDef class="rowFilter">
+          <div *ngIf="column !== 'acciones' && column !== 'seleccion'">
+            <i class="fas fa-filter" aria-hidden="true"></i>
+            <input type="text" value="" class="inputFilter" *ngIf="paginator_version === 'api'"
+              (keyup)="applyFilterG($event)" matInput />
+            <input type="text" value="" class="inputFilter" *ngIf="paginator_version === 'json'"
+              (keyup)="applyFilterG($event)" matInput [formControl]="getControl(column, 'filterValue')" />
+
+          </div>
+        </th>
+      </ng-container>
+    </div>
+
+    <!-- Filas y columnas -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <div *ngIf="filter === 'column'">
+      <tr mat-header-row *matHeaderRowDef="inputColumns"></tr>
+    </div>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- Paginación API -->
+  <lib-fomento-paginator *ngIf="paginator_version === 'api'" [pageSizeOptions]="[5, 10, 20]" [length]="paginator_length"
+    [pageSize]="pageSize" [pageIndex]="pageIndex" (page)="handlePageEvent($event)">
+  </lib-fomento-paginator>
+
+  <!-- Paginación JSON -->
+  <lib-fomento-paginator *ngIf="paginator_version === 'json'" [pageSizeOptions]="[5, 10, 20]"></lib-fomento-paginator>
+</div>
+
+<ng-template #template>
+  <div class="formDialog">
+    <p class="datagrid_title">{{ dialogTitle }}</p>
+    <div class="dialogContainer">
+      <mat-form-field appearance="outline" class="input-form">
+        <input matInput type="text" class="l" [(ngModel)]="dialogValue" />
+      </mat-form-field>
+      <lib-fomento-button typeStyle="material" (click)="submitDialog()" label="ACEPTAR" />
+    </div>
+  </div>
+</ng-template>

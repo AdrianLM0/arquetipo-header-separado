@@ -1,0 +1,12 @@
+<mat-chip-listbox>
+    <mat-chip-option *ngFor="let chip of chips" 
+        [disabled]="chip.disabled || disabled" 
+        [color]="chip.color || color" 
+        [selected]="chip.selected || selected"
+        [id]="chip.id || id"
+        [value]="chip.value || value"
+        [ariaLabel]="chip.ariaLabel || ariaLabel"
+        [ariaDescription]="chip.ariaDescription || ariaDescription">
+        {{ chip.label }}
+    </mat-chip-option>
+</mat-chip-listbox>

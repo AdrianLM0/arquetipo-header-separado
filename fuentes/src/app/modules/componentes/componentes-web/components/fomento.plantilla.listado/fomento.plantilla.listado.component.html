@@ -1,0 +1,72 @@
+<main class="main">
+    <div class="container-nav">
+        <lib-fomento-nav></lib-fomento-nav>
+    </div>
+    <div class="container-breadcrumb">
+        <lib-fomento-breadcrumb></lib-fomento-breadcrumb>
+    </div>
+    <div class="containerTitleButton">
+        <h1 class="titlePrincipal">{{titlePrincipal}}</h1>
+        <button class="boton-grid" [class.active]="isGrid" (click)="toggleGridContainer()"
+            [iconGrid]="iconGrid"><i class="fas fa-grip-vertical"></i>
+        </button>
+        <button class="boton-row" [class.active]="isRow" (click)="toggleRowContainer()"
+            [iconRow]="iconRow"><i class="fas fa-list"></i>
+        </button>
+    </div>
+    <div [ngClass]="{'row-container': isRowContainer, 'grid-container': isGridContainer}" *ngIf="!isRowContainer">
+        <div [ngClass]="{'row': isRow}" *ngFor="let card of config_Card" >
+            <lib-fomento-card 
+                [iconTitle]="card.iconTitle"
+                [typeStyle]="card.typeStyle"
+                [title]="card.title"
+                [label]="card.label"
+                >
+                <div [ngClass]="{'d-flex-row': isRowContainer, 'd-flex': isGridContainer}">
+                    <div [ngClass]="{'container-select': isGridContainer}">
+                        <lib-fomento-select class="lib-fomento-select"
+                            [data]="card.data">
+                        </lib-fomento-select>
+                    </div>
+                    <div *ngIf="isGridContainer" [ngClass]="{'container-buttons-grid': isGridContainer}">
+                        <button class="boton-eye" (click)="buttonEye($event)"><i class='{{card.iconEye}}'></i></button>
+                        <button [ngClass]="{'boton-filecsv': isGridContainer, 'boton-filecsvrow': isRowContainer}" (click)="buttonCsv($event)">
+                            <i class='{{card.iconFileCsv}}'></i>
+                            <ng-container *ngIf="isRowContainer">{{card.labelButtonCsv}}</ng-container>
+                        </button>
+                    </div>
+                </div>
+            </lib-fomento-card>
+        </div>
+    </div>
+
+    <div [ngClass]="{'row-container': isRowContainer, 'grid-container': isGridContainer}" *ngIf="isRowContainer">
+        <div [ngClass]="{'row': isRow}" *ngFor="let card of config_Card" >
+            <lib-fomento-card class="lib-fomento-card-formatRow"
+                [typeStyle]="card.typeStyle"            
+                [label]="card.label"
+                >
+                <div class="container-cardRow">
+                    <div class="container-iconTitle">
+                        <i class='{{card.iconTitle}}'></i>
+                        <mat-card-title> {{ card.title }} </mat-card-title>
+                    </div>
+                    <div [ngClass]="{'d-flex-row': isRowContainer, 'd-flex': isGridContainer}">
+                        <div [ngClass]="{'container-select': isGridContainer}">
+                            <lib-fomento-select class="lib-fomento-select-formatRow"
+                                [data]="card.data">
+                            </lib-fomento-select>
+                        </div>
+                        <div class="container-buttons-row">
+                            <button *ngIf="isRowContainer" class="boton-eye" (click)="buttonEye($event)" ><i class='{{card.iconEye}}'></i></button>
+                            <button *ngIf="isRowContainer" [ngClass]="{'boton-filecsv': isGridContainer, 'boton-filecsvrow': isRowContainer}" (click)="buttonCsv($event)">
+                                <i class='{{card.iconFileCsv}}'></i>
+                                <ng-container *ngIf="isRowContainer">{{card.labelButtonCsv}}</ng-container>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </lib-fomento-card>
+        </div>
+    </div>
+</main>

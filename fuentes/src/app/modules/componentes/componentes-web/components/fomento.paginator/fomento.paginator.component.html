@@ -1,0 +1,162 @@
+<div class="wrapper" role="region" aria-label="Paginador de resultados" aria-live="polite">
+  <span
+    aria-live="polite"
+    aria-atomic="true"
+    >Mostrando {{ pageIndex * pageSize + 1 }}-{{ pageSize * (pageIndex + 1) > length ? length : pageSize * (pageIndex + 1) }} de
+    {{ length }} resultados</span
+  >
+  <div class="boton-container">
+    <!-- Botón Anterior -->
+    <lib-fomento-button
+      typeStyle="material"
+      [disabled]="pageIndex === 0"
+      (click)="previousPage()"
+      label="<     ANTERIOR"
+      aria-label="Página anterior"
+      tabindex="0"
+    ></lib-fomento-button>
+
+    <!-- Páginas dinámicas según el número total de páginas -->
+    <ng-template [ngIf]="getNumberOfPages() < 7">
+      <lib-fomento-button
+        *ngFor="let aux of [].constructor(getNumberOfPages()); let i = index"
+        class="page-option"
+        [theme]="pageIndex === i ? 'primary' : 'secondary'"
+        typeStyle="material"
+        label="{{ i + 1 }}"
+        (click)="emitPageEvent(i)"
+        aria-label="Página {{ i + 1 }}"
+        tabindex="0"
+      ></lib-fomento-button>
+    </ng-template>
+
+    <!-- Lógica de paginación avanzada -->
+    <ng-template [ngIf]="getNumberOfPages() >= 7">
+      <!-- Primeras Páginas -->
+      <ng-template [ngIf]="pageIndex < 3">
+        <lib-fomento-button
+          *ngFor="let aux of [].constructor(3); let i = index"
+          class="page-option"
+          [theme]="pageIndex === i ? 'primary' : 'secondary'"
+          typeStyle="material"
+          label="{{ i + 1 }}"
+          (click)="emitPageEvent(i)"
+          aria-label="Página {{ i + 1 }}"
+          tabindex="0"
+        ></lib-fomento-button>
+        <span class="titulo" aria-hidden="true">...</span>
+        <lib-fomento-button
+          class="page-option"
+          [theme]="'secondary'"
+          typeStyle="material"
+          label="{{ getNumberOfPages() }}"
+          (click)="emitPageEvent(getNumberOfPages() - 1)"
+          aria-label="Última página"
+          tabindex="0"
+        ></lib-fomento-button>
+      </ng-template>
+
+      <!-- Páginas Intermedias -->
+      <ng-template [ngIf]="pageIndex >= 3 && pageIndex < getNumberOfPages() - 3">
+        <lib-fomento-button
+          class="page-option"
+          [theme]="'secondary'"
+          typeStyle="material"
+          label="{{ 1 }}"
+          (click)="emitPageEvent(0)"
+          aria-label="Primera página"
+          tabindex="0"
+        ></lib-fomento-button>
+        <span class="titulo" aria-hidden="true">...</span>
+        <lib-fomento-button
+          class="page-option"
+          [theme]="'secondary'"
+          typeStyle="material"
+          label="{{ pageIndex }}"
+          (click)="emitPageEvent(pageIndex - 1)"
+          aria-label="Página {{ pageIndex }}"
+          tabindex="0"
+        ></lib-fomento-button>
+        <lib-fomento-button
+          class="page-option"
+          [theme]="'primary'"
+          typeStyle="material"
+          label="{{ pageIndex + 1 }}"
+          (click)="emitPageEvent(pageIndex)"
+          aria-label="Página actual, {{ pageIndex + 1 }}"
+          tabindex="0"
+        ></lib-fomento-button>
+        <lib-fomento-button
+          class="page-option"
+          [theme]="'secondary'"
+          typeStyle="material"
+          label="{{ pageIndex + 2 }}"
+          (click)="emitPageEvent(pageIndex + 1)"
+          aria-label="Página {{ pageIndex + 2 }}"
+          tabindex="0"
+        ></lib-fomento-button>
+        <span class="titulo" aria-hidden="true">...</span>
+        <lib-fomento-button
+          class="page-option"
+          [theme]="'secondary'"
+          typeStyle="material"
+          label="{{ getNumberOfPages() }}"
+          (click)="emitPageEvent(getNumberOfPages() - 1)"
+          aria-label="Última página"
+          tabindex="0"
+        ></lib-fomento-button>
+      </ng-template>
+
+      <!-- Últimas Páginas -->
+      <ng-template [ngIf]="pageIndex >= getNumberOfPages() - 3">
+        <lib-fomento-button
+          class="page-option"
+          [theme]="'secondary'"
+          typeStyle="material"
+          label="{{ 1 }}"
+          (click)="emitPageEvent(0)"
+          aria-label="Primera página"
+          tabindex="0"
+        ></lib-fomento-button>
+        <span class="titulo" aria-hidden="true">...</span>
+        <lib-fomento-button
+          *ngFor="let aux of [].constructor(3); let i = index"
+          class="page-option"
+          [theme]="pageIndex === getNumberOfPages() - (3 - i) ? 'primary' : 'secondary'"
+          typeStyle="material"
+          label="{{ getNumberOfPages() - (2 - i) }}"
+          (click)="emitPageEvent(getNumberOfPages() - (3 - i))"
+          aria-label="Página {{ getNumberOfPages() - (2 - i) }}"
+          tabindex="0"
+        ></lib-fomento-button>
+      </ng-template>
+    </ng-template>
+
+    <!-- Botón Siguiente -->
+    <lib-fomento-button
+      typeStyle="material"
+      [disabled]="pageIndex === getNumberOfPages() - 1"
+      (click)="nextPage()"
+      label="SIGUIENTE    >"
+      aria-label="Página siguiente"
+      tabindex="0"
+    ></lib-fomento-button>
+  </div>
+
+  <!-- Selector de Tamaño de Página -->
+  <div class="select-container">
+    <span class="titulo">Mostrar: </span>
+    <mat-form-field appearance="outline" class="page-selector">
+      <mat-select
+        [ngModel]="pageSize"
+        (selectionChange)="onPageSizeChange($event.value)"
+        aria-label="Seleccionar tamaño de página"
+      >
+        <mat-option *ngFor="let size of pageSizeOptions" [value]="size" aria-label="Mostrar {{ size }} resultados por página"
+          >{{ size }}</mat-option
+        >
+      </mat-select>
+      <mat-icon id="iconoSelect" matSuffix class="ri-arrow-down-s-line" aria-label="Abrir menú de selección" role="button"></mat-icon>
+    </mat-form-field>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+@use '../../../../../../assets/variables.scss';
+
+.check-form {
+  --mdc-checkbox-selected-focus-state-layer-color: #{variables.$primary-color};
+
+  // Estilo de la caja del checkbox
+  ::ng-deep .mdc-checkbox__background {
+    border-color: variables.$primary-color !important;
+    width: 19px !important;
+    height: 19px !important;
+    border-width: 1px !important;
+    float: left !important;
+    border-radius: 3px; // Mantener el checkbox cuadrado
+    background-color: white !important;
+  }
+
+  // Estilo del checkmark dentro del checkbox
+  ::ng-deep .mdc-checkbox__checkmark {
+    color: variables.$primary-color !important;
+    background-color: white;
+    top: 1.5px !important;
+    left: 1.5px !important;
+    width: 85% !important;
+  }
+
+  // Sombra redondeada y foco visual del checkbox
+  ::ng-deep .mdc-checkbox__ripple {
+    border-radius: 50%; // Sombra redonda para el foco
+    background-color: rgba(0, 0, 0, 0.8) !important;
+  }
+
+  // Estilos cuando el checkbox está marcado
+  ::ng-deep .mat-checkbox-checked .mat-checkbox-background,
+  ::ng-deep .mat-checkbox-indeterminate .mat-checkbox-background,
+  ::ng-deep .mdc-checkbox__native-control:checked ~ .mdc-checkbox__background,
+  ::ng-deep .mdc-checkbox__native-control:checked .mdc-checkbox__background {
+    background-color: variables.$primary-color !important;
+    border-color: variables.$primary-color !important;
+  }
+
+  // Estilo cuando el checkbox está deshabilitado
+  ::ng-deep .mdc-checkbox
+    .mdc-checkbox__native-control[disabled]:not(:checked):not(:indeterminate)
+    ~ .mdc-checkbox__background {
+    background-color: variables.$primary-light-color !important;
+    border-color: transparent !important;
+  }
+
+  // Contenedor de la checkbox
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  // Estilo para la etiqueta del checkbox
+  .label-checkbox {
+    font-size: 16px;
+    font-family: variables.$source-sans-pro-font;
+    color: rgb(51, 51, 51);
+    font-weight: 300;
+    line-height: 19px;
+  }
+
+  // Estilos específicos para el frame del mat-checkbox
+  ::ng-deep .mat-checkbox-frame {
+    display: flex;
+    align-items: center;
+    outline: none;
+  }
+
+  ::ng-deep .mat-checkbox-frame[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  ::ng-deep .mat-checkbox-frame[readonly] {
+    opacity: 0.75;
+    cursor: default;
+  }
+}
+
+// Nuevos estilos para asegurar que el checkbox se vea verde cuando esté marcado
+::ng-deep .mat-checkbox-checked .mat-checkbox-background,
+::ng-deep .mat-checkbox-indeterminate .mat-checkbox-background,
+::ng-deep .mdc-checkbox__native-control:checked ~ .mdc-checkbox__background,
+::ng-deep .mdc-checkbox__native-control:checked .mdc-checkbox__background {
+  background-color: variables.$primary-color !important;
+  border-color: variables.$primary-color !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-checkmark-path {
+  color: variables.$light-text !important; // Asegura que el checkmark sea visible sobre fondo verde
+}
+
+// Estilos de enfoque
+::ng-deep .mat-checkbox-input:focus-visible ~ .mat-checkbox-frame {
+  outline: 2px solid variables.$primary-color !important;
+}
+
+// Ripple Effect personalizado
+::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+  background-color: rgba(variables.$primary-color, 0.2) !important;
+}
+.error-message {
+    color: variables.$warning-color !important; // Usar la variable de color de advertencia
+    font-size: 14px !important;
+    margin-top: 5px !important;
+  }
+
+  div[aria-live="assertive"] {
+    color: variables.$warning-color !important; // Usar la variable de color de advertencia
+    font-size: 14px !important;
+    margin-top: 5px !important;
+  }

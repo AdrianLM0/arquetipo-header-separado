@@ -1,0 +1,16 @@
+<div class="fomento-button-toggle" role="group" [attr.aria-label]="ariaLabel" [attr.aria-labelledby]="ariaLabelledby">
+<mat-button-toggle-group [name]="name" [aria-label]="ariaLabel" [disabled]="disabled" [multiple]="multiple" [appearance]="appearance" [vertical]="vertical">
+    <mat-button-toggle *ngFor="let toggle of toggleGroup"  class="mat-button-toggle" (click)="clickbutton($event)"
+        [disabled]="toggle.disabled"
+        [ariaLabel]="toggle.ariaLabel"
+        [ariaLabelledby]="toggle.ariaLabelledby"
+        [checked]="toggle.checked"
+        [disabledRipple]="toggle.disabledRipple"
+        [id]="toggle.id"  
+        [value]="toggle.value"
+        [name]="toggle.name"
+        [label]="toggle.label">
+        {{toggle.label}}
+    </mat-button-toggle>
+</mat-button-toggle-group>
+</div>

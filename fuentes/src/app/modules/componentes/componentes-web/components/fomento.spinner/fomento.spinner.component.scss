@@ -1,0 +1,5 @@
+@use '../../../../../../assets/variables.scss';
+
+.mat-mdc-progress-spinner {
+	--mdc-circular-progress-active-indicator-color: #{variables.$primary-color};
+}

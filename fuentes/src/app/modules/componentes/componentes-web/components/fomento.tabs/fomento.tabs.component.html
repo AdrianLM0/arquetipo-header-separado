@@ -1,0 +1,15 @@
+<!-- <matter-tabs
+      [selected]="selected"
+      [content]="content"
+      inputLabel="label"
+      inputUrl="href" *ngIf="typeStyle === 'matter'">
+</matter-tabs> -->
+
+<mat-tab-group *ngIf="typeStyle === 'material'">
+    <div *ngIf="tabs.length > 1">
+        <ng-container *ngFor="let option of tabs; let i = index">
+            <mat-tab label="{{label[i]?label[i]:'Opción '+i}}"><ng-container *ngTemplateOutlet="option.content"></ng-container></mat-tab>
+        </ng-container>
+    </div>
+</mat-tab-group>
+

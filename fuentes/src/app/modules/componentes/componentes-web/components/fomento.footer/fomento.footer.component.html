@@ -1,0 +1,59 @@
+<!-- <ng-container *ngIf="typeStyle === 'matter'">
+  <matter-footer [data]="data" [ocultarSecciones]="ocultarSecciones" [ocultarSeccionSocial]="ocultarSeccionSocial"></matter-footer> 
+</ng-container> -->
+
+<ng-container *ngIf="typeStyle === 'material'">
+  
+  <footer class="footer">
+    <div class="footer-container-top">
+      <div class="footer-grid">
+          <div *ngFor="let socialColumn of columns" class="footer-item">
+            <h1>{{ socialColumn.title }}</h1>
+
+        <div class="cont">
+          <div *ngFor="let columna of socialColumn.columna" class="footer-array">
+
+            <h1 *ngIf="columna.title " class="array-title">{{ columna.title }}</h1>
+
+
+
+            <ng-template ngFor let-item  [ngForOf]="columna.array">
+
+              <div *ngIf="item.icon; else showLink" class="array-item array-icon" >
+                <a *ngIf="item.href" [href]="item.href" class="item-link" attr.aria-label="Enlace perteneciente a {{item.icon}}">
+                  <i class="fab fa-{{item.icon}}" alt="{{item.icon}}"></i>
+                </a>
+              </div>
+              <ng-template #showLink>
+                <div class="array-item">
+                <a *ngIf="item.href" [href]="item.href" class="item-link">{{ item.title }}</a>
+              </div>
+              </ng-template>
+            </ng-template>
+
+          </div>
+        </div>
+          </div>
+      </div>
+
+  </div>
+    <div class="footer-container-bot">
+      <div  class="footerbot">
+        <!-- Columna para las imágenes (logos) -->
+        <div class="columnlogos">
+          <div *ngFor="let logo of logos" class="arraylogos">
+            <img *ngIf="logo.image" [src]="logo.image" [alt]="logo.title" />
+          </div>
+        </div>
+    
+        <!-- Columna para los enlaces (links) -->
+        <div class="columnlinks">
+          <div *ngFor="let link of links" class="arraylinks">
+            <a *ngIf="link.href" [href]="link.href" class="link">{{ link.title }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</ng-container>

@@ -1,0 +1,6 @@
+<!-- <matter-progress title="{{ title }}" percentage="{{ progress }}" *ngIf="typeStyle === 'matter'"></matter-progress> -->
+<div class="container" *ngIf="typeStyle === 'material'">
+    <p class="pb-title">{{ title }}</p>
+    <mat-progress-bar mode="determinate" value="{{ progress }}"></mat-progress-bar>
+    <span class="percentage" [ngStyle]="{'left': progress/2.1 + '%'}">{{ progress }}%</span>
+</div>

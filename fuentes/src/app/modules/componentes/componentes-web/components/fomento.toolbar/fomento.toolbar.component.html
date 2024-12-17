@@ -1,0 +1,8 @@
+<mat-toolbar [style.background-color]="toolbarColor">
+    <button *ngFor="let iconName of iconNames; let i = index" mat-icon-button class="example-icon" (click)="onIconClick(i)" [style.color]="iconColor" aria-label="Icon button with {{iconName}}">
+      <mat-icon>{{iconName}}</mat-icon>
+    </button>
+    <span [style.color]="textColor">{{title}}</span>
+    <span></span>  
+  </mat-toolbar>
+  

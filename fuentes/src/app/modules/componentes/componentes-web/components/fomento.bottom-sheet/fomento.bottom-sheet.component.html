@@ -1,0 +1,14 @@
+<div class="button-container ng-star-inserted">
+  <button mat-flat-button 
+          [disableRipple]="disableRipple" 
+          [aria-label]="aria_label"
+          [color]="theme"
+          [ngClass]="{ 'has-font-icon': icon !== null && icon !== '' }" 
+          [disabled]="disabled" 
+          (click)="openBottomSheet($event)">
+    <ng-container *ngIf="icon !== null && icon !== ''">
+      <i class="fas fa-{{ icon }}"></i>
+    </ng-container>
+    {{ label }}
+  </button>
+</div>

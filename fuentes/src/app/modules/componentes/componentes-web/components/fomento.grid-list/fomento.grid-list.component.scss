@@ -1,0 +1,9 @@
+@use '../../../../../../assets/variables.scss';
+
+.selectable {
+	cursor: variables.$cursor-default;
+}
+
+.selectable:hover {
+	background-color: var(--highlightColor, lightblue);
+}

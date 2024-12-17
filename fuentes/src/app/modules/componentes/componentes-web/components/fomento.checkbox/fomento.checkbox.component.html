@@ -1,0 +1,19 @@
+<section class="example-section">
+    <mat-checkbox
+      class="checkbox-input"
+      [checked]="checked"
+      [disabled]="disabled"
+      [indeterminate]="indeterminate"
+      [id]="name"
+      [attr.aria-label]="ariaLabel || label"
+      [attr.aria-describedby]="ariaDescribedBy"
+      (change)="emitCheck($event)"
+      (focus)="focused = true"
+      (blur)="focused = false">
+      <label [for]="name" class="label-checkbox">{{ label }}</label>
+    </mat-checkbox>
+  
+    <div *ngIf="errorMessage" [attr.aria-live]="errorLive ? 'assertive' : 'off'" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </section>

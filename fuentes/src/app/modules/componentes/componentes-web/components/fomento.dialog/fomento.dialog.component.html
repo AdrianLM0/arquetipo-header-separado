@@ -1,0 +1,16 @@
+<div>
+  <ng-content></ng-content>
+</div>
+
+<ng-template #template>
+  <div class="dialog-header" [ngClass]="{'align-left': closeButtonPosition === 'left', 'align-right': closeButtonPosition === 'right'}">
+    <!-- Botón de cerrar con ícono de Material Design -->
+    <button mat-icon-button *ngIf="closeButton" class="close-button" (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="dialog-content">
+    <!-- Aquí se mostrará el contenido que se pase dentro del componente -->
+    <ng-content select="[dialog-content]"></ng-content>
+  </div>
+</ng-template>

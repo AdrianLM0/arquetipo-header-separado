@@ -1,0 +1,26 @@
+@use '../../../../../../assets/variables.scss';
+
+mat-list-item {
+	display: variables.$display-default;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+mat-selection-list {
+	display: variables.$display-default;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.list-icon {
+	margin-right: 2px;
+}
+
+.list-text {
+	margin-left: 2px;
+}
+
+.custom-list-item-checkbox {
+	float: right; /* Hace que el checkbox flote a la derecha del elemento de la lista */
+	margin-left: 10px; /* Agrega un margen izquierdo para separar el checkbox del texto */
+}

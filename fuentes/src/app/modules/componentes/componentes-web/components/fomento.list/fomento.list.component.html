@@ -1,0 +1,51 @@
+<ng-container *ngIf="selectable; else nonSelectableList">
+    <mat-selection-list [ngClass]="theme" (selectionChange)="onItemClicked($event)" [multiple]="multiple">
+      <mat-list-option *ngFor="let item of items" [value]="item" [ngStyle]="listItemStyle">     
+          <ng-container *ngIf="isObject(item); else simpleItem">
+            <a *ngIf="item.href || href" [href]="item.href || href" [attr.target]="item.target || target" [attr.aria-label]="item.ariaLabel || ariaLabel">
+              <img *ngIf="avatar" [src]="avatar" class="list-avatar" alt="lista-img">
+              <i *ngIf="item.icon || icon" class="fa fa-{{ item.icon || icon }} list-icon" [style.color]="iconColor"></i>
+              <span class="list-text" [style.color]="textColor">{{ item.label || item[displayProperty] }}</span>
+            </a>
+            <span *ngIf="!item.href && !href">
+              <img *ngIf="avatar" [src]="avatar" class="list-avatar" alt="lista-img">
+              <i *ngIf="item.icon || icon" class="fa fa-{{ item.icon || icon }} list-icon" [style.color]="iconColor"></i>
+              <span class="list-text" [style.color]="textColor">{{ item.label || item[displayProperty] }}</span>
+            </span>
+          </ng-container>      
+        <ng-template #simpleItem>
+          <span class="list-text" [style.color]="textColor">{{ item }}</span>
+        </ng-template>
+       
+      </mat-list-option>
+    </mat-selection-list>
+  </ng-container>
+  
+  
+  <ng-template #nonSelectableList>
+    <mat-list [ngClass]="theme" [class.mat-nav-list]="isNavList" [style.align-items]="alignItems" [style.justify-content]="justifyContent">
+      <mat-list-item *ngFor="let item of items" [disabled]="disabled" (click)="onItemClicked(item)" role="listitem" [matRippleDisabled]="disableRipple" [ngStyle]="listItemStyle">
+        <ng-container *ngIf="itemTemplate; else defaultItemTemplate">
+          <ng-template [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{$implicit: item}"></ng-template>
+        </ng-container>
+        <ng-template #defaultItemTemplate>
+          <ng-container *ngIf="isObject(item); else simpleItem">
+            <a *ngIf="item.href || href" [href]="item.href || href" [attr.target]="item.target || target" [attr.aria-label]="item.ariaLabel || ariaLabel">
+              <img *ngIf="avatar" [src]="avatar" class="list-avatar" alt="lista-img">
+              <i *ngIf="item.icon || icon" class="fa fa-{{ item.icon || icon }} list-icon" [style.color]="iconColor"></i>
+              <span class="list-text" [style.color]="textColor">{{ item.label || item[displayProperty] }}</span>
+            </a>
+            <span *ngIf="!item.href && !href">
+              <img *ngIf="avatar" [src]="avatar" class="list-avatar" alt="lista-img">
+              <i *ngIf="item.icon || icon" class="fa fa-{{ item.icon || icon }} list-icon" [style.color]="iconColor"></i>
+              <span class="list-text" [style.color]="textColor">{{ item.label || item[displayProperty] }}</span>
+            </span>
+          </ng-container>
+        </ng-template>
+        <ng-template #simpleItem>
+          <span class="list-text" [style.color]="textColor">{{ item }}</span>
+        </ng-template>
+      </mat-list-item>
+    </mat-list>
+  </ng-template>
+  

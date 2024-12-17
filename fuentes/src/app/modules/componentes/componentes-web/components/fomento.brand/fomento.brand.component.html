@@ -1,0 +1,21 @@
+<!-- <ng-container *ngIf="brandStyle === 'matter'">
+  <matter-brand [logo]="logo" [src]="href_logo" [name]="name" [caption]="caption" [fontSize]="fontSize"></matter-brand>
+</ng-container> -->
+
+<ng-container *ngIf="brandStyle === 'material'">
+  <div class="logo">
+    <a href="{{ href_logo }}" class="image">
+      <img *ngIf="logo === true && src !== null && src !== ''" [src]="src" [alt]="alt_text"/>
+      <img *ngIf="logo === true && src === null || src === '' && href_logo ===''" alt="Junta de Andalucía" src="assets/img/Logo-JDA_CFIOT.svg" />
+    </a>
+   
+    <a href="{{ href_caption }}" rel="home" class="site-name" style="font-size: {{ fontSize }} ;">
+      <div class="title">
+        <div *ngFor="let n of name_parse">{{ n }}</div>
+      </div>
+      <div class="subtitle">
+        <div *ngFor="let i of caption_parse">{{ i }}</div> 
+      </div>
+    </a>
+  </div>
+</ng-container>

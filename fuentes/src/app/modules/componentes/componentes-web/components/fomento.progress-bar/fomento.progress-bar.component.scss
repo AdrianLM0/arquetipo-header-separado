@@ -1,0 +1,26 @@
+@use '../../../../../../assets/variables.scss';
+
+.container {
+	margin: auto 5%;
+}
+
+.mat-mdc-progress-bar {
+	--mdc-linear-progress-active-indicator-height: 30px;
+	--mdc-linear-progress-track-height: 30px;
+	--mdc-linear-progress-active-indicator-color: #{variables.$primary-color};
+	--mdc-linear-progress-track-color: rgb(238, 238, 238);
+}
+
+.pb-title {
+	font-family: variables.$source-sans-pro-font;
+	font-weight: 700;
+}
+
+.percentage {
+	position: relative;
+	color: #ffffff;
+	font-family: variables.$source-sans-pro-font;
+	font-size: 12px;
+	font-weight: 600;
+	top: -25px;
+}

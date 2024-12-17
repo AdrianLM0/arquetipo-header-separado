@@ -1,0 +1,16 @@
+@import '../../../../../../assets/theme-JdA.scss';
+
+
+::ng-deep .mat-bottom-sheet-container {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+  }
+  
+  ::ng-deep .mat-bottom-sheet-container a {
+    color: #087021;
+  }
+  
+  ::ng-deep .mat-bottom-sheet-container a:hover {
+    background-color: #c4ddca;
+    text-decoration: underline;
+  }

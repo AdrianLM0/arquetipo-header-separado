@@ -1,0 +1,35 @@
+<ng-container>
+  <mat-card
+    [ngClass]="{
+      'card-s': size === 's',
+      'card-m': size === 'm',
+      'card-l': size === 'l',
+      'card-xl': size === 'xl',
+      'hover-enabled': enableHover
+    }"
+  >
+    <div class="container-isRow">
+      <mat-card-header>
+        <div class="container-header-card">
+          <div class="icon-title-container">
+            <span *ngIf="iconTitle" class="fas">
+              <i class='{{iconTitle}}'></i>
+            </span>
+            <mat-card-title> {{ title }} </mat-card-title>
+          </div>
+          <mat-card-subtitle> {{ text }} </mat-card-subtitle>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <ng-content></ng-content>
+      </mat-card-content>
+      <mat-card-actions *ngIf="label !== ''" class="mat-card-actions-centered">
+        <lib-fomento-button
+          [label]="label"
+          theme="primary"
+          [icon]="icon"
+        ></lib-fomento-button>
+      </mat-card-actions>
+    </div>
+  </mat-card>
+</ng-container>

@@ -1,0 +1,34 @@
+<!-- Mostrar indicador de carga -->
+<ng-container *ngIf="isLoading">
+  <ng-container *ngTemplateOutlet="loadingTemplate"></ng-container>
+</ng-container>
+
+
+<!-- Mostrar mensaje de error -->
+<ng-container *ngIf="showError">
+  <div>{{ errorMessage }}</div>
+</ng-container>
+
+<!-- Mostrar mensaje si no hay datos -->
+<ng-container *ngIf="showEmptyMessage">
+  <div>{{ emptyMessage }}</div>
+</ng-container>
+
+<!-- Mostrar la lista de elementos -->
+<mat-grid-list [cols]="columns" [rowHeight]="rowHeight" [gutterSize]="gutterSize" *ngIf="data.length > 0">
+  <mat-grid-tile *ngFor="let item of data | slice:0:pageSize" [ngClass]="{'selectable': selectable}" (click)="onSelect(item)">
+    <ng-container *ngTemplateOutlet="itemTemplate ? itemTemplate : defaultTemplate; context: {$implicit: item}"></ng-container>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<ng-template #defaultTemplate let-item>
+  <!-- Plantilla predeterminada para elementos sin plantilla personalizada -->
+  {{ item | json }}
+</ng-template>
+
+<!-- Controles de paginación (si es necesario) -->
+<div class="pagination-controls" *ngIf="enablePagination">
+  <button (click)="onPageChange(currentPage - 1)">Anterior</button>
+  <button (click)="onPageChange(currentPage + 1)">Siguiente</button>
+</div>
+

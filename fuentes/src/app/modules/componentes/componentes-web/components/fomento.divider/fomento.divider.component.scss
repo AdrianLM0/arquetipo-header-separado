@@ -1,0 +1,33 @@
+@use '../../../../../../assets/variables.scss';
+
+.divider-container {
+  display: flex;
+  align-items: stretch;
+  height: 10vh; 
+
+  &.horizontal-layout {
+    flex-direction: column;
+  }
+
+  &.vertical-layout {
+    flex-direction: row;
+  }
+}
+
+.custom-divider {
+  border: none; 
+
+  &.vertical-divider {
+    width: 2px; 
+    height: 100%; 
+  }
+
+  &.horizontal-divider {
+    width: 100%; 
+    height: 1px; 
+    margin: 8px 0; 
+  }
+}
+
+
+
